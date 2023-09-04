@@ -1,24 +1,31 @@
-# README
+# Car Linkr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## サイト概要
+### サイトテーマ
+人と車を繋ぐ中古車販売ECサイト
+​
+### テーマを選んだ理由
+自分の弟が事業を始めたのですが、現在使用しているテンプレート式のサイトがユーザビリティに欠けていると相談を受けました。ユーザー目線のテンプレートが多い中管理者の視点も含んだ、両者へのユーザビリティを考慮したアプリを作りたいと考えました。\
+また中古車の情報はまだ一般的に浸透しきっていない部分もあり、初めての中古車売買でもアプローチしやすいアプリを作成する為、このテーマにしました。
+​
+### ターゲットユーザ
+* 起業したばかりで情報整理や登録等をわかりやすくシステム化したい事業主
+* 初めての中古車売買で色んな情報で混乱してしまい、何から始めていいかわからない顧客ユーザー
+​
+### 主な利用シーン
+* 「管理者」新着商品の登録や問い合わせ対応等の記録を付ける時
+* 「顧客ユーザー」中古車を求めている時、または買取の依頼をしたい時
+* 両者共に中古車の売買を検討している時
+​
+## 設計書
+後程作成予定
+​
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
+​
+## 使用素材
+使用予定あり
