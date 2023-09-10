@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   
   namespace :admin do
-    resources :cars, only: [:index]
+    resources :cars, only: [:index, :create, :show]
   end
 
   scope module: :public do

@@ -1,0 +1,35 @@
+<%= form_with model: [:admin, car] do |f| %>
+
+  <table class="table table-borderless">
+    <tbody>
+      <tr>
+        <th><%= f.label "出品画像" %></th>
+        <td><%= f.file_field :images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "車名" %></th>
+        <td><%= f.text_field :name, autofocus: true, placeholder: "車名", class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "セールスポイント" %></th>
+        <td><%= f.text_area :detail, autofocus: true, placeholder: "ここに説明文を記述します", rows: "5", class: "form-control" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label "税抜価格" %></th>
+        <td><%= f.text_field :price, autofocus: true, placeholder: "1000", class: "col-7" %> 円</td>
+      </tr>
+      <tr>
+        <th><%= f.label "販売ステータス" %></th>
+        <td>
+          <%= f.radio_button :is_available, true %>
+          <%= f.label :is_available, "販売中", value: true, class: "text-success"  %>
+          <%= f.radio_button :is_available, false, class: "ml-4" %>
+          <%= f.label :is_available, "販売停止中", value: false, class: "text-danger"  %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= f.submit "新規登録", class: "btn btn-outline-primary" %>
+  </div>
+<% end %>
