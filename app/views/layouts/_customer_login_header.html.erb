@@ -1,0 +1,17 @@
+<div class="justify-content-center" >
+  <div class="text-dark">
+     <%= current_customer.full_name %> 様ようこそ！
+  </div>
+</div>
+<li class="nav-item">
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+</li>
+<li class="nav-item">
+  <%= link_to "出品一覧", root_path, class: 'nav-link text-dark' %>
+</li>
+<li class="nav-item">
+  <%= link_to "マイページ", root_path, class: 'nav-link text-dark' %>
+</li>
+<li class="nav-item">
+  <%= link_to "問い合わせ", root_path, class: 'nav-link text-dark' %>
+</li>

@@ -3,6 +3,17 @@ class Public::CustomersController < ApplicationController
   def mypage
     @customer = current_customer
   end
+  
+  # def guest_login
+  #   if current_customer
+  #     redirect_to root_path, alert: "すでにログインしています"
+  #     # ログインしている場合はゲストユーザーを作成しない
+  #   else
+  #     customer = Customer.guest_login
+  #     customer.log_in
+  #     redirect_to mypage_path, notice: "ゲストとしてログインしました"
+  #   end
+  # end
 
   private
   def customer_params

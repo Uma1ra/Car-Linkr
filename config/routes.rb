@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get "customer/mypage" => "customers#mypage", as:"mypage"
+    get "guest_login", to: "customers#guest_login"
   end
 
 end
