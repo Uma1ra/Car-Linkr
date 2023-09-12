@@ -1,5 +1,4 @@
 class Customer < ApplicationRecord
-  before_create :set_customer_id
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -16,11 +15,8 @@ class Customer < ApplicationRecord
   # 郵便番号（ハイフンなし7桁）
   validates :post_code, format: { with: /\A\d{7}\z/ }, if: :require_validation?
   
-  
-  
-  
   def full_name
-     self.last_name + " " + self.first_name
+    self.last_name + " " + self.first_name
   end
   
   def full_name_kana
@@ -29,26 +25,19 @@ class Customer < ApplicationRecord
   
   private
   
-  # def require_validation?
-  #   return true if self.is_guest == false || self.is_guest == 0
-  #     false
-  # end
-  
-  # # ランダムなユーザーIDを生成
-  # def set_customer_id
-  #   while self.id.blank? || Customer.find_by(id: self.id).present? do
-  #     self.id = SecureRandom.base58
-  #   end
-  # end
+  def require_validation?
+    return true if self.guest == false || self.guest == 0
+      false
+  end
 
-  # # ゲストユーザーを作成する
-  # def self.guest_login
-  #   random_pass = SecureRandom.base36
-  #   random_email = SecureRandom.base58 + "@email.com"
+  # ゲストユーザーを作成する
+  def self.guest
+    random_pass = SecureRandom.base36
+    random_email = SecureRandom.base58 + "@email.com"
     
-  #   create!(password: random_pass,
-  #           email: random_email,
-  #           is_guest: true)
-  # end
+    create!(password: random_pass,
+            email: random_email,
+            guest: true)
+  end
   
 end

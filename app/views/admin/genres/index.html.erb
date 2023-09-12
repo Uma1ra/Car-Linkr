@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <h4 class="font-weight-bold mb-4 mr-5">ジャンル一覧・追加</h4>
+      <%= render "form", new_genre: @new_genre%>
+    </div>
+    <div class="col-8">
+      <h5 class="font-weight-bold mb-4 mr-5">サブジャンル一覧・追加</h5>
+      <%= render "sub_form", subgenre: @subgenre, genres: @genres %>
+    </div>
+  </div>
+</div>
+
+
+
+<%= render "index", genres: @genres, genre: @genre %>
+

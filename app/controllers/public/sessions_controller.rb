@@ -12,11 +12,19 @@ class Public::SessionsController < Devise::SessionsController
   # def create
   #   super
   # end
+  
+  def guest_login
+    customer = Customer.guest
+    sign_in customer
+    redirect_to mypage_path, notice: "ゲストユーザーとしてログインしました"
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    current_customer.isguest
+    current_customer.destroy!
+      super
+  end
   
   def after_sign_in_path_for(resource)
      mypage_path

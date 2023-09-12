@@ -1,0 +1,6 @@
+<% genres.each do |genre| %>
+  <div class="row">
+    <p><%= genre.name %></p>
+    <%= link_to "編集", edit_admin_genre_path(genre) %>
+  </div>
+<% end %>

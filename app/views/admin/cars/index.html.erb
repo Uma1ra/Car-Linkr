@@ -1,3 +1,48 @@
 <h1>cars index</h1>
 
-<%= render "new_car", car: @car, cars: @cars %>
+<div class="row d-flex justify-content-between">
+  <h3 class="font-weight-bold ml-2">商品一覧</h3>
+  <%= link_to new_admin_car_path do %>
+    <%= button_tag type: "submit", class: "btn btn-outline-secondary btn-lg ml-3" do %>
+      <i class="fa-solid fa-square-plus fa-xl" style="color: #640125;"></i>
+    <% end %>
+  <% end %>
+</div>
+
+<table class="table table-hover table-sm">
+  <thead>
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.id %></td>
+        <td class="row">
+          <%= link_to admin_car_path(car.id) do %>
+            <%= image_tag car.get_image(40, 27), class: "mr-2" %>
+            <%= car.name %>
+          <% end %>
+        </td>
+        <td><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></td>
+        <td><%= car.genre.name %></td>
+        <td class="font-weight-bold">
+          <% if car.is_available %>
+            <p class="text-success">販売中</p>
+          <% else %>
+            <p class="text-danger">販売停止中</p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="row d-flex justify-content-center">
+  <%= paginate @cars %>
+</div>

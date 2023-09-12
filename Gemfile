@@ -56,5 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise"
-gem 'devise-guests', '~> 0.5.0'
 gem "enum_help"
+gem 'kaminari','~> 1.2.1'

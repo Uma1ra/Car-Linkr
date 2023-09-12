@@ -2,6 +2,9 @@ class Car < ApplicationRecord
 
   has_many_attached :images
   
+  has_many :car_genres
+  has_many :genres, through: :car_genres
+  
   validates :name,
             :color,
             :passenger_amount,
@@ -14,6 +17,9 @@ class Car < ApplicationRecord
             :transmission,
             :fuel,
   presence: true
+  
+  validates :name, uniqueness: true
+  validates :price, :passenger_amount, numericality: {greater_than_or_equal_to: 0}
   
   # 画像呼び出しメソッド
   def get_image(width, height)

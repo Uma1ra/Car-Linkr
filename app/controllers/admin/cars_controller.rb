@@ -1,7 +1,10 @@
 class Admin::CarsController < ApplicationController
 
   def index
-    @cars = Car.all
+    @cars = Car.page(params[:page]).per(10)
+  end
+  
+  def new
     @car = Car.new
   end
 
@@ -10,8 +13,7 @@ class Admin::CarsController < ApplicationController
     if @car.save
       redirect_to admin_car_path(@car.id), notice: "出品登録されました"
     else
-      @cars = Car.all
-      render :index, alert: "出品登録に失敗しました"
+      render :new, alert: "出品登録に失敗しました"
     end
   end
 
