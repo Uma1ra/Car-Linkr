@@ -20,11 +20,11 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  def destroy
-    current_customer.isguest
-    current_customer.destroy!
-      super
-  end
+  # def destroy
+  #   current_customer.is_guest
+  #   current_customer.destroy!
+  #     super
+  # end
   
   def after_sign_in_path_for(resource)
      mypage_path
