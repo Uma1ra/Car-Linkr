@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
-    resources :subgenres, only: [:create]
+    resources :subgenres, only: [:create, :update]
 
-    resources :cars, only: [:index, :new, :create, :show]
+    resources :cars, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   scope module: :public do

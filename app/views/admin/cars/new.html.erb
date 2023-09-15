@@ -1,35 +1,95 @@
-<%= form_with model: [:admin, @car] do |f| %>
+<div class="container">
+  <h2 class="text-center my-3">新規出品登録</h2>
+  <%= form_with model: [:admin, @car] do |f| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+          <%= f.label :name, "車名" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "トヨタ プリウス S ツーリングセレクション " %>
+        </div>
+        <div class="form-group">
+          <%= f.label :detail, "セールスポイント" %>
+          <%= f.text_area :detail, autofocus: true, placeholder: "ここに説明文を記述します", rows: "5" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, "価格(税込)" %>
+          <%= f.text_field :price, autofocus: true, placeholder: "2378000" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :year, "年式" %>
+          <%= f.date_select :year, discard_day: true, autofocus: true %>式
+        </div>
+        <div class="form-group">
+          <%= f.label :chassis_code, "型式" %>
+          <%= f.text_field :chassis_code, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mileage, "走行距離" %>
+          <%= f.text_field :mileage, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.radio_button :is_km, true %>
+          <%= f.label :is_km, "km", value: true %>
+          <%= f.radio_button :is_km, false, class: "ml-4" %>
+          <%= f.label :is_km, "miles", value: false %>
+        </div>
+        <div class="form-group">
+          <%= f.label :shaken_period, "車検" %>
+          <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :shaken_finish, "車検終了日" %>
+          <%= f.date_select :shaken_finish, autofocus: true %>
+        </div>
+      </div>
 
-  <table class="table table-borderless">
-    <tbody>
-      <tr>
-        <th><%= f.label "出品画像" %></th>
-        <td><%= f.file_field :images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "車名" %></th>
-        <td><%= f.text_field :name, autofocus: true, placeholder: "車名", class: "form-control" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "セールスポイント" %></th>
-        <td><%= f.text_area :detail, autofocus: true, placeholder: "ここに説明文を記述します", rows: "5", class: "form-control" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label "税抜価格" %></th>
-        <td><%= f.text_field :price, autofocus: true, placeholder: "1000", class: "col-7" %> 円</td>
-      </tr>
-      <tr>
-        <th><%= f.label "販売ステータス" %></th>
-        <td>
+      <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+          <div><%= f.label :color, "色" %></div>
+          <div><%= f.text_field :color, autofocus: true, placeholder: "パールホワイト" %></div>
+        </div>
+        <div class="form-group">
+          <div><%= f.label :passenger_amount, "乗員定員" %></div>
+          <div><%= f.text_field :passenger_amount, autofocus: true %>人</div>
+        </div>
+        <div class="form-group">
+          <%= f.label :grade, "グレード" %>
+          <%= f.text_field :grade, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :engine_capacity, "排気量" %>
+          <%= f.text_field :engine_capacity, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :transmission, "シフト" %>
+          <%= f.select :transmission, Car.transmissions_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :fuel, "使用燃料" %>
+          <%= f.select :fuel, Car.fuels_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label "販売ステータス" %>
           <%= f.radio_button :is_available, true %>
-          <%= f.label :is_available, "販売中", value: true, class: "text-success"  %>
-          <%= f.radio_button :is_available, false, class: "ml-4" %>
-          <%= f.label :is_available, "販売停止中", value: false, class: "text-danger"  %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="d-flex justify-content-center">
-    <%= f.submit "新規登録", class: "btn btn-outline-primary" %>
-  </div>
-<% end %>
+          <%= f.label :is_available, "出品中", value: true, class: "text-success" %>
+          <%= f.radio_button :is_available, false %>
+          <%= f.label :is_available, "出品停止中", value: false, class: "text-danger" %>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <%= f.label "出品画像" %>
+          <%= f.file_field :images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %>
+        </div>
+        <div>
+          <%= render "genre_select", genres: @genres %>
+        </div>
+        
+        <div class="d-flex justify-content-center">
+          <%= f.submit "新規登録", class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

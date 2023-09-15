@@ -1,4 +1,8 @@
-<%= form_with model: [:admin, new_genre] do |f| %>
+<%= form_with model: [:admin, new_genre], local: false do |f| %>
+  <div id="errors">
+    <%= render 'layouts/errors', obj: new_genre %>
+  </div>
+  
   <div class="form-group row">
     <%= f.label "ジャンル名" ,class: "font-weight-bold mr-3" %>
     <%= f.text_field :name, :placeholder => "ジャンル名"%>

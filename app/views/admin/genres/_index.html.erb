@@ -1,6 +1,24 @@
 <% genres.each do |genre| %>
-  <div class="row">
-    <p><%= genre.name %></p>
-    <%= link_to "編集", edit_admin_genre_path(genre) %>
+  <div class="card">
+    <div class="card-header">
+      <div class="row">
+        <p><%= genre.name %></p>
+        <%= link_to "編集", edit_admin_genre_path(genre) %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <% if genre.subgenres.exists? %>
+        <% genre.subgenres.each do |subgenre| %>
+            <div class="row">
+              <p><%= subgenre.name %></p>
+              <%= link_to "編集", edit_admin_genre_path(genre, subgenre_id: subgenre.id) %>
+            </div>
+          <% end %>
+      <% else %>
+        <p>まだ登録データがありません</p>
+      <% end %>
+    </div>
   </div>
+
 <% end %>

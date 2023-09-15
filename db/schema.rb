@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -63,18 +63,18 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
 
   create_table "cars", force: :cascade do |t|
     t.string "name", null: false
-    t.text "detail", null: false
+    t.text "detail"
     t.integer "price", null: false
-    t.string "color", null: false
-    t.integer "passenger_amount", null: false
+    t.string "color"
+    t.integer "passenger_amount"
     t.date "year", null: false
     t.string "chassis_code", null: false
     t.integer "mileage", null: false
     t.boolean "is_km", default: true, null: false
     t.integer "shaken_period", null: false
-    t.datetime "shaken_finish", null: false
-    t.string "grade", null: false
-    t.integer "engine_capacity", null: false
+    t.date "shaken_finish"
+    t.string "grade"
+    t.integer "engine_capacity"
     t.integer "transmission", null: false
     t.integer "fuel", null: false
     t.boolean "is_available", default: true, null: false

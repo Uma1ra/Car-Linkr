@@ -12,11 +12,12 @@
 <table class="table table-hover table-sm">
   <thead>
     <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
+      <th>車ID</th>
+      <th>車名</th>
+      <th>価格(税抜)</th>
+      <th>年式</th>
+      <th>車検終了日</th>
+      <th>出品状況</th>
     </tr>
   </thead>
   <tbody>
@@ -25,18 +26,17 @@
         <td><%= car.id %></td>
         <td class="row">
           <%= link_to admin_car_path(car.id) do %>
-            <%= image_tag car.get_image(40, 27), class: "mr-2" %>
-            <%= car.name %>
+             <%= image_tag car.images.first, size: "40x27", class: "mr-2" %>
+              <%= car.name %>
           <% end %>
         </td>
         <td><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></td>
-        <td><%= car.genre.name %></td>
+        <td><%= car.year %></td>
+        <td><%= car.shaken_finish %></td>
         <td class="font-weight-bold">
-          <% if car.is_available %>
-            <p class="text-success">販売中</p>
-          <% else %>
-            <p class="text-danger">販売停止中</p>
-          <% end %>
+          <p class="<%= car.is_available ? "text-success" : "text-danger" %>">
+          <%= car.is_available ? "出品中" : "出品停止中" %>
+          </p>
         </td>
       </tr>
     <% end %>

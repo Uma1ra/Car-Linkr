@@ -13,11 +13,15 @@
   <body class="d-flex flex-column vh-100">
     <main>
       <%= render "layouts/header" %>
-      <%= render "layouts/flash-message" %>
-      
+
+      <div id="flash_message">
+        <%= render "layouts/flash-message" %>
+      </div>
+
       <%= yield %>
-      
+
       <%= render "layouts/footer" %>
     </main>
+    <script src="swiper.js"></script>
   </body>
 </html>

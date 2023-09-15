@@ -3,20 +3,25 @@ class Admin::GenresController < ApplicationController
   def index
     @genres = Genre.all
     @new_genre = Genre.new
-    @genre = Genre.first
     @subgenre = Subgenre.new
   end
 
   def create
     @genres = Genre.all
+    @subgenre = Subgenre.new
     @new_genre = Genre.new(genre_params)
-    @new_genre.save ?
-    (redirect_to request.referer, notice: "ジャンルが登録されました")
-    : (render :index, alert: "ジャンル登録に失敗しました")
+    if @new_genre.save
+      flash.now[:notice] = "ジャンルを登録しました"
+    else
+      flash.now[:alert] = "登録に失敗しました"
+      render :error
+    end
   end
 
   def edit
     @genre = Genre.find(params[:id])
+    @genres = Genre.all
+    @subgenre = Subgenre.find(params[:subgenre_id])
   end
 
   def update
@@ -29,7 +34,7 @@ class Admin::GenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:genre).permit(:name, subgenres_attributes: [:name])
+    params.require(:genre).permit(:name)
   end
 
 end

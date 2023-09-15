@@ -1,0 +1,6 @@
+$("#genre_index").html("<%= j(render "admin/genres/index", genres: @genres) %>");
+
+$("#subgenre_name").val('');
+$("#subgenre_genre_id").val('');
+
+$("#flash_message").html("<%= j(render 'layouts/flash-message') %>");

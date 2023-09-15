@@ -10,8 +10,11 @@ import "channels"
 import "jquery";
 import "popper.js";
 import "bootstrap";
-import "../stylesheets/application"; 
+import "../stylesheets/application";
+import "../swiper.js";
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+//= require swiper/swiper-bundle.js
