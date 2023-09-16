@@ -2,13 +2,13 @@
   <div class="row">
     <% if @car.images.length < 2 %>
       <% @car.images.each do |image| %>
-        <%= image_tag image, class: "post-img"%>
+        <%= image_tag image, size: "300x200", class: "post-img"%>
       <% end %>
     <% else %>
       <div class="swiper-container">
         <div class= "swiper-wrapper">
           <% @car.images.each do |image| %>
-            <div class="swiper-slide"><%= image_tag image, size: "400xx300" %></div>
+            <div class="swiper-slide"><%= image_tag image, size: "300x200" %></div>
           <% end %>
         </div>
         <div class="swiper-button-prev swiper-button-white"></div>

@@ -3,7 +3,7 @@ class Car < ApplicationRecord
   has_many_attached :images
 
   has_many :car_genres
-  has_many :genres, through: :car_genres
+  has_many :subgenres, through: :car_genres
 
   validates :name,
             :color,

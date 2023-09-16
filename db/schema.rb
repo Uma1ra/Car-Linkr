@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_11_074649) do
+ActiveRecord::Schema.define(version: 2023_09_16_111104) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,13 +52,40 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "car_genres", force: :cascade do |t|
-    t.integer "genre_id", null: false
+  create_table "appointments", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "buy_request_id"
+    t.integer "sell_request_id"
+    t.string "name"
+    t.string "phone_number"
+    t.string "post_code"
+    t.integer "category", null: false
+    t.boolean "is_done", default: false, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_request_id"], name: "index_appointments_on_buy_request_id"
+    t.index ["customer_id"], name: "index_appointments_on_customer_id"
+    t.index ["sell_request_id"], name: "index_appointments_on_sell_request_id"
+  end
+
+  create_table "buy_requests", force: :cascade do |t|
     t.integer "car_id", null: false
+    t.text "comment"
+    t.datetime "option_a", null: false
+    t.datetime "option_b", null: false
+    t.datetime "option_c", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_buy_requests_on_car_id"
+  end
+
+  create_table "car_genres", force: :cascade do |t|
+    t.integer "car_id", null: false
+    t.integer "subgenre_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["car_id"], name: "index_car_genres_on_car_id"
-    t.index ["genre_id"], name: "index_car_genres_on_genre_id"
+    t.index ["subgenre_id"], name: "index_car_genres_on_subgenre_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -108,6 +135,30 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sell_details", force: :cascade do |t|
+    t.string "car_name", null: false
+    t.string "chassis_no", null: false
+    t.date "year", null: false
+    t.string "chassis_code", null: false
+    t.integer "mileage", null: false
+    t.boolean "is_km", default: true, null: false
+    t.integer "shaken_period", null: false
+    t.date "shaken_finish"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "sell_requests", force: :cascade do |t|
+    t.integer "sell_detail_id", null: false
+    t.text "comment"
+    t.datetime "option_a", null: false
+    t.datetime "option_b", null: false
+    t.datetime "option_c", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sell_detail_id"], name: "index_sell_requests_on_sell_detail_id"
+  end
+
   create_table "subgenres", force: :cascade do |t|
     t.integer "genre_id", null: false
     t.string "name"
@@ -118,7 +169,12 @@ ActiveRecord::Schema.define(version: 2023_09_11_074649) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "buy_requests"
+  add_foreign_key "appointments", "customers"
+  add_foreign_key "appointments", "sell_requests"
+  add_foreign_key "buy_requests", "cars"
   add_foreign_key "car_genres", "cars"
-  add_foreign_key "car_genres", "genres"
+  add_foreign_key "car_genres", "subgenres"
+  add_foreign_key "sell_requests", "sell_details"
   add_foreign_key "subgenres", "genres"
 end

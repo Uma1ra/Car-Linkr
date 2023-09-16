@@ -1,8 +1,0 @@
-<% @genres.each do |genre| %>
-  <div class="row">
-    <% if genre.subgenres.present? %>
-      <%= genre.name%>
-      <%= select_tag "サブジャンル", options_from_collection_for_select(genre.subgenres, :id, :name), prompt: "--選択して下さい--" %>
-    <% end %>
-  </div>
-<% end %>

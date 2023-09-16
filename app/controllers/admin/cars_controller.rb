@@ -7,16 +7,24 @@ class Admin::CarsController < ApplicationController
 
   def new
     @car = Car.new
-    @car_genre = CarGenre.new
-    @genres = Genre.all
+    @genres = Genre.where(id:Subgenre.all.pluck(:genre_id))
   end
 
   def create
     @car = Car.new(car_params)
+    
     if @car.save!
-      redirect_to admin_car_path(@car.id), notice: "出品登録されました"
+  # car_paramsで送られてきたkeyの中から、サブジャンルのidが入ったパラメータを文字列で検索して取得
+    subgenre_ids = params[:car].keys.select {|key| key.include?("subgenre")}
+    subgenre_ids.each do |subgenre_id|
+  # 取得したkeyにサブジャンルが存在する場合、CarGenre内にレコードを(eachで全て)作成
+      if params[:car][subgenre_id].present?
+        CarGenre.create(subgenre_id:params[:car][subgenre_id],car_id:@car.id)
+      end
+    end
+    redirect_to admin_car_path(@car.id), notice: "出品#{@car.id}登録されました"
     else
-      render :new, alert: "出品登録に失敗しました"
+      render :new, alert: "出品#{@car.id}登録に失敗しました"
     end
   end
 
@@ -28,15 +36,15 @@ class Admin::CarsController < ApplicationController
 
   def update
     if @car.update
-      redirect_to admin_car_path(@car), notice: "編集に成功しました"
+      redirect_to admin_car_path(@car), notice: "更新に成功しました"
     else
-      render :edit, alert: "編集に失敗しました"
+      render :edit, alert: "更新に失敗しました"
     end
   end
 
   def destroy
     if @car.destroy
-      redirect_to admin_cars_path, notice: "出品を削除しました"
+      redirect_to admin_cars_path, notice: "出品#{@car.id}を削除しました"
     else
       render :show, alert: "削除に失敗しました"
     end
@@ -45,7 +53,7 @@ class Admin::CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:name, :detail, :price, :color, :passenger_amount, :year, :chassis_code, :mileage, :is_km, :shaken_period, :shaken_finish, :grade, :engine_capacity, :transmission, :fuel, :is_available, images: [])
+    params.require(:car).permit(:name, :detail, :price, :color, :passenger_amount, :year, :chassis_code, :mileage, :is_km, :shaken_period, :shaken_finish, :grade, :engine_capacity, :transmission, :fuel, :is_available, images: [], subgenre_ids: [])
   end
 
   def find_car_id

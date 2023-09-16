@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="text-center my-3">新規出品登録</h2>
-  <%= form_with model: [:admin, @car] do |f| %>
+  <%= form_with model: @car, url: admin_cars_path do |f| %>
     <div class="row">
       <div class="col-lg-4 col-md-6">
         <div class="form-group">
@@ -82,10 +82,16 @@
           <%= f.label "出品画像" %>
           <%= f.file_field :images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %>
         </div>
-        <div>
-          <%= render "genre_select", genres: @genres %>
+        <div class="form-group">
+          <% @genres.each_with_index do |genre, i| %> 
+            <div class="row">
+              <%= genre.name%>
+              <!--eachで取得した場合パラメータに判別用の数字をiの変数でくっつけてシンボル化-->
+              <%= f.collection_select "subgenre_ids_#{i}".to_sym, genre.subgenres, :id, :name, prompt: "--選択して下さい--", multiple: true %>
+            </div>
+          <% end %>
         </div>
-        
+
         <div class="d-flex justify-content-center">
           <%= f.submit "新規登録", class: "btn btn-outline-primary" %>
         </div>

@@ -15,11 +15,11 @@ class Customer < ApplicationRecord
   # 郵便番号（ハイフンなし7桁）
   validates :post_code, format: { with: /\A\d{7}\z/ }, if: :require_validation?
 
-  def full_name
+  def fullname
     self.last_name + " " + self.first_name
   end
 
-  def full_name_kana
+  def fullname_kana
     self.last_name_kana + " " + self.first_name_kana
   end
 
