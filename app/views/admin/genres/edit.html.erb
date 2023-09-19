@@ -4,9 +4,9 @@
   <%= f.submit "編集" %>
 <% end %>
 
-<%# if @Subgenre.present? %>
+<%# if @genre.subgenres %>
   <%= form_with model: [:admin, @subgenre] do |f| %>
-    <%= f.collection_select :genre_id, @genres, :id, :name, prompt: "--選択してください--" %>
+    <%= f.collection_select :genre_id, @genres, :id, :name %>
     <%= f.label :name, "サブジャンル名" %>
     <%= f.text_field :name, :placeholder => "ジャンル名"%>
     <%= f.submit "編集" %>

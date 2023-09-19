@@ -1,0 +1,29 @@
+<div class="container">
+  <h1>お問い合わせ詳細</h1>
+  <div class="d-flex justify-content-center">
+    <table class="table table-bordered mt-5 col-lg-8 text-center">
+      <tbody>
+        <tr>
+          <th colspan="2">
+            <% if current_customer && !(current_customer.is_guest) %>
+              <%= current_customer.fullname %>
+            <% else %>
+              <p>
+                ゲストユーザー様</br>
+                お問い合わせ内容のスクリーンショットなどお控えください
+              </p>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th>タイトル</th>
+          <td><%= @enquiry.title %></td>
+        </tr>
+        <tr>
+          <th>内容</th>
+          <td><%= @enquiry.detail %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

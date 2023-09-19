@@ -2,6 +2,6 @@ $("#genre_index").html("<%= j(render "admin/genres/index", genres: @genres) %>")
 
 $("#genre_name").val('');
 
-$("#sub_form").html("<%= j(render "admin/genres/sub_form", subgenre: @subgenre, genres: @genres) %>");
+$("#sub_form").html("<%= j(render "admin/subgenres/sub_form", subgenre: @subgenre, genres: @genres) %>");
 
 $("#flash_message").html("<%= j(render 'layouts/flash-message') %>");

@@ -17,7 +17,19 @@ class Public::SessionsController < Devise::SessionsController
   def guest_login
     customer = Customer.guest
     sign_in customer
-    redirect_to mypage_path, notice: "ゲストユーザーとしてログインしました"
+
+    if params[:car_id]
+      @car = Car.find(params[:car_id])
+      if params[:buy]
+        redirect_to new_buy_request_path(car_id: @car.id)
+      elsif params[:buy_and_sell]
+        redirect_to new_buy_and_sell_path(car_id: @car.id)
+      else
+      end
+
+    else
+      redirect_to mypage_path, notice: "ゲストユーザーとしてログインしました"
+    end
   end
 
   # DELETE /resource/sign_out

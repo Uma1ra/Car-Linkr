@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_16_111104) do
+ActiveRecord::Schema.define(version: 2023_09_18_202239) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -54,28 +54,27 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
 
   create_table "appointments", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "buy_request_id"
-    t.integer "sell_request_id"
     t.string "name"
     t.string "phone_number"
     t.string "post_code"
+    t.string "email"
     t.integer "category", null: false
     t.boolean "is_done", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buy_request_id"], name: "index_appointments_on_buy_request_id"
     t.index ["customer_id"], name: "index_appointments_on_customer_id"
-    t.index ["sell_request_id"], name: "index_appointments_on_sell_request_id"
   end
 
   create_table "buy_requests", force: :cascade do |t|
     t.integer "car_id", null: false
+    t.integer "appointment_id", null: false
     t.text "comment"
     t.datetime "option_a", null: false
     t.datetime "option_b", null: false
     t.datetime "option_c", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_buy_requests_on_appointment_id"
     t.index ["car_id"], name: "index_buy_requests_on_car_id"
   end
 
@@ -101,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
     t.integer "shaken_period", null: false
     t.date "shaken_finish"
     t.string "grade"
-    t.integer "engine_capacity"
+    t.string "engine_capacity"
     t.integer "transmission", null: false
     t.integer "fuel", null: false
     t.boolean "is_available", default: true, null: false
@@ -129,6 +128,15 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
+  create_table "enquiries", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "title", null: false
+    t.text "detail", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_enquiries_on_customer_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -136,6 +144,7 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
   end
 
   create_table "sell_details", force: :cascade do |t|
+    t.integer "sell_request_id", null: false
     t.string "car_name", null: false
     t.string "chassis_no", null: false
     t.date "year", null: false
@@ -146,17 +155,18 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
     t.date "shaken_finish"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["sell_request_id"], name: "index_sell_details_on_sell_request_id"
   end
 
   create_table "sell_requests", force: :cascade do |t|
-    t.integer "sell_detail_id", null: false
+    t.integer "appointment_id", null: false
     t.text "comment"
     t.datetime "option_a", null: false
     t.datetime "option_b", null: false
     t.datetime "option_c", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["sell_detail_id"], name: "index_sell_requests_on_sell_detail_id"
+    t.index ["appointment_id"], name: "index_sell_requests_on_appointment_id"
   end
 
   create_table "subgenres", force: :cascade do |t|
@@ -169,12 +179,13 @@ ActiveRecord::Schema.define(version: 2023_09_16_111104) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "appointments", "buy_requests"
   add_foreign_key "appointments", "customers"
-  add_foreign_key "appointments", "sell_requests"
+  add_foreign_key "buy_requests", "appointments"
   add_foreign_key "buy_requests", "cars"
   add_foreign_key "car_genres", "cars"
   add_foreign_key "car_genres", "subgenres"
-  add_foreign_key "sell_requests", "sell_details"
+  add_foreign_key "enquiries", "customers"
+  add_foreign_key "sell_details", "sell_requests"
+  add_foreign_key "sell_requests", "appointments"
   add_foreign_key "subgenres", "genres"
 end

@@ -1,0 +1,44 @@
+<div class="container">
+
+  <h1>予約申し込み</h1>
+
+  <%= form_with model: @appointment do |f| %>
+    <%= f.hidden_field :customer_id, value: current_customer.id %>
+    <%= f.hidden_field :category, value: Appointment.categories.key(2) %>
+
+    <% if current_customer.is_guest? %>
+      <%= render "app_form", f: f %>
+    <% else %>
+      <p><%= current_customer.fullname %></p>
+      <p><%= current_customer.phone_number %></p>
+      <p><%= current_customer.post_code %></p>
+      <p><%= current_customer.email %></p>
+
+      <%= f.hidden_field :name ,value: current_customer.fullname %>
+      <%= f.hidden_field :phone_number, value: current_customer.phone_number %>
+      <%= f.hidden_field :post_code, value: current_customer.post_code %>
+      <%= f.hidden_field :email, value: current_customer.email %>
+    <% end %>
+
+    <h5>購入見積り</h5>
+
+    <%= fields_for :buy_request, @buy_request do |br| %>
+    <%= br.hidden_field :car_id, value: params[:car_id] %>
+      <%= render "form", f: br %>
+    <% end %>
+
+    <h5>買取見積り</h5>
+
+    <%= fields_for :sell_request, @sell_request do |sr| %>
+      <%= render "form", f: sr %>
+    <% end %>
+
+    <%= fields_for :sell_detail, @sell_detail do |sd| %>
+      <%= render "public/sell_requests/detail_form", f: sd %>
+    <% end %>
+
+    <div>
+      <%= f.submit "予約申し込み", class: "btn btn-primary btn-block col-lg-4" %>
+    </div>
+  <% end %>
+</div>

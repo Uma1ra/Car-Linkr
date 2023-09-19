@@ -3,6 +3,9 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :appointments, dependent: :destroy
+  has_many :enquiries, dependent: :destroy
+
   validates :last_name,
             :first_name,
             :last_name_kana,
@@ -25,6 +28,7 @@ class Customer < ApplicationRecord
 
   private
 
+  # ゲストユーザー作成の際にバリデーションをスキップ
   def require_validation?
     return true if self.is_guest == false || self.is_guest == 0
       false

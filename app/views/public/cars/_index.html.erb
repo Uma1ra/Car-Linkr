@@ -1,0 +1,14 @@
+<% if cars.length > 0 %>
+  <h1>Public::Cars#index</h1>
+  <% cars.each do |car| %>
+    <%= link_to car_path(car.id) do %>
+      <%= image_tag car.first_image.variant(resize: "300x200") %>
+      <%= car.name %>
+    <% end %>
+  <% end %>
+<% else %>
+  <h3 class="text-center font-weight-bold">
+    現在出品されている商品はございません</br>
+    もうしばらくお待ち下さい
+  </h3>
+<% end %>

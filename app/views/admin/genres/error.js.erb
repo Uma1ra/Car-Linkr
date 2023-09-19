@@ -1,1 +1,1 @@
-$("#errors").html("<%= j(render 'layouts/errors', obj: @new_genre) %>");
+$("#errors").html("<%= j(render "public/shared/error_messages", resource: @new_genre) %>");

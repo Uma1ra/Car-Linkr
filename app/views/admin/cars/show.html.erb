@@ -1,24 +1,109 @@
-<div class="container">
+<div class="container my-5">
+
   <div class="row">
-    <% if @car.images.length < 2 %>
-      <% @car.images.each do |image| %>
-        <%= image_tag image, size: "300x200", class: "post-img"%>
-      <% end %>
-    <% else %>
-      <div class="swiper-container">
-        <div class= "swiper-wrapper">
+    <div class="col-6">
+      <h5 class="text-center font-weight-bold my-3"><%= @car.name%></h5>
+      <% if @car.images.attached? %>
+        <% if @car.images.count < 2 %>
           <% @car.images.each do |image| %>
-            <div class="swiper-slide"><%= image_tag image, size: "300x200" %></div>
+            <%= image_tag image.variant(resize_to_fill: [300, 200]).processed, class: "post-img"%>
           <% end %>
-        </div>
-        <div class="swiper-button-prev swiper-button-white"></div>
-        <div class="swiper-button-next swiper-button-white"></div>
-        <div class="swiper-pagination"></div>
-      </div>
-    <% end %>
+        <% else %>
+          <div class="swiper-container">
+            <div class= "swiper-wrapper d-flex flex-wrap">
+              <% @car.images.each do |image| %>
+                <div class="swiper-slide"><%= image_tag image, size: "60x45" %></div>
+              <% end %>
+            </div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        <% end %>
+      <% end%>
+      <p><%= @car.detail %></p>
+    </div>
 
-    <div>
+    <div class="col-6">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th class="price shadow">
+              車両本体価格（税抜）</br>
+              <%= number_to_currency(@car.price, unit: "¥", format: "%u %n", precision: 0 ) %>
+            </th>
+            <th class="price">
+              車両本体価格（税込）</br>
+              <%= number_to_currency(@car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
+            </th>
+          </tr>
+          <tr>
+            <th>年式</th>
+            <td><%= @car.year %></td>
+          </tr>
+          <tr>
+            <th>型式</th>
+            <td><%= @car.chassis_code %></td>
+          </tr>
+          <tr>
+            <th>走行距離</th>
+            <td>
+              <%= number_with_delimiter(@car.mileage) %>
+              <span>
+                <%= @car.is_km ? "km" : "miles" %>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th>車検期間</th>
+            <td><%= @car.shaken_period_i18n %></td>
+          </tr>
+          <tr>
+            <th>車検終了日</th>
+            <td>
+              <% if @car.shaken_period == 0 %>
+                <p>N/A</p>
+              <% else%>
+                <%= @car.shaken_finish %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>グレード</th>
+            <td><%= @car.grade %></td>
+          </tr>
+          <tr>
+            <th>排気量</th>
+            <td><%= @car.engine_capacity %></td>
+          </tr>
+          <tr>
+            <th>シフト</th>
+            <td><%= @car.transmission_i18n %></td>
+          </tr>
+          <tr>
+            <th>使用燃料</th>
+            <td><%= @car.fuel_i18n %></td>
+          </tr>
+          <tr>
+            <th>色</th>
+            <td><%= @car.color %></td>
+          </tr>
+          <tr>
+            <th>乗員定員</th>
+            <td><%= @car.passenger_amount %></td>
+          </tr>
+          <tr>
+            <th>出品状況</th>
+            <td class="<%= @car.is_available ? "text-success" : "text-danger" %>">
+              <%= @car.is_available ? "出品中" : "未出品" %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
+    <div class="row mt-5">
+      <%= link_to "編集" , edit_admin_car_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>

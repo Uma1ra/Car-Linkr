@@ -19,16 +19,18 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(params[:id])
-    @genres = Genre.all
-    @subgenre = Subgenre.find(params[:subgenre_id])
+      @genres = Genre.all
+      @genre = Genre.find(params[:id])
+      @subgenre = Subgenre.find(params[:subgenre_id])
   end
 
   def update
     @genre = Genre.find(params[:id])
-    @genre.update(genre_params) ?
-    (redirect_to admin_genres_path, notice: "ジャンルを更新しました")
-    : (render :edit, alert: "更新に失敗しました")
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path, notice: "ジャンルを更新しました"
+    else
+      render :edit, alert: "更新に失敗しました"
+    end
   end
 
   private

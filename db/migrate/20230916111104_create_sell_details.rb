@@ -1,6 +1,7 @@
 class CreateSellDetails < ActiveRecord::Migration[6.1]
   def change
     create_table :sell_details do |t|
+      t.references :sell_request, null: false, foreign_key: true
       t.string :car_name, null: false
       t.string :chassis_no, null: false
       t.date :year, null: false

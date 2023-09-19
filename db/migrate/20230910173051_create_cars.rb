@@ -13,7 +13,7 @@ class CreateCars < ActiveRecord::Migration[6.1]
       t.integer :shaken_period, null: false
       t.date :shaken_finish
       t.string :grade
-      t.integer :engine_capacity
+      t.string :engine_capacity
       t.integer :transmission, null: false
       t.integer :fuel, null: false
       t.boolean :is_available, null: false, default: true

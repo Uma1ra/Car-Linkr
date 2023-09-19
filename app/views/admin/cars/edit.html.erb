@@ -1,0 +1,113 @@
+<div class="container">
+  <h2 class="text-center my-3">出品編集</h2>
+  <%= form_with model: @car, url: admin_car_path do |f| %>
+    <div class="row">
+      <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+          <%= f.label :name, "車名" %>
+          <%= f.text_field :name, autofocus: true, placeholder: "トヨタ プリウス S ツーリングセレクション" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :detail, "セールスポイント" %>
+          <%= f.text_area :detail, autofocus: true, placeholder: "ここに説明文を記述します", rows: "5" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :price, "価格(税込)" %>
+          <%= f.text_field :price, autofocus: true, placeholder: "2378000" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :year, "年式" %>
+          <%= f.date_select :year, discard_day: true, start_year: 1995, end_year: Date.today.year, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :chassis_code, "型式" %>
+          <%= f.text_field :chassis_code, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :mileage, "走行距離" %>
+          <%= f.text_field :mileage, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.radio_button :is_km, true %>
+          <%= f.label :is_km, "km", value: true %>
+          <%= f.radio_button :is_km, false, class: "ml-4" %>
+          <%= f.label :is_km, "miles", value: false %>
+        </div>
+        <div class="form-group">
+          <%= f.label :shaken_period, "車検" %>
+          <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :shaken_finish, "車検終了日" %>
+          <%= f.date_select :shaken_finish, start_year: Date.today.year, end_year: Date.today.year + 3, autofocus: true %>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="form-group">
+          <div><%= f.label :color, "色" %></div>
+          <div><%= f.text_field :color, autofocus: true, placeholder: "パールホワイト" %></div>
+        </div>
+        <div class="form-group">
+          <div><%= f.label :passenger_amount, "乗員定員" %></div>
+          <div><%= f.text_field :passenger_amount, autofocus: true %>人</div>
+        </div>
+        <div class="form-group">
+          <%= f.label :grade, "グレード" %>
+          <%= f.text_field :grade, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :engine_capacity, "排気量" %>
+          <%= f.text_field :engine_capacity, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :transmission, "シフト" %>
+          <%= f.select :transmission, Car.transmissions_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label :fuel, "使用燃料" %>
+          <%= f.select :fuel, Car.fuels_i18n.invert, autofocus: true %>
+        </div>
+        <div class="form-group">
+          <%= f.label "販売ステータス" %>
+          <%= f.radio_button :is_available, true %>
+          <%= f.label :is_available, "出品中", value: true, class: "text-success" %>
+          <%= f.radio_button :is_available, false %>
+          <%= f.label :is_available, "未出品", value: false, class: "text-danger" %>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="form-group">
+          <%= f.label "出品画像" %>
+          <%= f.file_field :images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %>
+        </div>
+        
+        <% if @car.images %>
+          <div class="d-flex flex-wrap">
+            <% @car.images.each do |image| %>
+              <div class="w-30">
+                <%= image_tag image.variant(resize: "88x66"), class: "mx-1 my-2" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <% @genres.each_with_index do |genre, i| %> 
+        
+            <div class="row">
+              
+              <%= genre.name%>
+              <!--eachで取得した場合パラメータに判別用の数字をiの変数でくっつけてシンボル化-->
+              <%= f.collection_select "subgenre_ids_#{i}".to_sym, genre.subgenres, :id, :name,{ include_blank: "--選択して下さい--", multiple: true, selected: @car.subgenres.pluck('subgenres.id')} %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <%= f.submit "編集", class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
