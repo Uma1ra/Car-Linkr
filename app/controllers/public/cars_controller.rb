@@ -1,6 +1,7 @@
 class Public::CarsController < ApplicationController
 
   def index
+    @customer = Customer.new
     if params[:word]
       @cars = Car.search(params[:word])
     else

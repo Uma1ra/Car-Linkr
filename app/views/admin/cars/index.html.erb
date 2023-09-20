@@ -33,7 +33,13 @@
             </td>
             <td><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></td>
             <td><%= car.year %></td>
-            <td><%= car.shaken_finish %></td>
+            <td>
+              <% unless car.shaken_period_i18n == "無し" %>
+                <%= car.shaken_finish %>
+              <% else%>
+                <p>N/A</p>
+              <% end %>
+            </td>
             <td class="font-weight-bold">
               <p class="<%= car.is_available ? "text-success" : "text-danger" %>">
               <%= car.is_available ? "出品中" : "出品停止中" %>

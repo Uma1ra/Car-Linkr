@@ -34,8 +34,8 @@ class Public::SessionsController < Devise::SessionsController
 
   # DELETE /resource/sign_out
   # def destroy
-  #   current_customer.is_guest
-  #   current_customer.destroy!
+  # #   current_customer.is_guest
+  # #   current_customer.destroy!
   #     super
   # end
 
@@ -53,9 +53,13 @@ class Public::SessionsController < Devise::SessionsController
     @customer = Customer.find_by(email: params[:customer][:email])
     if @customer
       if @customer.valid_password?(params[:customer][:password]) && (@customer.is_deleted == true)
-         flash[:alert] = "退会済みです。再度登録をしてご利用ください。"
-         redirect_to new_customer_registration_path
+        flash[:alert] = "退会済みです。再度登録をしてご利用ください。"
+        redirect_to new_customer_registration_path
+      elsif @customer.valid_password?(params[:customer][:password]) == false
+        redirect_to root_path
       end
+    else
+      redirect_to root_path
     end
   end
 

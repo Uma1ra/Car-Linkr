@@ -48,10 +48,12 @@ class Admin::CarsController < ApplicationController
       subgenre_ids = params[:car].keys.select {|key| key.include?("subgenre")}
       subgenre_ids.each do |subgenre_id|
         # 取得したkeyにサブジャンルが存在する場合、CarGenre内にレコードを(eachで全て)作成
-        
+
         if params[:car][subgenre_id].present?
-          car_genre = CarGenre.find(params[:id])
-          car_genre.save(subgenre_id: params[:car][subgenre_id], car_id: @car.id)
+          binding.pry
+          car_genre = CarGenre.find([subgenre_ids: :subgenre_id])
+          car_genre.destroy
+          CarGenre.create(subgenre_id: params[:car][subgenre_id], car_id: @car.id)
         end
       end
       redirect_to admin_car_path(@car), notice: "更新しました"
