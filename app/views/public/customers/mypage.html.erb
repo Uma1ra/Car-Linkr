@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>会員情報</h1>
+  
+  <% if @customer.is_guest? %>
+    <div class="text-center">
+      <h2>ようこそ、ゲストユーザーさん</h2>
+    </div>
+    
+  <% else %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>氏名</th>
+          <td><%= @customer.fullname %></td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.fullname_kana %></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><%= @customer.phone_number %></td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.post_code %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <%= link_to "編集", information_path, class: "btn btn-success" %>
+    <%= link_to "退会", confirm_withdraw_path, class:"btn btn-outline-danger" %>
+  <% end %>
+  
+</div>

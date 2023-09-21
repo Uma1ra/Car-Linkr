@@ -1,0 +1,40 @@
+<% genres.each do |genre| %>
+
+  <div class="card ml-4 mb-4" style="width: 25%">
+    <div class="card-header">
+      <div class="row">
+        <p class="font-weight-bold">
+          <%= genre.name %>
+        </p>
+        <%#= link_to "編集", edit_admin_genre_path(genre), class: "btn btn-outline-secondary btn-sm" %>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <% if genre.subgenres %>
+        <% genre.subgenres.each do |subgenre| %>
+          <div class="row d-flex justify-content-between">
+            <% if subgenre.cars.count > 0 %>
+              <%= link_to admin_cars_path(subgenre_id: subgenre.id) do %>
+                <p>
+                  <%= subgenre.name %>
+                  <span>(<%= subgenre.cars.count %>)</span>
+                </p>
+              <% end %>
+            <% else %>
+              <p>
+                <%= subgenre.name %>
+                <span>(<%= subgenre.cars.count %>)</span>
+              </p>
+            <% end %>
+
+            <%= link_to "編集", edit_admin_genre_path(genre, subgenre_id: subgenre.id), class: "ml-3" %>
+          </div>
+        <% end %>
+
+      <% else %>
+        <p>まだ登録データがありません</p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

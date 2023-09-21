@@ -1,0 +1,144 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+body {
+  min-height: 100vh;
+  position: relative; /*フッターに対して*/
+  padding-bottom: 60px; /* フッターの高さ指定 */
+  box-sizing: border-box;
+  color: #000044;
+}
+
+body a {
+  color: #FF7722;
+  text-decoration: none;
+}
+
+body a:hover {
+  text-decoration: none;
+  background-color: #EBF4FA;
+  border-radius: 4px;
+}
+
+header {
+  margin-bottom: 60px;
+}
+
+th {
+  background-color: #F6F9FF;
+}
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.item {
+  width: 30%;
+  margin-right: 1% ;
+  border: 1px solid #EBF4FA;
+  border-radius: 1%;
+  transition: transform .3s;
+  background-color: #F8F8F8;
+
+  a {
+    text-decoration: none;
+    color: #000044;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #000044;
+    background-color: #EBF4FA;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #EBF4FA;
+
+    .info {
+      width: 100%;
+    }
+  }
+}
+
+.public-index {
+  width: 70%;
+}
+
+.login {
+  width: 30%;
+}
+
+.index-items {
+  width: 100%;
+  display: flex;
+  flex: flex-wrap;
+}
+
+.show-images {
+  width: 70%;
+}
+
+.show-info {
+  width: 30%;
+}
+
+.price {
+  background-color: #FF8010;
+  border: 2px solid #F37404;
+}
+
+footer {
+  width: 100%;
+  // height: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 350px;
+  background-color: rgba(0,0,0,0.8  );
+
+  .swiper-wrapper {
+
+    .swiper-slide {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 350px;
+      width: 70%;
+    }
+    .swiper-slide:not(.swiper-slide-active) {
+      transform: scale(0.5);
+      opacity: 0.3;
+    }
+  }
+}

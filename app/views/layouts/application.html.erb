@@ -2,15 +2,27 @@
 <html>
   <head>
     <title>CarLinkr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/5c06f61b2d.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <main>
+      <%= render "layouts/header" %>
+
+      <div id="flash_message">
+        <%= render "layouts/flash-message" %>
+      </div>
+
+      <%= yield %>
+
+      <%= render "layouts/footer" %>
+    </main>
+    <!--<script src="swiper.js"></script>-->
   </body>
 </html>

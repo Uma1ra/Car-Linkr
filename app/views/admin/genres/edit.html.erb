@@ -1,0 +1,16 @@
+<%= form_with model: [:admin, @genre] do |f| %>
+  <%= f.label :name, "ジャンル名" %>
+  <%= f.text_field :name, :placeholder => "ジャンル名"%>
+  <%= f.submit "編集" %>
+<% end %>
+
+<%# if @genre.subgenres %>
+  <%= form_with model: [:admin, @subgenre] do |f| %>
+    <%= f.collection_select :genre_id, @genres, :id, :name %>
+    <%= f.label :name, "サブジャンル名" %>
+    <%= f.text_field :name, :placeholder => "ジャンル名"%>
+    <%= f.submit "編集" %>
+  <% end %>
+<%# else %>
+  <!--<h6>まだサブジャンルの登録はございません</h6>-->
+<%# end %>

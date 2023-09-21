@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-5">
+      <h3 class="font-weight-bold mb-4 mr-5">ジャンル一覧・追加</h3>
+      <div id="new_form">
+        <%= render "form", new_genre: @new_genre%>
+      </div>
+    </div>
+    <div class="col-5">
+      <h3 class="font-weight-bold mb-4 mr-5">サブジャンル一覧・追加</h3>
+      <div id="sub_form">
+        <%= render "admin/subgenres/sub_form", subgenre: @subgenre, genres: @genres %>
+      </div>
+    </div>
+  </div>
+  <div id="genre_index" class="d-flex flex-wrap">
+     <%= render "index", genres: @genres %>
+  </div>
+
+</div>

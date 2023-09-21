@@ -1,0 +1,38 @@
+<div class="form-group">
+  <%= f.label :car_name, "車名" %>
+  <%= f.text_field :car_name, autofocus: true, placeholder: "トヨタ プリウス S ツーリングセレクション" %>
+</div>
+<div class="form-group">
+  <%= f.label :chassis_no, "車台番号" %>
+  <%= f.text_field :chassis_no, autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.label :year, "年式" %>
+  <%= f.date_select :year, discard_day: true, autofocus: true %>式
+</div>
+<div class="form-group">
+  <%= f.label :chassis_code, "型式" %>
+  <%= f.text_field :chassis_code, autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.label :mileage, "走行距離" %>
+  <%= f.text_field :mileage, autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.radio_button :is_km, true %>
+  <%= f.label :is_km, "km", value: true %>
+  <%= f.radio_button :is_km, false, class: "ml-4" %>
+  <%= f.label :is_km, "miles", value: false %>
+</div>
+<div class="form-group">
+  <%= f.label :shaken_period, "車検" %>
+  <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.label :shaken_finish, "車検終了日" %>
+  <%= f.date_select :shaken_finish, autofocus: true %>
+</div>
+<div class="form-group">
+  <%= f.label :sell_images, "出品画像" %>
+  <%= f.file_field :sell_images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %>
+</div>

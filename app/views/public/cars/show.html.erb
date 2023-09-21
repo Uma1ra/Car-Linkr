@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="show-images">
+      <h5 class="text-center font-weight-bold my-3"><%= @car.name%></h5>
+      <% if @car.images.attached? %>
+        <% if @car.images.count < 2 %>
+          <% @car.images.each do |image| %>
+            <%= image_tag image.variant(resize_to_fill: [300, 200]).processed, class: "post-img"%>
+          <% end %>
+        <% else %>
+          <div class="swiper-container">
+            <div class= "swiper-wrapper">
+              <% @car.images.each do |image| %>
+                <%= image_tag image, class: "swiper-slide" %>
+              <% end %>
+            </div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        <% end %>
+      <% end%>
+      <p><%= @car.detail %></p>
+    </div>
+
+    <div class="show-info">
+      <div class="price text-center">
+        車両本体価格（税込）</br>
+        <%= number_to_currency(@car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
+      </div>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>年式</th>
+            <td><%= @car.year %></td>
+          </tr>
+          <tr>
+            <th>走行距離</th>
+            <td>
+              <%= number_with_delimiter(@car.mileage) %>
+              <span>
+                <%= @car.is_km ? "km" : "miles" %>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <th>車検期間</th>
+            <td><%= @car.shaken_period_i18n %></td>
+          </tr>
+          <% unless @car.shaken_period_i18n == "無し" %>
+            <tr>
+              <th>車検終了日</th>
+              <td>
+                <%= @car.shaken_finish %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <th>乗員定員</th>
+            <td><%= @car.passenger_amount %>名</td>
+          </tr>
+        </tbody>
+      </table>
+      <% if current_customer && !(current_customer.is_guest?) %>
+        <%= link_to "在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info" %>
+
+        <%= link_to new_buy_and_sell_path(car_id: @car.id) do %>
+          <p class="btn btn-info">
+            購入・買取</br>
+            同時に申し込む
+          </p>
+        <% end %>
+
+      <% else %>
+        <div class="d-flex justify-content-center">
+          <%= link_to guest_login_path(car_id: @car.id, buy: Appointment.categories.key(0)), method: :post do %>
+            <p class="btn btn-info mx-2">
+              ゲストログインして</br>
+              購入見積りを申し込む
+            </p>
+          <% end %>
+
+          <%= link_to guest_login_path(car_id: @car.id, buy_and_sell: Appointment.categories.key(2)), method: :post do %>
+            <p class="btn btn-info mx-2">
+              ゲストログインして</br>
+              買取と同時に申し込む
+            </p>
+          <% end %>
+        </div>
+      <% end %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>シフト</th>
+            <td><%= @car.transmission_i18n %></td>
+          </tr>
+          <tr>
+            <th>型式</th>
+            <td><%= @car.chassis_code %></td>
+          </tr>
+          <tr>
+            <th>グレード</th>
+            <td><%= @car.grade %></td>
+          </tr>
+          <tr>
+            <th>排気量</th>
+            <td><%= @car.engine_capacity %></td>
+          </tr>
+          <tr>
+            <th>使用燃料</th>
+            <td><%= @car.fuel_i18n %></td>
+          </tr>
+          <tr>
+            <th>色</th>
+            <td><%= @car.color %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

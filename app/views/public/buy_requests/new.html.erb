@@ -1,0 +1,32 @@
+<div class="container mb-5">
+  <h1>購入見積り申し込み</h1>
+  <%= form_with model: @buy_request do |f| %>
+    <%= f.hidden_field :car_id, value: params[:car_id] %>
+
+    <%= fields_for :appointment, @buy_request.appointment do |ap| %>
+      <%= ap.hidden_field :customer_id, value: current_customer.id %>
+      <%= ap.hidden_field :category, value: Appointment.categories.key(0) %>
+      
+      <% if current_customer.is_guest? %>
+        <%= render "public/appointments/app_form", f: ap %>
+
+      <% else %>
+        <p><%= current_customer.fullname %></p>
+        <p><%= current_customer.phone_number %></p>
+        <p><%= current_customer.post_code %></p>
+        <p><%= current_customer.email %></p>
+
+        <%= ap.hidden_field :name, value: current_customer.fullname %>
+        <%= ap.hidden_field :phone_number, value: current_customer.phone_number %>
+        <%= ap.hidden_field :post_code, value: current_customer.post_code %>
+        <%= ap.hidden_field :email, value: current_customer.email %>
+      <% end %>
+    <% end %>
+
+    <%= render "public/appointments/form", f: f %>
+
+    <div>
+      <%= f.submit "予約申し込み", class: "btn btn-primary btn-block col-lg-4" %>
+    </div>
+  <% end %>
+</div>

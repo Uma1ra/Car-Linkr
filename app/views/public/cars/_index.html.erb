@@ -1,0 +1,33 @@
+<% if cars.length > 0 %>
+  <h1>Public::Cars#index</h1>
+  <div class="index-items">
+    <% cars.each do |car| %>
+      <div class="item">
+        <%= link_to car_path(car.id) do %>
+          <div class="item-image">
+            <%= image_tag car.first_image, class: "image" %>
+          </div>
+          <div class="info text-center">
+            <p>
+              <%= car.name %></br>
+              <i class="fa-solid fa-gauge-high" style="color: #FF7722"></i>
+              <%= number_with_delimiter(car.mileage) %>
+              <span>
+                <%= car.is_km ? "km" : "miles" %>
+              </span> |
+              <%= l car.year, format: :year %>年式
+
+            </p>
+            <p class="font-weight-bold"><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %> (税込)</p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <h3 class="text-center font-weight-bold">
+    現在出品はございません</br>
+    もうしばらくお待ち下さい
+  </h3>
+<% end %>
