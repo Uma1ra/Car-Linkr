@@ -1,8 +1,10 @@
 <% if cars.length > 0 %>
-  <h1>出品</h1>
-  <p>
-    カーリンカーでは、様々なお客様に満足していただけるよう、幅広いサービスを行っております。
-  </p>
+  <div class="index-content p-2">
+    <h1>出品</h1>
+    <p>
+      カーリンカーでは、様々なお客様に満足していただけるよう、幅広いサービスを行っております。
+    </p>
+  </div>
   <div class="index-items">
     <% cars.each do |car| %>
       <div class="item">
@@ -27,6 +29,7 @@
       </div>
     <% end %>
   </div>
+
   <div class="row d-flex justify-content-center">
     <%= paginate @cars %>
   </div>

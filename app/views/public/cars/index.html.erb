@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container mt-4">
   <div class="row">
     <% if current_customer %>
       <div class="cars" style="width: 100%;">
@@ -30,7 +30,7 @@
             <%= link_to "こちら", new_customer_registration_path %>
           </p>
           <p>
-            <%= link_to "ゲストユーザーとして利用する", guest_login_path, method: :post, class: "btn btn-info btn-block btn-sm" %>
+            <%= link_to "ゲスト ログイン", guest_login_path, method: :post, class: "btn btn-info btn-block" %>
           </p>
         <% end %>
       </div>
