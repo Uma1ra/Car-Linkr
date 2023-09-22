@@ -36,25 +36,36 @@ body a:hover {
   border-radius: 4px;
 }
 
+// ===================== header =======================
+
 header {
   width: 100%;
   background: rgb(224,245,255);
   background: linear-gradient(90deg, rgba(224,245,255,1) 30%, rgba(125,223,255,1) 100%);
+
+  .nav-link {
+    margin-left: 8px;
+  }
+
+  .nav-item:hover {
+    background-color: #87e1ff;
+    opacity: 0.6;
+    border-radius: 7px;
+  }
+
 }
 
-.nav-link {
-  margin-left: 8px;
+.customer-name {
+  text-align: center;
 }
 
-.nav-item:hover {
-  background-color: #87e1ff;
-  opacity: 0.6;
-  border-radius: 7px;
-}
+// ===================== table =======================
 
 th {
   background-color: #F6F9FF;
 }
+
+// ===================== items =======================
 
 .item:hover {
   transform: scale(1.05);
@@ -92,6 +103,8 @@ th {
   }
 }
 
+// ===================== public-index =======================
+
 .public-index {
   width: 70%;
 }
@@ -117,13 +130,11 @@ th {
   flex: flex-wrap;
 }
 
-
+// ===================== show =======================
 
 .show-images {
   width: 70%;
 }
-
-// ===================== show =======================
 
 .show-info {
   width: 30%;
@@ -133,6 +144,8 @@ th {
   background-color: #FF8010;
   border: 2px solid #F37404;
 }
+
+// ===================== footer =======================
 
 footer {
   width: 100%;
@@ -145,6 +158,8 @@ footer {
 .sns-links {
   margin: 0 auto;
 }
+
+// ===================== swiper =======================
 
 .swiper {
   width: 600px;
@@ -206,10 +221,21 @@ footer {
   border-color: #FC741A;
 }
 
+// ===================== responsive-768 =======================
+
 @media screen and (max-width: 768.98px) {
 
+  .search {
+    width: 63%;
+    text-align: start;
+  }
+
   .customer-name {
-    width: 70%;
+    width: 67%;
+    text-align: end;
+  }
+
+  .nav-item {
     margin: 0 auto;
   }
 
@@ -229,6 +255,8 @@ footer {
 
 }
 
+// ===================== responsive-425 =======================
+
 @media screen and (max-width: 425.98px) {
 
   header {
@@ -239,7 +267,14 @@ footer {
   }
 
   .search {
-    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .customer-name {
+    width: 76%;
+    text-align: end;
   }
 
   .logo {
@@ -260,8 +295,6 @@ footer {
     width: 90%;
   }
 
-  .nav-item {
-    margin: 0 auto;
-  }
+
 
 }
