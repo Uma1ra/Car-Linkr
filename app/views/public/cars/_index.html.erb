@@ -1,5 +1,8 @@
 <% if cars.length > 0 %>
-  <h1>Public::Cars#index</h1>
+  <h1>出品</h1>
+  <p>
+    カーリンカーでは、様々なお客様に満足していただけるよう、幅広いサービスを行っております。
+  </p>
   <div class="index-items">
     <% cars.each do |car| %>
       <div class="item">
@@ -24,10 +27,11 @@
       </div>
     <% end %>
   </div>
-
+  <div class="row d-flex justify-content-center">
+    <%= paginate @cars %>
+  </div>
 <% else %>
   <h3 class="text-center font-weight-bold">
-    現在出品はございません</br>
-    もうしばらくお待ち下さい
+    現在登録されている出品はございません
   </h3>
 <% end %>

@@ -30,12 +30,21 @@ body a {
 
 body a:hover {
   text-decoration: none;
-  background-color: #EBF4FA;
   border-radius: 4px;
 }
 
 header {
-  margin-bottom: 60px;
+  background: rgb(224,245,255);
+  background: linear-gradient(90deg, rgba(224,245,255,1) 30%, rgba(125,223,255,1) 100%);
+}
+
+.nav-link {
+  margin-left: 8px;
+}
+
+.nav-item:hover {
+  background-color: #87e1ff;
+  border-radius: 7px;
 }
 
 th {
@@ -48,9 +57,9 @@ th {
 
 .item {
   width: 30%;
-  margin-right: 1% ;
+  margin-right: 5px;
   border: 1px solid #EBF4FA;
-  border-radius: 1%;
+  border-radius: 2%;
   transition: transform .3s;
   background-color: #F8F8F8;
 
@@ -79,15 +88,22 @@ th {
 }
 
 .public-index {
-  width: 70%;
+  width: 67%;
+  margin-right: 3%;
 }
 
 .login {
-  width: 30%;
+  width: 27%;
+  margin-left: 3%;
+  padding: 3%;
+  border: 3px double #DEF4FF;
+  border-radius: 8px;
+  background-color: #F8F8F8;
 }
 
 .index-items {
   width: 100%;
+  margin-top: 20px;
   display: flex;
   flex: flex-wrap;
 }
@@ -107,9 +123,10 @@ th {
 
 footer {
   width: 100%;
-  // height: 40px;
   position: absolute;
   bottom: 0;
+  background: rgb(224,245,255);
+  background: linear-gradient(9deg, rgba(224,245,255,1) 19%, rgba(173,235,255,1) 100%);
 }
 
 .swiper {
@@ -141,4 +158,33 @@ footer {
       opacity: 0.3;
     }
   }
+}
+
+.alert-warning {
+  background-color: #ffd9ac;
+}
+
+// =============================buttons=================================
+
+.btn-info {
+  color: #FFFFFF;
+  background-color: #FC741A;
+  border-color: #FC741A;
+}
+
+.btn-info:hover,
+.btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
+.show > .btn-info.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #FC741A;
+  border-color: #FC741A;
+}
+
+.btn-info:focus, .btn-info.focus,
+.btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-info.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #FC741A;
+  border-color: #FC741A;
 }

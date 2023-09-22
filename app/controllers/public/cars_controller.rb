@@ -5,7 +5,7 @@ class Public::CarsController < ApplicationController
     if params[:word]
       @cars = Car.search(params[:word])
     else
-      @cars = Car.all
+      @cars = Car.page(params[:page]).per(6)
     end
   end
 
