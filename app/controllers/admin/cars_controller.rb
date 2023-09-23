@@ -44,36 +44,32 @@ class Admin::CarsController < ApplicationController
   end
 
   def update
-      byebug
     if @car.update(car_params)
       # 変更前の指定したcarに紐づくsubgenre_idを全て取得する
       pre_subgenre_ids = CarGenre.where(car_id: @car.id).pluck(:subgenre_id)
-      #上記で取得したsubgenre_idsの値を変数に代入
+      # 更新で送られてきたパラメータを全て取得
       subgenre_keys = params[:car].keys.select {|key| key.include?("subgenre")}
-
+      # 種痘されたパラメータの値を取得
       post_subgenre_ids = subgenre_keys.map { |subgenre_key| params[:car][subgenre_key] }
-      # 上をeachで書き直したもの
-      # post_subgenre_ids = []
-      # subgenre_keys.each { |subgenre_key| post_subgenre_ids << params[:car][subgenre_key] }
 
       # ["1",   "", "24"]古
       # [ "", "10", "24"]新
 
       # 上だけに含まれるもの ⇒ 削除
-      old_subgenre_ids = pre_subgenre_ids - post_subgenre_ids
-      old_car_genres = CarGenre.where(car_id: 1).pluck(old_subgenre_ids)
+      old_subgenre_ids = (pre_subgenre_ids - post_subgenre_ids)
+      old_car_genres = CarGenre.where(car_id: @car.id, subgenre_id: old_subgenre_ids)
       old_car_genres.each do |old|
         old.destroy
       end
       # 下だけに含まれるもの ⇒ 新規作成
-      new_subgenre_ids = post_subgenre_ids - pre_subgenre_ids
-      new_car_genres = CarGenre.where(car_id: @car.id).pluck(new_subgenre_ids)
-      new_car_genres.each do |new|
-        CarGenre.create(subgenre_id: new, car_id: @car.id)
+      # post_subgenre_idsには空白も含まれ、不要なのでrejectで除外
+      new_subgenre_ids = (post_subgenre_ids - pre_subgenre_ids).reject { |id| id == "" }
+      new_subgenre_ids.each do |subgenre_id|
+        CarGenre.create(subgenre_id: subgenre_id, car_id: @car.id)
       end
       # 上と下で共通するもの ⇒ 更新
       same_subgenre_ids = post_subgenre_ids & pre_subgenre_ids
-      same_car_genres = CarGenre.where(car_id: @car.id).pluck(same_subgenre_ids)
+      same_car_genres = CarGenre.where(car_id: @car.id, subgenre_id: same_subgenre_ids)
       same_car_genres.each do |same|
         same.save
       end
