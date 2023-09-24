@@ -9,7 +9,7 @@
         <%= render "index", cars: @cars %>
       </div>
       <div class="login ">
-        <h2 class="text-center mb-4">会員ログイン</h2>
+        <h2 class="text-center mt-3 mb-4">会員ログイン</h2>
 
         <%= form_with model: @customer, url: customer_session_path, method: :post do |f| %>
           <div class="field mb-2">
@@ -23,7 +23,7 @@
           </div>
 
           <div class="actions mb-3 text-center">
-            <%= f.submit "ログイン", class: "btn btn-primary btn-sm" %>
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
           </div>
           <p>
             無料会員登録は

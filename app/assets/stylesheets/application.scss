@@ -16,7 +16,7 @@
 
 
 * {
-  color: #000044;
+  color: #282828;
 }
 
 body {
@@ -25,6 +25,8 @@ body {
   padding-bottom: 60px; /* フッターの高さ指定 */
   box-sizing: border-box;
   min-height: 100vh;
+  font-family: "Noto Sans JP", sans-serif;
+  // background-color: #FFFFF0;
 }
 
 body a {
@@ -35,6 +37,13 @@ body a {
 body a:hover {
   text-decoration: none;
   border-radius: 4px;
+}
+
+.page-info {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 2px solid #DCF5DC;
 }
 
 // ===================== header =======================
@@ -68,10 +77,49 @@ header {
   }
 }
 
-// ===================== table =======================
+// ===================== public-index =======================
 
-th {
-  background-color: #F6F9FF;
+.public-index {
+  width: 72%;
+}
+
+.index-content {
+  width: 100%;
+  background-color: #DCF5DC;
+  border-radius: 8px;
+
+  .index-copy {
+
+    border-radius: 6px;
+    margin: 0 3px;
+  }
+  .family {
+    background-color: #91e4ff;
+  }
+
+  .new-start {
+    background-color: #FC741A;
+  }
+
+  .loved-car {
+    background-color: #78FF09;
+  }
+}
+
+.login {
+  width: 25%;
+  margin-left: 3%;
+  border: 2px solid #DEF4FF;
+  border-radius: 8px;
+  background-color: #F8F8F8;
+}
+
+.index-items {
+  width: 100%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  gap: 0.3em;
 }
 
 // ===================== items =======================
@@ -112,35 +160,6 @@ th {
   }
 }
 
-// ===================== public-index =======================
-
-.public-index {
-  width: 72%;
-}
-
-.index-content {
-  width: 100%;
-  background-color: #F6F9FF;
-  border-radius: 8px;
-}
-
-.login {
-  width: 25%;
-  margin-left: 3%;
-  padding: 1%;
-  border: 2px solid #DEF4FF;
-  border-radius: 8px;
-  background-color: #F8F8F8;
-}
-
-.index-items {
-  width: 100%;
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  gap: 0.3em;
-}
-
 // ===================== show =======================
 
 .show-images {
@@ -159,24 +178,47 @@ th {
 
 // ===================== form =======================
 
-form {
-  width: 80%;
-  margin: 0 auto;
-  align-
+.register-form {
+  width: 90%;
+  margin: 20px auto 50px;
+  padding: 20px;
+  background-color: #F0F0F0;
+  border-radius: 8px;
+
+  .name-group {
+    width: 36%;
+    padding: 0 1%;
+  }
 
   .form-group {
     width: 100%;
-    margin-bottom: 15px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
   }
 
   .form-label {
-    width: 25%;
+    width: 30%;
+  }
+
+  .head-label {
+    width: 100%;
+    margin-left: 15%;
   }
 
   .sub-label {
-    width: 7%;
-    margin-left: 1%;
+    width: 50%;
   }
+
+  .input-field {
+    width: 40%;
+  }
+}
+
+// ===================== table =======================
+
+th {
+  background-color: #F6F9FF;
 }
 
 // ===================== footer =======================
@@ -260,6 +302,10 @@ footer {
 
 @media screen and (max-width: 768.98px) {
 
+  .page-info {
+    width: 70%;
+  }
+
   header {
     .search {
       width: 45%;
@@ -291,11 +337,36 @@ footer {
     margin-left: 5%;
   }
 
+  .register-form {
+
+    .name-group {
+      width: 44%;
+      padding: 0 1%;
+    }
+
+    .form-label {
+      width: 35%;
+    }
+
+    .head-label {
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    .input-field {
+      width: 50%;
+    }
+  }
+
 }
 
 // ===================== responsive-425 =======================
 
 @media screen and (max-width: 425.98px) {
+
+  .page-info {
+    width: 100%;
+  }
 
   header {
     .container {
@@ -303,12 +374,9 @@ footer {
       justify-content: center;
     }
 
-    .navbar-toggler {
-      align-text: end;
-    }
-
     .search {
-      width: 80%;
+      width: 70%;
+      padding: 5px 0;
       display: flex;
       justify-content: center;
       margin: 0 auto;
@@ -319,8 +387,6 @@ footer {
       align-self: end;
     }
   }
-
-
 
   .logo {
     margin: 0 auto;
@@ -339,6 +405,31 @@ footer {
   .index-items {
     display: grid;
     grid-template-columns: repeat(1, 100%);
+  }
+
+  .register-form {
+
+    .name-group {
+      width: 50%;
+      padding: 0 1%;
+    }
+
+    .form-label {
+      width: 40%;
+    }
+
+    .head-label {
+      width: 100%;
+    }
+
+    .input-field {
+      width: 60%;
+    }
+  }
+
+  .actions .btn {
+    width: 100%;
+    margin-top: 10px;
   }
 
 }

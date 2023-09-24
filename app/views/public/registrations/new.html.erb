@@ -1,100 +1,113 @@
-<div class="container">
-  
-  <h2>アカウントを作成</h2>
-  <p>以下の情報を入力してください</p>
+<div class="container mt-5">
+  <div class="page-info mb-5">
+    <h2>アカウントを作成</h2>
+    <p>以下の情報を入力してください</p>
+  </div>
 
-  <form>
-    <%= form_with model: @customer, url: customer_registration_path do |f| %>
+  <%= form_with model: @customer, url: customer_registration_path do |f| %>
+    <div class="register-form">
 
-      <div class="form-group row">
-        <div class="form-label">
-          <%= f.label "氏名" %>
+      <div class="head-label">
+        <%= f.label "氏名" %>
+      </div>
+      <div class="form-group">
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :last_name, "(姓)" %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :last_name, placeholder: "令和", autofocus: true, required: true, class: "form-control" %>
+          </div>
         </div>
-        <span class="sub-label">
-          <%= f.label :last_name, "(姓)" %>
-        </span>
-        <div class=" input-field">
-          <%= f.text_field :last_name, placeholder: "令和", autofocus: true, required: true %>
-        </div>
-        <span class="sub-label">
-          <%= f.label :first_name, "(名)"  %>
-        </span>
-        <div class=" input-field">
-          <%= f.text_field :first_name, placeholder: "道子", autofocus: true, required: true %>
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :first_name, "(名)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :first_name, placeholder: "道子", autofocus: true, required: true, class: "form-control" %>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
-        <div class="form-label">
-          <%= f.label "フリガナ"  %>
+      <div class="head-label">
+        <%= f.label "フリガナ"  %>
+      </div>
+      <div class="form-group">
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :last_name_kana, "(セイ)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true, required: true, class: "form-control" %>
+          </div>
         </div>
-        <span class="sub-label">
-          <%= f.label :last_name_kana, "(セイ)"  %>
-        </span>
-        <div class=" input-field">
-          <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true, required: true %>
-        </div>
-        <span class="sub-label">
-          <%= f.label :first_name_kana, "(メイ)"  %>
-        </span>
-        <div class=" input-field">
-          <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true, required: true %>
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :first_name_kana, "(メイ)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true, required: true, class: "form-control" %>
+          </div>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group">
         <div class="form-label">
           <%= f.label :phone_number, "電話番号"  %>
         </div>
-        <div class=" input-field">
-          <%= f.text_field :phone_number, placeholder: "00000000000", autofocus: true, autocomplete: "phone_number" %>
+        <div class="input-field">
+          <%= f.text_field :phone_number, placeholder: "00000000000", autofocus: true, autocomplete: "phone_number", class: "form-control" %>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group">
         <div class="form-label">
           <%= f.label :post_code, "郵便番号"  %>
         </div>
-        <div class=" input-field">
-          <%= f.text_field :post_code, placeholder: "0000000", autofocus: true, autocomplete: "post_code" %>
+        <div class="input-field">
+          <%= f.text_field :post_code, placeholder: "0000000", autofocus: true, autocomplete: "post_code", class: "form-control" %>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group">
         <div class="form-label">
           <%= f.label :email, "メールアドレス"  %>
         </div>
-        <div class=" input-field">
-          <%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email" %>
+        <div class="input-field">
+          <%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group">
         <div class="form-label">
           <%= f.label :password, "パスワード"  %>
-        <span><% if @minimum_password_length %>
+        <div><% if @minimum_password_length %>
           (<%= @minimum_password_length %>字必須)
-        <% end %></span>
+        <% end %></div>
         </div>
-        <div class=" input-field">
-          <%= f.password_field :password, autocomplete: "new-password" %>
+        <div class="input-field">
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
       </div>
 
-      <div class="form-group row">
+      <div class="form-group">
         <div class="form-label">
           <%= f.label :password_confirmation, "パスワード（確認用）"  %>
         </div>
-        <div class=" input-field">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        <div class="input-field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
       </div>
 
       <div class="actions text-center">
-        <%= f.submit "Sign up", class: "btn btn-primary" %>
+        <%= f.submit "無料会員登録", class: "btn btn-primary my-4" %>
+        <p class="text-center">
+          会員登録がお済みの方はこちらから</br>
+          <%= link_to "ログイン", root_path, class: "btn btn-info mt-3" %>
+        </p>
       </div>
-    <% end %>
 
-    <p class="text-center mt-5">会員登録がお済みの方はこちらから<%= link_to "ログイン", root_path %></p>
-  </form>
+
+    </div>
+  <% end %>
 </div>
