@@ -1,9 +1,9 @@
 <%= form_with url: root_path, method: :get do |f| %>
-  <div class="form-group row">
-    <div>
+  <div class="search-form">
+    <div style="width: 88%;">
       <%= f.text_field :word, placeholder: "Search", class: "form-control" %>
     </div>
-    <div>
+    <div style="width: 15%;">
       <%= button_tag type: "submit", class: "btn btn-light" do %>
         <i class="fa-solid fa-magnifying-glass" style="color: #0000b0;"></i>
       <% end %>

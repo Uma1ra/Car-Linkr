@@ -44,6 +44,15 @@ header {
   background: rgb(224,245,255);
   background: linear-gradient(90deg, rgba(224,245,255,1) 30%, rgba(125,223,255,1) 100%);
 
+  .search {
+    width: 40%;
+  }
+
+  .search-form {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
   .nav-link {
     margin-left: 8px;
   }
@@ -54,10 +63,9 @@ header {
     border-radius: 7px;
   }
 
-}
-
-.customer-name {
-  text-align: center;
+  .customer-name {
+    text-align: center;
+  }
 }
 
 // ===================== table =======================
@@ -73,12 +81,12 @@ th {
 }
 
 .item {
-  width: 33%;
-  margin-right: 5px;
   border: 1px solid #EBF4FA;
   border-radius: 2%;
   transition: transform .3s;
   background-color: #F8F8F8;
+  font-size: 13px;
+
 
   a {
     text-decoration: none;
@@ -107,18 +115,19 @@ th {
 // ===================== public-index =======================
 
 .public-index {
-  width: 70%;
+  width: 72%;
 }
 
 .index-content {
+  width: 100%;
   background-color: #F6F9FF;
   border-radius: 8px;
 }
 
 .login {
-  width: 27%;
+  width: 25%;
   margin-left: 3%;
-  padding: 3%;
+  padding: 1%;
   border: 2px solid #DEF4FF;
   border-radius: 8px;
   background-color: #F8F8F8;
@@ -127,8 +136,9 @@ th {
 .index-items {
   width: 100%;
   margin-top: 20px;
-  display: flex;
-  flex: flex-wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  gap: 0.3em;
 }
 
 // ===================== show =======================
@@ -145,6 +155,28 @@ th {
 .price {
   background-color: #FF8010;
   border: 2px solid #F37404;
+}
+
+// ===================== form =======================
+
+form {
+  width: 80%;
+  margin: 0 auto;
+  align-
+
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .form-label {
+    width: 25%;
+  }
+
+  .sub-label {
+    width: 7%;
+    margin-left: 1%;
+  }
 }
 
 // ===================== footer =======================
@@ -228,18 +260,20 @@ footer {
 
 @media screen and (max-width: 768.98px) {
 
-  .search {
-    width: 63%;
-    text-align: start;
-  }
+  header {
+    .search {
+      width: 45%;
+      text-align: start;
+    }
 
-  .customer-name {
-    width: 67%;
-    text-align: end;
-  }
+    .customer-name {
+      width: 67%;
+      text-align: end;
+    }
 
-  .nav-item {
-    margin: 0 auto;
+    .nav-item {
+      margin: 0 auto;
+    }
   }
 
   .public-index {
@@ -247,13 +281,14 @@ footer {
     margin-bottom: 40px;
   }
 
+  .index-items {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
   .login {
     width: 35%;
     margin-left: 5%;
-  }
-
-  .item {
-    width: 50%;
   }
 
 }
@@ -267,18 +302,25 @@ footer {
       display: flex;
       justify-content: center;
     }
+
+    .navbar-toggler {
+      align-text: end;
+    }
+
+    .search {
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .customer-name {
+      width: 76%;
+      align-self: end;
+    }
   }
 
-  .search {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
 
-  .customer-name {
-    width: 76%;
-    text-align: end;
-  }
 
   .logo {
     margin: 0 auto;
@@ -294,8 +336,9 @@ footer {
     margin: 0 auto;
   }
 
-  .item {
-    width: 90%;
+  .index-items {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
   }
 
 }
