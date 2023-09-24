@@ -1,13 +1,17 @@
-<div class="container">
-  <h1>会員情報</h1>
-  
-  <% if @customer.is_guest? %>
-    <div class="text-center">
-      <h2>ようこそ、ゲストユーザーさん</h2>
+<div class="container mt-5">
+  <div class="page-info mb-5">
+    <h2>マイページ</h2>
+  </div>
+
+
+  <% if current_customer.is_guest %>
+    <div class="text-center mt-5">
+      <p>ゲストユーザーの方の情報はこちらから検索してください</p>
     </div>
-    
+
+
   <% else %>
-    <table class="table">
+    <table class="table table-bordered">
       <tbody>
         <tr>
           <th>氏名</th>
@@ -31,9 +35,38 @@
         </tr>
       </tbody>
     </table>
-    
-    <%= link_to "編集", information_path, class: "btn btn-success" %>
-    <%= link_to "退会", confirm_withdraw_path, class:"btn btn-outline-danger" %>
+    <div class="d-flex justify-content-center">
+      <%= link_to "編集", information_path, class: "btn btn-success mx-2" %>
+      <%= link_to "退会", confirm_withdraw_path, class:"btn btn-outline-danger mx-2" %>
+    </div>
+
+    <div class="page-info text-center my-5">
+      <h3>予約一覧</h3>
+    </div>
+    <% if current_customer.appointments %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>予約申込日時</th>
+            <th>予約内容</th>
+            <th>予約状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @appointments.each do |app| %>
+            <tr>
+              <td><%= l app.created_at, format: :long %></td>
+              <td><%= app.category %></td>
+              <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
+                <%= app.is_done ? "対応済" : "未対応" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <h3>まだ予約情報はございません</h3>
+    <% end %>
   <% end %>
-  
+
 </div>
