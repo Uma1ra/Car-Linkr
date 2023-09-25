@@ -9,14 +9,24 @@ before_action :authenticate_customer!
   def create
     @appointment = Appointment.new(appointment_params)
     @buy_request = BuyRequest.new(buy_request_params)
-    
-    if @appointment.save
-      @buy_request.appointment_id = @appointment.id
-      @buy_request.save
-      
+
+    begin
+      ActiveRecord::Base.transaction do
+        @appointment.save
+        @buy_request.appointment_id = @appointment.id
+        @buy_request.save
+      end
+
       redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
-    else
+    rescue => e
+      Rails.logger.error "Failed to save buy_request: #{e.message}"
       render :new, alert: "予約の申し込みに失敗しました"
+    #   @buy_request.appointment_id = @appointment.id
+    #   @buy_request.save
+
+    #   redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
+    # else
+    #   render :new, alert: "予約の申し込みに失敗しました"
     end
   end
 
@@ -28,6 +38,13 @@ before_action :authenticate_customer!
 
   def appointment_params
     params.require(:appointment).permit(:customer_id, :name, :phone_number, :post_code, :email, :category)
+  end
+
+  def save_appointment_and_buy_request
+    if @appointment.save
+      @buy_request.appointment_id = @appointment.id
+      @buy_request.save
+    end
   end
 
 end
