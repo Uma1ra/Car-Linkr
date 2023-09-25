@@ -44,6 +44,7 @@ class Admin::CarsController < ApplicationController
   end
 
   def update
+    @genres = Genre.where(id: Subgenre.all.pluck(:genre_id))
     if @car.update(car_params)
       begin
         ActiveRecord::Base.transaction do
