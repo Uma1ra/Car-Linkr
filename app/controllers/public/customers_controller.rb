@@ -4,13 +4,8 @@ class Public::CustomersController < ApplicationController
   before_action :check_customer, only: [:mypage, :edit, :update, :withdraw]
 
   def mypage
-    # unless !(current_customer.is_guest)
-    #   if params[:guest_email]
-    #     @appointments = Appointment.search(params:guest_info).page(params[:page]).per(6).order(created_at: :desc)
-    #   else
-
-    #   end
-    # end
+    @guest_appointment = current_customer.appointments.search(params[:appointment_id], params[:guest_email])
+    
     @appointments = current_customer.appointments.page(params[:page]).per(10).order(created_at: :desc)
     @enquiries = current_customer.enquiries.page(params[:page]).per(10).order(created_at: :desc)
   end

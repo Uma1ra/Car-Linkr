@@ -2,8 +2,8 @@ class Appointment < ApplicationRecord
 
   belongs_to :customer
 
-  has_many :buy_requests, dependent: :destroy
-  has_many :sell_requests, dependent: :destroy
+  has_one :buy_request, dependent: :destroy
+  has_one :sell_request, dependent: :destroy
 
   validates :name, :email, presence: true
 
@@ -15,15 +15,12 @@ class Appointment < ApplicationRecord
 
   # 予約の種類
   enum category: {buy: 0, sell: 1, buy_and_sell: 2}
-  
+
   # ゲスト予約の検索機能
-  def self.search(seach)
-    if search !=""
-      self.where(["id LIKE(?)
-                OR email LIKE(?)",
-                "#{search}",
-                "#{search}"])
-    end
+  def self.search(id, email)
+    return if id.blank?
+    return if email.blank?
+    self.where(id: id, email: email)
   end
-  
+
 end

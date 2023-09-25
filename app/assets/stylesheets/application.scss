@@ -121,7 +121,7 @@ header {
 .login {
   width: 25%;
   margin-left: 3%;
-  padding: 1%;
+  padding: 2%;
   border: 2px solid #DEF4FF;
   border-radius: 8px;
   background-color: #F8F8F8;
@@ -190,6 +190,13 @@ header {
 }
 
 // ===================== form =======================
+.admin-login-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 4%;
+  background-color: #F0F0F0;
+  border-radius: 8px;
+}
 
 .register-form {
   width: 90%;
@@ -426,6 +433,10 @@ footer {
     width: 70%;
   }
 
+  .admin-login-form {
+    width: 60%;
+  }
+
 }
 
 // ===================== responsive-425 =======================
@@ -501,6 +512,10 @@ footer {
 
   .detail-form {
     width: 100%;
+  }
+
+  .admin-login-form {
+    width: 90%;
   }
 
   .actions .btn {

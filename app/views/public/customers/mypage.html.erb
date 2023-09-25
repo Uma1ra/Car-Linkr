@@ -8,6 +8,12 @@
     <div class="text-center mt-5">
       <p>ゲストユーザーの方の情報はこちらから検索してください</p>
     </div>
+    <% if @guest_appointment.present? %>
+      <%= render "appointments", appointments: @guest_appointment.page(1) %>
+    <% else %>
+      no appointment found.
+    <% end %>
+  <%= render "guest_info" %>
 
 
   <% else %>
@@ -43,7 +49,12 @@
     <div class="page-info text-center my-5">
       <h3>予約一覧</h3>
     </div>
-    <%= render "appointments", appointments: @appointments %>
+
+    <% if current_customer.is_guest %>
+
+    <% else %>
+      <%= render "appointments", appointments: @appointments %>
+    <% end %>
     <div class="page-info text-center my-5">
       <h3>お問い合せ一覧</h3>
     </div>
