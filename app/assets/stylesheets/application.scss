@@ -46,6 +46,18 @@ body a:hover {
   border-bottom: 2px solid #DCF5DC;
 }
 
+.instructions{
+
+  ul {
+    padding: 3px;
+    background-color: #DCF5DC;
+    border-radius: 5px;
+    font-size: 12px;
+    list-style-position: inside;
+    list-style-type: "※";
+  }
+}
+
 // ===================== header =======================
 
 header {
@@ -216,10 +228,57 @@ header {
   }
 }
 
+.request-form {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-label {
+    width: 25%;
+  }
+
+  .input-field {
+    width: 65%;
+  }
+}
+
+.detail-form {
+  width: 50%;
+}
+
 // ===================== table =======================
 
 th {
   background-color: #F6F9FF;
+}
+
+.word-break {
+  word-break: break-all;
+}
+
+.enquiry {
+  width: 60%;
+  margin: 0 auto;
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    width: 65%;
+  }
+}
+
+.sell-request-table {
+  width: 65%;
+  margin: 0 auto;
 }
 
 // ===================== footer =======================
@@ -286,17 +345,17 @@ footer {
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
 .show > .btn-info.dropdown-toggle {
   color: #FFFFFF;
-  background-color: #FC741A;
-  border-color: #FC741A;
+  background-color: #E86006;
+  border-color: #E86006;
 }
 
 .btn-info:focus, .btn-info.focus,
-.btn-outline-info:not(:disabled):not(.disabled):active:focus, .btn-outline-info:not(:disabled):not(.disabled).active:focus,
-.show > .btn-outline-info.dropdown-toggle:focus {
+.btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus,
+.show > .btn-info.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
   color: #FFFFFF;
   background-color: #FC741A;
-  border-color: #FC741A;
+  border-color: #E86006;
 }
 
 // ===================== responsive-768 =======================
@@ -359,6 +418,14 @@ footer {
     }
   }
 
+  .request-form {
+    width: 70%;
+  }
+
+  .detail-form {
+    width: 70%;
+  }
+
 }
 
 // ===================== responsive-425 =======================
@@ -385,7 +452,6 @@ footer {
 
     .customer-name {
       width: 76%;
-      align-self: end;
     }
   }
 
@@ -428,9 +494,22 @@ footer {
     }
   }
 
+  .request-form {
+    width: 100%;
+
+  }
+
+  .detail-form {
+    width: 100%;
+  }
+
   .actions .btn {
     width: 100%;
     margin-top: 10px;
+  }
+
+  .table {
+    width: 100%;
   }
 
 }

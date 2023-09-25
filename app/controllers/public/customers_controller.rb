@@ -6,12 +6,13 @@ class Public::CustomersController < ApplicationController
   def mypage
     # unless !(current_customer.is_guest)
     #   if params[:guest_email]
-    #     @appointments = Appointment.search(params:guest_info).page(params[:page]).per(6.order(created_at: :desc))
+    #     @appointments = Appointment.search(params:guest_info).page(params[:page]).per(6).order(created_at: :desc)
     #   else
 
     #   end
     # end
-    @appointments = current_customer.appointments
+    @appointments = current_customer.appointments.page(params[:page]).per(10).order(created_at: :desc)
+    @enquiries = current_customer.enquiries.page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def edit

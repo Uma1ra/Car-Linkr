@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="page-info mb-5">
     <h2>マイページ</h2>
   </div>
@@ -43,30 +43,11 @@
     <div class="page-info text-center my-5">
       <h3>予約一覧</h3>
     </div>
-    <% if current_customer.appointments %>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>予約申込日時</th>
-            <th>予約内容</th>
-            <th>予約状況</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @appointments.each do |app| %>
-            <tr>
-              <td><%= l app.created_at, format: :long %></td>
-              <td><%= app.category %></td>
-              <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
-                <%= app.is_done ? "対応済" : "未対応" %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      <h3>まだ予約情報はございません</h3>
-    <% end %>
+    <%= render "appointments", appointments: @appointments %>
+    <div class="page-info text-center my-5">
+      <h3>お問い合せ一覧</h3>
+    </div>
+    <%= render "enquiries", enquiries: @enquiries %>
   <% end %>
 
 </div>
