@@ -198,6 +198,25 @@ header {
   border-radius: 8px;
 }
 
+.car-register-form {
+  display: flex;
+  justify-content: center;
+
+  .car-form {
+    width: 30%;
+    padding: 1%;
+    margin: 4px;
+    background-color: #F6F9FF;
+    border-radius: 6px;
+  }
+
+  .car-status {
+    text-align: center;
+    background-color: #DCF5DC;
+    border-radius: 7px;
+  }
+}
+
 .register-form {
   width: 90%;
   margin: 20px auto 50px;
@@ -483,6 +502,15 @@ footer {
   .index-items {
     display: grid;
     grid-template-columns: repeat(1, 100%);
+  }
+
+  .car-register-form {
+    display: block;
+
+    .car-form {
+      width: 100%;
+      padding: 4%;
+    }
   }
 
   .register-form {
