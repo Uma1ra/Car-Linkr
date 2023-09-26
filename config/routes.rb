@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :enquiries, only: [:new, :create, :show]
     resources :buy_requests, only: [:new, :create]
+
     resources :sell_requests, only: [:new, :create]
     resources :appointments, only: [:index, :create, :show]
 

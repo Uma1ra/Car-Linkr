@@ -1,8 +1,8 @@
 <div class="page-info mb-2 text-center">
-  <h5>買取依頼</h5>
+  <h5>買取車情報</h5>
 </div>
-<div class="instructions mb-3">
-  <ul>
+<div>
+  <ul class="instructions kome mb-3">
     <li>
       車検証をお手元にご用意し、入力してください
     </li>
@@ -17,7 +17,7 @@
     <%= f.label :car_name, "車名" %>
   </div>
   <div class="input-field">
-    <%= f.text_field :car_name, autofocus: true, class: "form-control", placeholder: "トヨタ プリウス S ツーリングセレクション" %>
+    <%= f.text_field :car_name, autofocus: true, class: "form-control", placeholder: "トヨタ プリウス" %>
   </div>
 </div>
 
@@ -74,13 +74,11 @@
     <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true, class: "form-control" %>
   </div>
 </div>
-<div class="instructions mb-3">
-  <ul>
-    <li>
-      車検がない場合は終了日は選択不要です
-    </li>
-  </ul>
-</div>
+<ul class="instructions kome text-center mb-3">
+  <li>
+    車検がない場合は終了日は選択不要です
+  </li>
+</ul>
 <div class="form-group">
   <div class="form-label">
     <%= f.label :shaken_finish, "車検終了日" %>

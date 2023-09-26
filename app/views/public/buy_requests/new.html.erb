@@ -1,6 +1,6 @@
 <div class="container my-5">
-  <div class="page-info mb-3">
-    <h3>買取見積り申し込み</h3>
+  <div class="page-info mb-4">
+    <h3>購入見積り申し込み</h3>
   </div>
 
   <%= form_with model: @buy_request do |f| %>
@@ -12,7 +12,9 @@
       <%= ap.hidden_field :category, value: Appointment.categories.key(0) %>
 
       <% if current_customer.is_guest? %>
+      <div class="request-form">
         <%= render "public/appointments/app_form", f: ap %>
+      </div>
 
       <% else %>
         <p class="text-center">

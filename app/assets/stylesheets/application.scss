@@ -47,15 +47,16 @@ body a:hover {
 }
 
 .instructions{
+  padding: 3px;
+  background-color: #DCF5DC;
+  border-radius: 5px;
+  font-size: 12px;
+  list-style: none;
+}
 
-  ul {
-    padding: 3px;
-    background-color: #DCF5DC;
-    border-radius: 5px;
-    font-size: 12px;
-    list-style-position: inside;
-    list-style-type: "※";
-  }
+.kome {
+  list-style-position: inside;
+  list-style-type: "※";
 }
 
 // ===================== header =======================

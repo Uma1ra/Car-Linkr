@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="page-info mb-3">
+  <div class="page-info mb-4">
     <h3>買取見積り申し込み</h3>
   </div>
 
@@ -10,7 +10,9 @@
       <%= ap.hidden_field :category, value: Appointment.categories.key(1) %>
 
       <% if current_customer.is_guest? %>
-        <%= render "public/appointments/app_form", f: ap %>
+        <div class="request-form">
+          <%= render "public/appointments/app_form", f: ap %>
+        </div>
 
       <% else %>
         <p class="text-center">
