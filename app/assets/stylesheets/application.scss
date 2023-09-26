@@ -190,7 +190,19 @@ header {
   border: 2px solid #F37404;
 }
 
+// ===================== mypage =======================
+.guest-mypage {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.guest-info {
+  width: 50%;
+}
+
 // ===================== form =======================
+
 .admin-login-form {
   width: 50%;
   margin: 0 auto;
@@ -278,6 +290,14 @@ header {
 
 .detail-form {
   width: 50%;
+}
+
+.guest-info-form {
+  width: 45%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
 }
 
 // ===================== table =======================
@@ -505,6 +525,19 @@ footer {
     grid-template-columns: repeat(1, 100%);
   }
 
+  .guest-mypage {
+    display: block;
+  }
+
+  .guest-info {
+    width: 100%;
+  }
+
+  .guest-info-form {
+    margin-bottom: 35px;
+  }
+
+
   .car-register-form {
     display: block;
 
@@ -536,10 +569,13 @@ footer {
 
   .request-form {
     width: 100%;
-
   }
 
   .detail-form {
+    width: 100%;
+  }
+
+  .guest-info-form {
     width: 100%;
   }
 

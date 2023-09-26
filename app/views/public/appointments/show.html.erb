@@ -1,6 +1,12 @@
 <div class="container my-5">
   <div class="page-info mb-4">
     <h3>予約詳細</h3>
+    <% if current_customer.is_guest %>
+      <p class="instructions">
+        お問い合せの際には予約IDと申し込み時のメールアドレスが必要になります</br>
+        スクリーンショットやメモにお控えください
+      </p>
+    <% end %>
   </div>
 
   <table class="table table-bordered">
@@ -38,27 +44,16 @@
         <td><%= @appointment.category_i18n %></td>
       </tr>
       <% if @appointment.category == "buy" %>
-        <tr>
-          <th>候補1</th>
-          <td><%= @buy_request.option_a %></td>
-        </tr>
-        <tr>
-          <th>候補2</th>
-          <td><%= @buy_request.option_b %></td>
-        </tr>
-        <tr>
-          <th>候補3</th>
-          <td><%= @buy_request.option_c %></td>
-        </tr>
+        <%= render "buy_request", buy_request: @buy_request %>
       <% end %>
       <tr>
         <th>予約状況</th>
-        <td><%= @appointment.is_done ? "対応済" : "未対応" %></td>
+        <td class="<%= @appointment.is_done ? "text-success" : "text-danger" %>">
+          <%= @appointment.is_done ? "対応済" : "未対応" %>
+        </td>
       </tr>
     </tbody>
   </table>
 
-  <% if @buy_request.comment %>
-    <div><%= @buy_request.comment %></div>
-  <% end %>
+
 </div>

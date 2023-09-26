@@ -6,15 +6,19 @@
 
   <% if current_customer.is_guest %>
     <div class="text-center mt-5">
-      <p>ゲストユーザーの方の情報はこちらから検索してください</p>
+      <p>ゲストユーザーの方は予約情報を検索してください</p>
     </div>
-    <% if @guest_appointment.present? %>
-      <%= render "appointments", appointments: @guest_appointment.page(1) %>
-    <% else %>
-      no appointment found.
-    <% end %>
-  <%= render "guest_info" %>
+    <div class="guest-mypage">
+      <div class="guest-info-form">
+        <%= render "guest_info_search" %>
+      </div>
 
+      <div class="guest-info">
+        <% if @guest_appointment.present? %>
+          <%= render "appointments", appointments: @guest_appointment.page(1) %>
+        <% end %>
+      </div>
+    </div>
 
   <% else %>
     <table class="table table-bordered">
