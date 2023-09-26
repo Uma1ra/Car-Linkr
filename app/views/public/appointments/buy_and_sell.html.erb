@@ -3,7 +3,8 @@
     <h3>予約申し込み</h3>
   </div>
 
-  <%= form_with model: @appointment do |f| %>
+  <%= form_with model: @appointment, multipart: true do |f| %>
+    <%= render "public/shared/error_messages", resource: @appointment %>
     <%= f.hidden_field :customer_id, value: current_customer.id %>
     <%= f.hidden_field :category, value: Appointment.categories.key(2) %>
 
@@ -27,7 +28,8 @@
     </div>
 
     <%= fields_for :buy_request, @buy_request do |br| %>
-    <%= br.hidden_field :car_id, value: params[:car_id] %>
+      <%= render "public/shared/error_messages", resource: @buy_request %>
+      <%= br.hidden_field :car_id, value: @car_id %>
       <div class="request-form">
         <%= render "form", f: br %>
       </div>
@@ -38,12 +40,14 @@
     </div>
 
     <%= fields_for :sell_request, @sell_request do |sr| %>
+      <%= render "public/shared/error_messages", resource: @sell_request %>
       <div class="request-form">
         <%= render "form", f: sr %>
       </div>
     <% end %>
 
     <%= fields_for :sell_detail, @sell_detail do |sd| %>
+      <%= render "public/shared/error_messages", resource: @sell_detail %>
       <div class="request-form detail-form mb-5">
         <%= render "public/sell_requests/detail_form", f: sd %>
         <div>

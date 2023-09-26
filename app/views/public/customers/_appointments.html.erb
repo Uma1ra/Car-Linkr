@@ -1,36 +1,38 @@
 <% if current_customer.appointments.present? %>
-  <table class="table table-bordered">
-    <tbody>
-      <% appointments.each do |app| %>
-        <tr>
-          <th>予約ID</th>
-          <td><%= app.id %></td>
-        </tr>
-        <tr>
-          <th>予約申込日時</th>
-          <td><%= l app.created_at, format: :long %></td>
-        </tr>
-        <tr>
-          <th>予約内容</th>
-          <td><%= app.category_i18n %></td>
-        </tr>
-        <tr>
-          <th>予約状況</th>
-          <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
-            <%= app.is_done ? "対応済" : "未対応" %>
-          </td>
-        </tr>
-        <tr>
-          <th>詳細へのリンク</th>
-          <td><%= link_to "詳細", appointment_path(app.id), class: "btn btn-primary btn-sm btn-block" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <% appointments.each do |app| %>
+    <div class="appointment-index">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>予約ID</th>
+            <td><%= app.id %></td>
+          </tr>
+          <tr>
+            <th>予約申込日時</th>
+            <td><%= l app.created_at, format: :long %></td>
+          </tr>
+          <tr>
+            <th>予約内容</th>
+            <td><%= app.category_i18n %></td>
+          </tr>
+          <tr>
+            <th>予約状況</th>
+            <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
+              <%= app.is_done ? "対応済" : "未対応" %>
+            </td>
+          </tr>
+          <tr>
+            <th>詳細へのリンク</th>
+            <td><%= link_to "詳細", appointment_path(app.id), class: "btn btn-primary btn-sm btn-block" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
 
   <div class="d-flex justify-content-center">
     <%= paginate appointments %>
   </div>
 <% else %>
-  <h4 class="text-center">まだ予約情報はございません</h4>
+  <h6 class="text-center font-weight-bold">まだ予約情報はございません</h6>
 <% end %>

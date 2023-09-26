@@ -102,20 +102,9 @@ header {
   border-radius: 8px;
 
   .index-copy {
-
     border-radius: 6px;
     margin: 0 3px;
-  }
-  .family {
-    background-color: #91e4ff;
-  }
-
-  .new-start {
-    background-color: #FC741A;
-  }
-
-  .loved-car {
-    background-color: #78FF09;
+    font-weight: bold;
   }
 }
 
@@ -175,19 +164,31 @@ header {
 }
 
 // ===================== show =======================
+.show-page {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
 
-.show-images {
-  width: 70%;
+.show-image {
+  width: 48%;
   overflow: hidden;
 }
 
 .show-info {
-  width: 30%;
+  width: 48%;
 }
 
 .price {
   background-color: #FF8010;
   border: 2px solid #F37404;
+}
+
+.car-detail {
+  background-color: #DCF5DC;
+  border-radius: 7px;
+  padding: 5%;
+  word-break: break-all;
 }
 
 // ===================== mypage =======================
@@ -199,6 +200,12 @@ header {
 
 .guest-info {
   width: 50%;
+}
+
+.appointment-index {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 1em;
 }
 
 // ===================== form =======================
@@ -328,6 +335,38 @@ th {
   margin: 0 auto;
 }
 
+.appointment-tables {
+  display: flex;
+  justify-content: center;
+}
+
+.buy-and-sell {
+  display: flex;
+  justify-content: center;
+}
+
+.app-info {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.sell-detail-info {
+  display: flex;
+  justify-content: center;
+
+}
+
+.sell-images {
+  width: 48%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.sell-detail-table {
+  width: 48%;
+  margin: 0 auto;
+}
+
 // ===================== footer =======================
 
 footer {
@@ -352,6 +391,22 @@ footer {
 :root {
   --swiper-navigation-color: #ffffff;
   --swiper-pagination-color: #ffffff;
+}
+
+.swiper-pagination-fraction {
+  background-color: rgba(0,0,0,.5);
+  color: #FFFFFF;
+  width: 10%;
+  position: absolute;
+  left: 45%;
+
+  .swiper-pagination-current {
+    color: #FFFFFF;
+  }
+
+  .swiper-pagination-total {
+    color: #FFFFFF;
+  }
 }
 
 .swiper-container {

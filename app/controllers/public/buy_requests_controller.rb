@@ -2,11 +2,13 @@ class Public::BuyRequestsController < ApplicationController
 before_action :authenticate_customer!
 
   def new
+    @car_id = params[:car_id]
     @buy_request = BuyRequest.new
     @appointment = Appointment.new
   end
 
   def create
+    @car_id = params[:buy_request][:car_id]
     @appointment = Appointment.new(appointment_params)
     @buy_request = BuyRequest.new(buy_request_params)
 
@@ -18,14 +20,9 @@ before_action :authenticate_customer!
       redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
     rescue => e
       Rails.logger.error "Failed to create buy_request: #{e.message}"
-      render :new, alert: "予約の申し込みに失敗しました"
+      flash[:alert] = "予約の申し込みに失敗しました"
+      render :new
     end
-    #   @buy_request.appointment_id = @appointment.id
-    #   @buy_request.save
-
-    #   redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
-    # else
-    #   render :new, alert: "予約の申し込みに失敗しました"
   end
 
   private
@@ -39,7 +36,7 @@ before_action :authenticate_customer!
   end
 
   def save_buy_request
-    @appointment.save
+    @appointment.save!
     @buy_request.appointment_id = @appointment.id
     @buy_request.save!
   end

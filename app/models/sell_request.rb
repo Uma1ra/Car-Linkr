@@ -1,7 +1,7 @@
 class SellRequest < ApplicationRecord
 
   belongs_to :appointment
-  has_many :sell_details, dependent: :destroy
+  has_one :sell_detail, dependent: :destroy
 
   validates :option_a, :option_b, :option_c, presence: true
   validate :after_today

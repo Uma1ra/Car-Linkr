@@ -1,30 +1,20 @@
 <div class="container my-5">
-
-  <div class="row">
-    <div class="col-6">
+  <div class="show-page">
+    <div class="show-image">
       <h5 class="text-center font-weight-bold my-3"><%= @car.name%></h5>
-      <% if @car.images.attached? %>
-        <% if @car.images.count < 2 %>
-          <% @car.images.each do |image| %>
-            <%= image_tag image.variant(resize_to_fill: [300, 200]).processed, class: "post-img"%>
-          <% end %>
-        <% else %>
-          <div class="swiper-container">
-            <div class= "swiper-wrapper d-flex flex-wrap">
-              <% @car.images.each do |image| %>
-                <div class="swiper-slide"><%= image_tag image, size: "60x45" %></div>
-              <% end %>
-            </div>
-            <div class="swiper-button-prev swiper-button-white"></div>
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-        <% end %>
-      <% end%>
-      <p><%= @car.detail %></p>
+
+      <div class="show-images">
+        <%= render "public/cars/swiper", car: @car %>
+      </div>
+      <div class="page-info mt-5">
+        <h5>セールスポイント</h5>
+      </div>
+      <div class="car-detail mt-4">
+        <p><%= @car.detail %></p>
+      </div>
     </div>
 
-    <div class="col-6">
+    <div class="show-info">
       <table class="table">
         <tbody>
           <tr>
@@ -101,9 +91,12 @@
         </tbody>
       </table>
     </div>
+  </div>
 
-    <div class="row mt-5">
-      <%= link_to "編集" , edit_admin_car_path, class: "btn btn-primary" %>
+
+    <div class="row d-flex justify-content-center mt-5">
+      <%= link_to "編集" , edit_admin_car_path, class: "btn btn-primary mx-2" %>
+      <%= link_to "削除", admin_car_path, method: :delete, class: "btn btn-danger mx-2", data: { confirm: "本当に削除しますか？" } %>
     </div>
   </div>
 </div>

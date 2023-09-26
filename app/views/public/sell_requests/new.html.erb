@@ -3,9 +3,11 @@
     <h3>買取見積り申し込み</h3>
   </div>
 
-  <%= form_with model: @sell_request do |f| %>
+  <%= form_with model: @sell_request, multipart: true do |f| %>
+    <%= render "public/shared/error_messages", resource: @sell_request %>
 
     <%= fields_for :appointment, @sell_request.appointment do |ap| %>
+      <%= render "public/shared/error_messages", resource: @appointment %>
       <%= ap.hidden_field :customer_id, value: current_customer.id %>
       <%= ap.hidden_field :category, value: Appointment.categories.key(1) %>
 
@@ -30,6 +32,7 @@
     </div>
     <div class="request-form detail-form mb-5">
       <%= fields_for :sell_detail, @sell_detail do |sd| %>
+        <%= render "public/shared/error_messages", resource: @sell_detail %>
         <%= render "detail_form", f: sd %>
       <% end %>
       <div class="actions">

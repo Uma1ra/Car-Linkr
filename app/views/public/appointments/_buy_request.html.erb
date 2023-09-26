@@ -1,18 +1,20 @@
-<tr>
-  <th>候補1</th>
-  <td><%= l buy_request.option_a, format: :long %></td>
-</tr>
-<tr>
-  <th>候補2</th>
-  <td><%= l buy_request.option_b, format: :long %></td>
-</tr>
-<tr>
-  <th>候補3</th>
-  <td><%= l buy_request.option_c, format: :long %></td>
-</tr>
-<% if buy_request.comment %>
-  <tr>
-    <th>備考</th>
-    <td><%= buy_request.comment %></td>
-  </tr>
-<% end %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>候補1</th>
+      <td><%= l buy_request.option_a, format: :long %></td>
+    </tr>
+    <tr>
+      <th>候補2</th>
+      <td><%= l buy_request.option_b, format: :long %></td>
+    </tr>
+    <tr>
+      <th>候補3</th>
+      <td><%= l buy_request.option_c, format: :long %></td>
+    </tr>
+    <tr>
+      <th>備考</th>
+      <td><%= buy_request.comment %></td>
+    </tr>
+  </tbody>
+</table>

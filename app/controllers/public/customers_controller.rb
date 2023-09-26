@@ -5,9 +5,9 @@ class Public::CustomersController < ApplicationController
 
   def mypage
     @guest_appointment = current_customer.appointments.search(params[:appointment_id], params[:guest_email])
-    
-    @appointments = current_customer.appointments.page(params[:page]).per(10).order(created_at: :desc)
-    @enquiries = current_customer.enquiries.page(params[:page]).per(10).order(created_at: :desc)
+
+    @appointments = current_customer.appointments.page(params[:page]).per(6).order(created_at: :desc)
+    @enquiries = current_customer.enquiries.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def edit

@@ -1,35 +1,28 @@
-<div class="container">
-  <div class="row">
-    <div class="show-images">
+<div class="container my-5">
+  <div class="show-page">
+    <div class="show-image">
       <h5 class="text-center font-weight-bold my-3"><%= @car.name%></h5>
-      <% if @car.images.attached? %>
-        <% if @car.images.count < 2 %>
-          <% @car.images.each do |image| %>
-            <%= image_tag image.variant(resize_to_fill: [300, 200]).processed, class: "post-img"%>
-          <% end %>
-        <% else %>
-          <div class="swiper-container">
-            <div class= "swiper-wrapper">
-              <% @car.images.each do |image| %>
-                <%= image_tag image, class: "swiper-slide" %>
-              <% end %>
-            </div>
-            <div class="swiper-button-prev swiper-button-white"></div>
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-pagination"></div>
-          </div>
-        <% end %>
-      <% end%>
-      <p><%= @car.detail %></p>
+
+      <div class="show-images">
+        <%= render "public/cars/swiper", car: @car %>
+      </div>
+      <div class="page-info mt-5">
+        <h5>セールスポイント</h5>
+      </div>
+      <div class="car-detail mt-4">
+        <p><%= @car.detail %></p>
+      </div>
     </div>
 
     <div class="show-info">
-      <div class="price text-center">
-        車両本体価格（税込）</br>
-        <%= number_to_currency(@car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
-      </div>
-      <table class="table">
+      <table class="table table-bordered">
         <tbody>
+          <tr>
+            <th colspan="2" class="price text-center">
+              車両本体価格（税込）</br>
+              <%= number_to_currency(@car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
+            </th>
+          </tr>
           <tr>
             <th>年式</th>
             <td><%= l @car.year, format: :year %>式</td>
@@ -62,42 +55,21 @@
         </tbody>
       </table>
       <% if current_customer && !(current_customer.is_guest?) %>
-        <%= link_to "在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info" %>
-
-        <%= link_to new_buy_and_sell_path(car_id: @car.id) do %>
-          <p class="btn btn-info">
-            購入・買取</br>
-            同時に申し込む
-          </p>
-        <% end %>
+        <%= link_to "在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info btn-block" %>
+        <%= link_to "購入・買取を同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-info btn-block mt-3" %>
 
       <% elsif current_customer && current_customer.is_guest? %>
-        <%= link_to "ゲストユーザーとして在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info" %>
+        <%= link_to "ゲストとして在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info btn-block" %>
+        <%= link_to "ゲストとして購入・買取同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-info btn-block mt-3" %>
 
-        <%= link_to new_buy_and_sell_path(car_id: @car.id) do %>
-          <p class="btn btn-info">
-            ゲストユーザーとして購入・買取</br>
-            同時に申し込む
-          </p>
-        <% end %>
       <% else %>
         <div class="d-flex justify-content-center">
-          <%= link_to guest_login_path(car_id: @car.id, buy: Appointment.categories.key(0)), method: :post do %>
-            <p class="btn btn-info mx-2">
-              ゲストログインして</br>
-              購入見積りを申し込む
-            </p>
-          <% end %>
+          <%= link_to "ゲストログインして購入見積りを申し込む", guest_login_path(car_id: @car.id, buy: Appointment.categories.key(0)), method: :post, class: "btn btn-info btn-block" %>
 
-          <%= link_to guest_login_path(car_id: @car.id, buy_and_sell: Appointment.categories.key(2)), method: :post do %>
-            <p class="btn btn-info mx-2">
-              ゲストログインして</br>
-              買取と同時に申し込む
-            </p>
-          <% end %>
+          <%= link_to "ゲストログインして買取と同時に申し込む", guest_login_path(car_id: @car.id, buy_and_sell: Appointment.categories.key(2)), method: :post, class: "btn btn-info btn-block mt-3" %>
         </div>
       <% end %>
-      <table class="table">
+      <table class="table table-bordered mt-3">
         <tbody>
           <tr>
             <th>シフト</th>
