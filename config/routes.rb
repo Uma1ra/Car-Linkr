@@ -36,10 +36,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :customers, only: [:index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :subgenres, only: [:create, :update]
     resources :cars, only: [:create, :index, :new, :show, :edit, :update, :destroy]
+    resources :appointments, only: [:index, :show, :edit, :update]
   end
-
 
 end

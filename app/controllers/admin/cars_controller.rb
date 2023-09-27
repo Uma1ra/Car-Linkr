@@ -29,9 +29,9 @@ class Admin::CarsController < ApplicationController
         CarGenre.create(subgenre_id: params[:car][subgenre_id], car_id: @car.id)
       end
     end
-      redirect_to admin_car_path(@car.id), notice: "出品#{@car.id}登録されました"
+      redirect_to admin_car_path(@car.id), notice: "出品ID#{@car.id}が登録されました"
     else
-      flash[:alert] = "出品#{@car.id}登録に失敗しました"
+      flash[:alert] = "出品ID#{@car.id}の登録に失敗しました"
       render :new
     end
   end
@@ -67,7 +67,7 @@ class Admin::CarsController < ApplicationController
 
   def destroy
     if @car.destroy
-      redirect_to admin_cars_path, notice: "出品#{@car.id}を削除しました"
+      redirect_to admin_cars_path, notice: "出品ID#{@car.id}を削除しました"
     else
       flash[:alert] = "削除に失敗しました"
       render :show

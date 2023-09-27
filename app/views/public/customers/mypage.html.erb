@@ -13,11 +13,12 @@
         <%= render "guest_info_search" %>
       </div>
 
-      <div class="guest-info">
-        <% if @guest_appointment.present? %>
+      <% if @guest_appointment.present? %>
+        <div class="guest-info">
+
           <%= render "appointments", appointments: @guest_appointment.page(1) %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
 
   <% else %>
@@ -53,12 +54,10 @@
     <div class="page-info text-center my-5">
       <h3>予約一覧</h3>
     </div>
-
-    <% if current_customer.is_guest %>
-
-    <% else %>
+    <div class="appointment-index">
       <%= render "appointments", appointments: @appointments %>
-    <% end %>
+    </div>
+
     <div class="page-info text-center my-5">
       <h3>お問い合せ一覧</h3>
     </div>

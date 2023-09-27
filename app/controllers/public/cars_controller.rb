@@ -2,10 +2,12 @@ class Public::CarsController < ApplicationController
 
   def index
     @customer = Customer.new
+    @available_cars = Car.where(is_available: true)
+    
     if params[:word]
-      @cars = Car.search(params[:word]).page(params[:page]).per(6.order(created_at: :desc))
+      @cars = @available_cars.search(params[:word]).page(params[:page]).per(6.order(created_at: :desc))
     else
-      @cars = Car.page(params[:page]).per(6).order(created_at: :desc)
+      @cars = @available_cars.page(params[:page]).per(6).order(created_at: :desc)
     end
   end
 

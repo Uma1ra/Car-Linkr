@@ -1,0 +1,93 @@
+<div class="container mt-5">
+  <div class="page-info mb-5">
+    <h3><%= @customer.fullname %>様の会員情報編集</h3>
+    <p>会員ID: <%= @customer.id%></p>
+  </div>
+  <%= form_with model: @customer, url: admin_customer_path do |f| %>
+    <div class="register-form">
+      <div class="head-label">
+        <%= f.label "氏名" %>
+      </div>
+      <div class="form-group">
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :last_name, "(姓)" %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :last_name, placeholder: "令和", autofocus: true, required: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :first_name, "(名)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :first_name, placeholder: "道子", autofocus: true, required: true, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="head-label">
+        <%= f.label "フリガナ"  %>
+      </div>
+      <div class="form-group">
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :last_name_kana, "(セイ)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :last_name_kana, placeholder: "レイワ", autofocus: true, required: true, class: "form-control" %>
+          </div>
+        </div>
+        <div class="name-group">
+          <div class="sub-label">
+            <%= f.label :first_name_kana, "(メイ)"  %>
+          </div>
+          <div class="sub-input-field">
+            <%= f.text_field :first_name_kana, placeholder: "ミチコ", autofocus: true, required: true, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <%= f.label :phone_number, "電話番号"  %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :phone_number, placeholder: "00000000000", autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <%= f.label :post_code, "郵便番号"  %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :post_code, placeholder: "0000000", autofocus: true, autocomplete: "post_code", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-label">
+          <%= f.label :email, "メールアドレス"  %>
+        </div>
+        <div class="input-field">
+          <%= f.email_field :email, placeholder: "sample@example.com", autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.radio_button :is_deleted, :false, class: "mr-2" %>
+        <%= f.label :is_deleted, "有効", value: false, class: "text-success mr-2" %>
+
+        <%= f.radio_button :is_deleted, :true, class: "mr-2" %>
+        <%= f.label :is_deleted, "退会", value: true, class: "text-danger mr-2" %>
+      </div>
+
+      <div class="actions text-center">
+        <%= f.submit "更新", class: "btn btn-primary my-4 col-lg-3" %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
