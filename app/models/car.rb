@@ -48,10 +48,10 @@ class Car < ApplicationRecord
   # 検索メソッド
   def self.search(search)
     if search != ""
-      self.joins(:subgenres).where([
+      self.joins(:car_genres).joins(:subgenres).where([
                 "cars.name LIKE(?)
-                OR detail LIKE(?)
-                OR color LIKE(?)
+                OR cars.detail LIKE(?)
+                OR cars.color LIKE(?)
                 OR subgenres.name LIKE (?)",
                 "%#{search}%",
                 "%#{search}%",

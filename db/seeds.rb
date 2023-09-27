@@ -67,7 +67,7 @@ bodytype = Genre.find_or_create_by!(name: "ボディタイプ")
 
 # サブジャンル
 # メーカー
-Subgenre.find_or_create_by!(genre_id: "1", name: "トヨタ")
+Subgenre.find_or_create_by!(genre_id: 1, name: "トヨタ")
 Subgenre.find_or_create_by!(genre_id: "1", name: "ホンダ")
 Subgenre.find_or_create_by!(genre_id: "1", name: "マツダ")
 Subgenre.find_or_create_by!(genre_id: "1", name: "BMW")
@@ -97,7 +97,8 @@ car1 = Car.find_or_create_by!(name: "プリウス") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
-  # car.images = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red (1).jpg"), filename:"red (1).jpg")
+  car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car2 = Car.find_or_create_by!(name: "フィット") do |car|
@@ -114,6 +115,7 @@ car2 = Car.find_or_create_by!(name: "フィット") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
 
 car3 = Car.find_or_create_by!(name: "ラパン") do |car|
@@ -130,6 +132,24 @@ car3 = Car.find_or_create_by!(name: "ラパン") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
+end
+
+car4 = Car.find_or_create_by!(name: "ヴィッツ") do |car|
+  car.detail = "純正ホイールキャップ/ナビ/ETC/シートヒーター"
+  car.price = "1200000"
+  car.color = "黒"
+  car.passenger_amount = "1"
+  car.year = Date.new(2018,11,1)
+  car.chassis_code = "DAA-HNV23"
+  car.mileage = "13870"
+  car.shaken_period = 0
+  car.shaken_finish = ""
+  car.grade = "X"
+  car.engine_capacity = "2400cc"
+  car.transmission = 0
+  car.fuel = 0
+  car.is_available = true
 end
 
 car5 = Car.find_or_create_by!(name: "アクア") do |car|
@@ -146,6 +166,7 @@ car5 = Car.find_or_create_by!(name: "アクア") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
 
 car6 = Car.find_or_create_by!(name: "クーパー") do |car|
@@ -162,6 +183,7 @@ car6 = Car.find_or_create_by!(name: "クーパー") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
 
 car7 = Car.find_or_create_by!(name: "ジムニー") do |car|
@@ -178,6 +200,7 @@ car7 = Car.find_or_create_by!(name: "ジムニー") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
 
 car8 = Car.find_or_create_by!(name: "X1") do |car|
@@ -194,6 +217,7 @@ car8 = Car.find_or_create_by!(name: "X1") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
 
 car9 = Car.find_or_create_by!(name: "T T クーペ") do |car|
@@ -210,6 +234,7 @@ car9 = Car.find_or_create_by!(name: "T T クーペ") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = false
 end
 
 car10 = Car.find_or_create_by!(name: "デミオ") do |car|
@@ -226,4 +251,7 @@ car10 = Car.find_or_create_by!(name: "デミオ") do |car|
   car.engine_capacity = "2400cc"
   car.transmission = 0
   car.fuel = 0
+  car.is_available = true
 end
+
+CarGenre.find_or_create_by!(car_id: 1, subgenre_id: 1)
