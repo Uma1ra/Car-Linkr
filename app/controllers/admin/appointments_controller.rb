@@ -8,8 +8,11 @@ class Admin::AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     @buy_request = @appointment.buy_request
-    @sell_request = @appointment.sell_request
-    @sell_detail = @appointment.sell_request.sell_detail
+
+    unless @appointment.category == "buy"
+      @sell_request = @appointment.sell_request
+      @sell_detail = @sell_request.sell_detail
+    end
   end
 
   def update
