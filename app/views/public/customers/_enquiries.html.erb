@@ -1,0 +1,27 @@
+<% if current_customer.is_guest %>
+  <h3 class="text-center">会員登録された方しかお問い合わせ内容を閲覧できません</h3>
+<% elsif current_customer.enquiries.present?%>
+  <table class="table table-bordered ">
+    <thead>
+      <tr>
+        <th>日時</th>
+        <th>タイトル</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% enquiries.each do |enquiry| %>
+        <tr>
+          <td><%= l enquiry.created_at, format: :long %></td>
+          <td><%= enquiry.title %></td>
+          <td class="word-break"><%= enquiry.detail %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-center">
+    <%= paginate enquiries %>
+  </div>
+<% else %>
+  <h6 class="text-center font-weight-bold">お問い合わせ履歴はございません</h6>
+<% end %>

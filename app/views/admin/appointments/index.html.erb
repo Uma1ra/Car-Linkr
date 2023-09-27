@@ -1,0 +1,37 @@
+<div class="container my-5">
+  <div class="page-info mb-4">
+    <h3>予約一覧</h3>
+  </div>
+  <% if @appointments.present? %>
+    <table class="table table-bordered table-sm table-hover">
+      <thead>
+        <tr>
+          <th>予約ID</th>
+          <th>氏名</th>
+          <th>予約内容</th>
+          <th>予約状況</th>
+          <th>詳細リンク</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @appointments.each do |app| %>
+          <tr>
+            <td><%= app.id %></td>
+            <% if app.customer.is_guest %>
+              <td>ゲストユーザー</td>
+            <% else %>
+              <td><%= app.customer.fullname %></td>
+            <% end %>
+            <td><%= app.category_i18n %></td>
+            <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
+              <%= app.is_done ? "対応済" : "未対応" %>
+            </td>
+            <td><%= link_to "詳細", admin_appointment_path(app.id), class: "btn btn-info btn-sm btn-block" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h5 class="text-center">まだ予約の申し込みはありません</h5>
+  <% end %>
+</div>

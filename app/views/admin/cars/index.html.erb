@@ -1,14 +1,14 @@
-<div class="container">
-  <div class="row">
-    <h1>出品一覧</h1>
+<div class="container my-5">
+  <div class="page-info d-flex justify-content-center mb-4">
+    <h3>出品一覧</h3>
     <%= link_to new_admin_car_path do %>
-      <%= button_tag type: "submit", class: "btn btn-outline-secondary btn-lg ml-3" do %>
-        <i class="fa-solid fa-square-plus fa-xl" style="color: #640125;"></i>
+      <%= button_tag type: "submit", class: "btn btn-outline-dark ml-3" do %>
+        <i class="fa-solid fa-square-plus fa-xl" style="color: #FC741A;"></i>
       <% end %>
     <% end %>
   </div>
-  
-  
+
+
   <% if @cars.first %>
     <table class="table table-hover table-sm">
       <thead>
@@ -32,7 +32,7 @@
               <% end %>
             </td>
             <td><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></td>
-            <td><%= car.year %></td>
+            <td><%= l car.year, format: :year %>式</td>
             <td>
               <% unless car.shaken_period_i18n == "無し" %>
                 <%= car.shaken_finish %>
@@ -42,7 +42,7 @@
             </td>
             <td class="font-weight-bold">
               <p class="<%= car.is_available ? "text-success" : "text-danger" %>">
-              <%= car.is_available ? "出品中" : "出品停止中" %>
+              <%= car.is_available ? "出品中" : "未出品" %>
               </p>
             </td>
           </tr>

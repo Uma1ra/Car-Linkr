@@ -1,0 +1,45 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>氏名</th>
+      <td><%= appointment.name %></td>
+    </tr>
+    <tr>
+      <th>電話番号</th>
+      <td><%= appointment.phone_number %></td>
+    </tr>
+    <tr>
+      <th>郵便番号</th>
+      <td><%= appointment.post_code %></td>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= appointment.email %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>予約ID</th>
+      <td><%= appointment.id %></td>
+    </tr>
+    <tr>
+      <th>申し込み日時</th>
+      <td><%= l appointment.created_at, format: :long %></td>
+    </tr>
+    <tr>
+      <th>予約内容</th>
+      <td><%= appointment.category_i18n %></td>
+    </tr>
+    <tr>
+      <th>予約状況</th>
+      <td>
+        <%= form_with model: [:admin, appointment], url: admin_appointment_path, method: :patch do |f| %>
+          <%= f.select :is_done, [["未対応", false],["対応済", true]]  %>
+          <%= f.submit "更新", class: "btn btn-info btn-sm" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

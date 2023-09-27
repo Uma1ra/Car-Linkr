@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     resources :enquiries, only: [:new, :create, :show]
     resources :buy_requests, only: [:new, :create]
+
     resources :sell_requests, only: [:new, :create]
     resources :appointments, only: [:index, :create, :show]
 
@@ -35,10 +36,12 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :customers, only: [:index, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :subgenres, only: [:create, :update]
     resources :cars, only: [:create, :index, :new, :show, :edit, :update, :destroy]
+    resources :appointments, only: [:index, :show, :update]
+    resources :enquiries, only: [:index]
   end
-
 
 end

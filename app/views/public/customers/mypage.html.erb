@@ -1,13 +1,27 @@
-<div class="container">
-  <h1>会員情報</h1>
-  
-  <% if @customer.is_guest? %>
-    <div class="text-center">
-      <h2>ようこそ、ゲストユーザーさん</h2>
+<div class="container my-5">
+  <div class="page-info mb-5">
+    <h2>マイページ</h2>
+  </div>
+
+
+  <% if current_customer.is_guest %>
+    <div class="text-center mt-5">
+      <p>ゲストユーザーの方は予約情報を検索してください</p>
     </div>
-    
+    <div class="guest-mypage">
+      <div class="guest-info-form">
+        <%= render "guest_info_search" %>
+      </div>
+
+      <% if @guest_appointment.present? %>
+        <div class="guest-info">
+          <%= render "appointments", appointments: @guest_appointment.page(1) %>
+        </div>
+      <% end %>
+    </div>
+
   <% else %>
-    <table class="table">
+    <table class="table table-bordered">
       <tbody>
         <tr>
           <th>氏名</th>
@@ -31,9 +45,20 @@
         </tr>
       </tbody>
     </table>
-    
-    <%= link_to "編集", information_path, class: "btn btn-success" %>
-    <%= link_to "退会", confirm_withdraw_path, class:"btn btn-outline-danger" %>
+    <div class="d-flex justify-content-center">
+      <%= link_to "編集", information_path, class: "btn btn-success mx-2" %>
+      <%= link_to "退会", confirm_withdraw_path, class:"btn btn-outline-danger mx-2" %>
+    </div>
+
+    <div class="page-info text-center my-5">
+      <h3>予約一覧</h3>
+    </div>
+    <%= render "appointments", appointments: @appointments %>
+
+    <div class="page-info text-center my-5">
+      <h3>お問い合せ一覧</h3>
+    </div>
+    <%= render "enquiries", enquiries: @enquiries %>
   <% end %>
-  
+
 </div>

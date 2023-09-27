@@ -1,0 +1,43 @@
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>車名</th>
+      <td><%= sell_detail.car_name %></td>
+    </tr>
+    <tr>
+      <th>車台番号</th>
+      <td><%= sell_detail.chassis_no %></td>
+    </tr>
+    <tr>
+      <th>年式</th>
+      <td><%= l sell_detail.year, format: :year %>式</td>
+    </tr>
+    <tr>
+      <th>型式</th>
+      <td><%= sell_detail.chassis_code %></td>
+    </tr>
+    <tr>
+      <th>走行距離</th>
+      <td>
+        <%= number_with_delimiter(sell_detail.mileage) %>
+        <span>
+          <%= sell_detail.is_km ? "km" : "miles" %>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th>車検期間</th>
+      <td><%= sell_detail.shaken_period_i18n %></td>
+    </tr>
+    <tr>
+      <th>車検終了日</th>
+      <td>
+        <% if sell_detail.shaken_period == "無し" %>
+          <p>N/A</p>
+        <% else %>
+          <%= sell_detail.shaken_finish %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

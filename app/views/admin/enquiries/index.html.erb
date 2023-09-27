@@ -1,0 +1,38 @@
+<div class="container my-5">
+  <div class="page-info mb-4">
+    <h3>問い合せ一覧</h3>
+  </div>
+  <% if @enquiries %>
+    <table class="table table-bordered table-sm">
+      <thead>
+        <tr>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>日時</th>
+          <th>タイトル</th>
+          <th>内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @enquiries.each do |enquiry| %>
+          <tr>
+            <td><%= enquiry.customer.id %></td>
+            <% if enquiry.customer.is_guest %>
+              <td>ゲストユーザー</td>
+            <% else %>
+              <td><%= enquiry.customer.fullname %></td>
+            <% end %>
+            <td><%= l enquiry.created_at, format: :long %></td>
+            <td><%= enquiry.title %></td>
+            <td class="admin-word-break"><%= enquiry.detail %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @enquiries %>
+    </div>
+  <% else %>
+    <h5>まだ問い合せはありません</h5>
+  <% end %>
+</div>

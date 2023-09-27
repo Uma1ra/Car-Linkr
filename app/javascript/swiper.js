@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
     // If we need pagination
     pagination: {
       el: '.swiper-pagination',
+      type: "fraction",
     },
 
     // Navigation arrows

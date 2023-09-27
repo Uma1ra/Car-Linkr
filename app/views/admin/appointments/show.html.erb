@@ -1,0 +1,68 @@
+<div class="container my-5">
+  <div class="page-info mb-4 mb-4">
+    <h3>予約詳細</h3>
+  </div>
+
+  <div class="appointment-tables mb-5">
+    <%= render "app_info", appointment: @appointment %>
+  </div>
+  <% if @appointment.category == "buy" %>
+    <div class="app-info buy">
+      <div class="page-info mb-4">
+        <h5>購入見積り</h5>
+      </div>
+      <%= render "public/appointments/buy_request", buy_request: @buy_request %>
+    </div>
+
+  <% elsif @appointment.category == "sell" %>
+    <div class="app-info sell">
+      <div class="page-info mb-4">
+        <h5>買取見積り</h5>
+      </div>
+      <%= render "public/appointments/sell_request", sell_request: @sell_request %>
+    </div>
+    <div class="sell-detail-info">
+      <% if @sell_detail.sell_images.present? %>
+        <div class="sell-images">
+          <%= render "public/appointments/swiper_contents", car: @sell_detail %>
+        </div>
+      <% end %>
+      <div class="sell-detail-table">
+        <%= render "public/appointments/sell_detail", sell_detail: @sell_detail %>
+      </div>
+    </div>
+
+  <% elsif @appointment.category == "buy_and_sell" %>
+    <div class="buy-and-sell">
+      <div class="app-info buy">
+        <div class="page-info mb-4">
+          <h5>購入見積り</h5>
+        </div>
+        <%= render "public/appointments/buy_request", buy_request: @buy_request %>
+      </div>
+
+      <div class="app-info sell">
+        <div class="page-info mb-4">
+          <h5>買取見積り</h5>
+        </div>
+        <%= render "public/appointments/sell_request", sell_request: @sell_request %>
+      </div>
+    </div>
+
+    <div class="sell-detail mt-4">
+      <div class="page-info mb-4">
+        <h5>買取車情報</h5>
+      </div>
+      <div class="sell-detail-info">
+        <% if @sell_detail.sell_images.present? %>
+          <div class="sell-images">
+            <%= render "public/appointments/swiper_contents", car: @sell_detail %>
+          </div>
+        <% end %>
+        <div class="sell-detail-table">
+          <%= render "public/appointments/sell_detail", sell_detail: @sell_detail %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

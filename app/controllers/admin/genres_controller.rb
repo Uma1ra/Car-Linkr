@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     @genres = Genre.all
@@ -29,7 +30,8 @@ class Admin::GenresController < ApplicationController
     if @genre.update(genre_params)
       redirect_to admin_genres_path, notice: "ジャンルを更新しました"
     else
-      render :edit, alert: "更新に失敗しました"
+      flash[:alert] = "更新に失敗しました"
+      render :edit
     end
   end
 

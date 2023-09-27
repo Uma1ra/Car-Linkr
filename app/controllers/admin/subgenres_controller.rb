@@ -1,4 +1,5 @@
 class Admin::SubgenresController < ApplicationController
+  before_action :authenticate_admin!
 
   def create
     @genres = Genre.all
@@ -10,13 +11,14 @@ class Admin::SubgenresController < ApplicationController
       render :error
     end
   end
-  
+
   def update
     @subgenre = Subgenre.find(params[:id])
     if @subgenre.update(subgenre_params)
       redirect_to admin_genres_path, notice: "サブジャンルを更新しました"
     else
-      render :edit, alert: "更新に失敗しました"
+      flash[:alert] = "更新に失敗しました"
+      render :edit
     end
   end
 

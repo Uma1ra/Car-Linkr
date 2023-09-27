@@ -1,38 +1,98 @@
-<div class="form-group">
-  <%= f.label :car_name, "車名" %>
-  <%= f.text_field :car_name, autofocus: true, placeholder: "トヨタ プリウス S ツーリングセレクション" %>
+<div class="page-info mb-2 text-center">
+  <h5>買取車情報</h5>
 </div>
-<div class="form-group">
-  <%= f.label :chassis_no, "車台番号" %>
-  <%= f.text_field :chassis_no, autofocus: true %>
+<div>
+  <ul class="instructions kome mb-3">
+    <li>
+      車検証をお手元にご用意し、入力してください
+    </li>
+    <li>
+      車検証がない場合や不明な点はお気軽にお問い合せください
+    </li>
+  </ul>
 </div>
+
 <div class="form-group">
-  <%= f.label :year, "年式" %>
-  <%= f.date_select :year, discard_day: true, autofocus: true %>式
+  <div class="form-label">
+    <%= f.label :car_name, "車名" %>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :car_name, autofocus: true, class: "form-control", placeholder: "トヨタ プリウス" %>
+  </div>
 </div>
+
 <div class="form-group">
-  <%= f.label :chassis_code, "型式" %>
-  <%= f.text_field :chassis_code, autofocus: true %>
+  <div class="form-label">
+    <%= f.label :chassis_no, "車台番号" %>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :chassis_no, autofocus: true, class: "form-control" %>
+  </div>
 </div>
+
 <div class="form-group">
-  <%= f.label :mileage, "走行距離" %>
-  <%= f.text_field :mileage, autofocus: true %>
+  <div class="form-label">
+    <%= f.label :year, "年式" %>
+  </div>
+  <div class="input-field">
+    <%= f.date_select :year, discard_day: true, autofocus: true, class: "form-control" %>式
+  </div>
 </div>
+
+<div class="form-group">
+  <div class="form-label">
+    <%= f.label :chassis_code, "型式" %>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :chassis_code, autofocus: true, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <div class="form-label">
+    <%= f.label :mileage, "走行距離" %>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :mileage, autofocus: true, class: "form-control" %>
+  </div>
+</div>
+
 <div class="form-group">
   <%= f.radio_button :is_km, true %>
-  <%= f.label :is_km, "km", value: true %>
-  <%= f.radio_button :is_km, false, class: "ml-4" %>
-  <%= f.label :is_km, "miles", value: false %>
+  <%= f.label :is_km, "km", value: true, class: "mx-1" %>
+
+
+  <%= f.radio_button :is_km, false, class: "ml-3" %>
+  <%= f.label :is_km, "miles", value: false, class: "mx-1" %>
+</div>
+
+<div class="form-group">
+  <div class="form-label">
+    <%= f.label :shaken_period, "車検" %>
+  </div>
+  <div class="input-field">
+    <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true, class: "form-control" %>
+  </div>
+</div>
+<ul class="instructions kome text-center mb-3">
+  <li>
+    車検がない場合は終了日は選択不要です
+  </li>
+</ul>
+<div class="form-group">
+  <div class="form-label">
+    <%= f.label :shaken_finish, "車検終了日" %>
+  </div>
+  <div class="input-field">
+    <%= f.date_select :shaken_finish, autofocus: true, class: "form-control" %>
+  </div>
+
 </div>
 <div class="form-group">
-  <%= f.label :shaken_period, "車検" %>
-  <%= f.select :shaken_period, Car.shaken_periods_i18n.invert, autofocus: true %>
-</div>
-<div class="form-group">
-  <%= f.label :shaken_finish, "車検終了日" %>
-  <%= f.date_select :shaken_finish, autofocus: true %>
-</div>
-<div class="form-group">
-  <%= f.label :sell_images, "出品画像" %>
-  <%= f.file_field :sell_images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary" %>
+  <div class="form-label">
+    <%= f.label :sell_images, "出品画像" %>
+  </div>
+  <div class="input-field">
+    <%= f.file_field :sell_images, multiple: true, accept: "image/*", class: "btn btn-outline-secondary btn-sm col-md-11" %>
+  </div>
 </div>

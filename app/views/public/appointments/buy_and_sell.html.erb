@@ -1,18 +1,21 @@
-<div class="container">
+<div class="container my-5">
+  <div class="page-info mb-4">
+    <h3>予約申し込み</h3>
+  </div>
 
-  <h1>予約申し込み</h1>
-
-  <%= form_with model: @appointment do |f| %>
+  <%= form_with model: @appointment, multipart: true do |f| %>
+    <%= render "public/shared/error_messages", resource: @appointment %>
     <%= f.hidden_field :customer_id, value: current_customer.id %>
     <%= f.hidden_field :category, value: Appointment.categories.key(2) %>
 
     <% if current_customer.is_guest? %>
-      <%= render "app_form", f: f %>
+      <div class="request-form">
+        <%= render "app_form", f: f %>
+      </div>
     <% else %>
-      <p><%= current_customer.fullname %></p>
-      <p><%= current_customer.phone_number %></p>
-      <p><%= current_customer.post_code %></p>
-      <p><%= current_customer.email %></p>
+      <p class="text-center">
+          ご登録の連絡先以外で予約をご希望の場合は、備考欄に記載してください
+      </p>
 
       <%= f.hidden_field :name ,value: current_customer.fullname %>
       <%= f.hidden_field :phone_number, value: current_customer.phone_number %>
@@ -20,25 +23,38 @@
       <%= f.hidden_field :email, value: current_customer.email %>
     <% end %>
 
-    <h5>購入見積り</h5>
+    <div class="page-info my-4">
+      <h4>購入見積り</h4>
+    </div>
 
     <%= fields_for :buy_request, @buy_request do |br| %>
-    <%= br.hidden_field :car_id, value: params[:car_id] %>
-      <%= render "form", f: br %>
+      <%= render "public/shared/error_messages", resource: @buy_request %>
+      <%= br.hidden_field :car_id, value: @car_id %>
+      <div class="request-form">
+        <%= render "form", f: br %>
+      </div>
     <% end %>
 
-    <h5>買取見積り</h5>
+    <div class="page-info my-4">
+      <h4>買取見積り</h4>
+    </div>
 
     <%= fields_for :sell_request, @sell_request do |sr| %>
-      <%= render "form", f: sr %>
+      <%= render "public/shared/error_messages", resource: @sell_request %>
+      <div class="request-form">
+        <%= render "form", f: sr %>
+      </div>
     <% end %>
 
     <%= fields_for :sell_detail, @sell_detail do |sd| %>
-      <%= render "public/sell_requests/detail_form", f: sd %>
+      <%= render "public/shared/error_messages", resource: @sell_detail %>
+      <div class="request-form detail-form mb-5">
+        <%= render "public/sell_requests/detail_form", f: sd %>
+        <div>
+          <%= f.submit "予約申し込み", class: "btn btn-primary btn-block mt-5" %>
+        </div>
+      </div>
     <% end %>
 
-    <div>
-      <%= f.submit "予約申し込み", class: "btn btn-primary btn-block col-lg-4" %>
-    </div>
   <% end %>
 </div>

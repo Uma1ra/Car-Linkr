@@ -1,5 +1,18 @@
-<footer class="shadow">
-  <%= link_to new_admin_session_path, class: "text-reset btn text-decoration-none" do%>
-    <i class="fa-solid fa-user-shield ml-2"></i>
-  <% end %>
+<footer class="shadow d-flex justify-content-center">
+  <div class="admin-login">
+    <%= link_to new_admin_session_path, class: "btn text-decoration-none" do%>
+      <i class="fa-solid fa-user-shield"></i>
+    <% end %>
+  </div>
+  <div class="sns-links">
+    <%= link_to "https://twitter.com/", class: "btn text-decoration-none" do %>
+      <i class="fa-brands fa-x-twitter fa-xl" style="color: #000044;"></i>
+    <% end %>
+    <%= link_to "https://www.instagram.com/", class: "btn text-decoration-none" do %>
+      <i class="fa-brands fa-instagram fa-xl" style="color: #000044;"></i>
+    <% end %>
+    <%= link_to "https://www.facebook.com/", class: "btn text-decoration-none" do %>
+      <i class="fa-brands fa-facebook fa-xl" style="color: #000044;"></i>
+    <% end %>
+  </div>
 </footer>
