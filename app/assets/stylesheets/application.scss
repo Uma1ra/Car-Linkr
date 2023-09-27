@@ -196,7 +196,7 @@ header {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  
+
   .appointment-index {
     display: block;
   }
@@ -318,6 +318,11 @@ th {
 }
 
 .word-break {
+  word-break: break-all;
+}
+
+.admin-word-break {
+  width: 40%;
   word-break: break-all;
 }
 
