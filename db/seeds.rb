@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Admin.create!(email: "admin@email.com", password: "adminpass")
+
+Admin.create!(email: ENV["ADMIN_EMAIL"], password: ENV["ADMIN_PASSWORD"])
 
 # エンドユーザー
 customer1 = Customer.find_or_create_by!(email: "customer1@example.com") do |customer|
@@ -15,7 +16,7 @@ customer1 = Customer.find_or_create_by!(email: "customer1@example.com") do |cust
   customer.first_name_kana = "タロウ"
   customer.post_code = "1111111"
   customer.phone_number = "1111111111"
-  customer.password = "password"
+  customer.password = ENV["CUSTOMER_PASSWORD"]
 end
 
 customer2 = Customer.find_or_create_by!(email: "customer2@example.com") do |customer|
@@ -25,7 +26,7 @@ customer2 = Customer.find_or_create_by!(email: "customer2@example.com") do |cust
   customer.first_name_kana = "ジロウ"
   customer.post_code = "2222222"
   customer.phone_number = "2222222222"
-  customer.password = "password"
+  customer.password = ENV["CUSTOMER_PASSWORD"]
 end
 
 customer3 = Customer.find_or_create_by!(email: "customer3@example.com") do |customer|
@@ -35,7 +36,7 @@ customer3 = Customer.find_or_create_by!(email: "customer3@example.com") do |cust
   customer.first_name_kana = "サブロウ"
   customer.post_code = "3333333"
   customer.phone_number = "3333333333"
-  customer.password = "password"
+  customer.password = ENV["CUSTOMER_PASSWORD"]
 end
 
 customer4 = Customer.find_or_create_by!(email: "customer4@example.com") do |customer|
@@ -45,7 +46,7 @@ customer4 = Customer.find_or_create_by!(email: "customer4@example.com") do |cust
   customer.first_name_kana = "シロウ"
   customer.post_code = "4444444"
   customer.phone_number = "4444444444"
-  customer.password = "password"
+  customer.password = ENV["CUSTOMER_PASSWORD"]
 end
 
 customer5 = Customer.find_or_create_by!(email: "customer5@example.com") do |customer|
@@ -55,7 +56,7 @@ customer5 = Customer.find_or_create_by!(email: "customer5@example.com") do |cust
   customer.first_name_kana = "ゴロウ"
   customer.post_code = "5555555"
   customer.phone_number = "5555555555"
-  customer.password = "password"
+  customer.password = ENV["CUSTOMER_PASSWORD"]
 end
 
 
