@@ -116,6 +116,7 @@ car2 = Car.find_or_create_by!(name: "フィット") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car3 = Car.find_or_create_by!(name: "ラパン") do |car|
@@ -133,6 +134,7 @@ car3 = Car.find_or_create_by!(name: "ラパン") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car4 = Car.find_or_create_by!(name: "ヴィッツ") do |car|
@@ -150,6 +152,7 @@ car4 = Car.find_or_create_by!(name: "ヴィッツ") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car5 = Car.find_or_create_by!(name: "アクア") do |car|
@@ -167,6 +170,7 @@ car5 = Car.find_or_create_by!(name: "アクア") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car6 = Car.find_or_create_by!(name: "クーパー") do |car|
@@ -184,6 +188,7 @@ car6 = Car.find_or_create_by!(name: "クーパー") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car7 = Car.find_or_create_by!(name: "ジムニー") do |car|
@@ -201,6 +206,7 @@ car7 = Car.find_or_create_by!(name: "ジムニー") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car8 = Car.find_or_create_by!(name: "X1") do |car|
@@ -218,6 +224,7 @@ car8 = Car.find_or_create_by!(name: "X1") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car9 = Car.find_or_create_by!(name: "T T クーペ") do |car|
@@ -235,6 +242,7 @@ car9 = Car.find_or_create_by!(name: "T T クーペ") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = false
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 car10 = Car.find_or_create_by!(name: "デミオ") do |car|
@@ -252,6 +260,26 @@ car10 = Car.find_or_create_by!(name: "デミオ") do |car|
   car.transmission = 0
   car.fuel = 0
   car.is_available = true
+  car.images = [ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/red(1).jpg"), filename:"red(1).jpg"), ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/white(1).jpg"), filename:"white(1).jpg")]
 end
 
 CarGenre.find_or_create_by!(car_id: 1, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 1, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 2, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 2, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 3, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 3, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 4, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 4, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 5, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 5, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 6, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 6, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 7, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 7, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 8, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 8, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 9, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 9, subgenre_id: 2)
+CarGenre.find_or_create_by!(car_id: 10, subgenre_id: 1)
+CarGenre.find_or_create_by!(car_id: 10, subgenre_id: 2)
