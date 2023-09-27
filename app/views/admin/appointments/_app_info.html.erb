@@ -34,8 +34,11 @@
     </tr>
     <tr>
       <th>予約状況</th>
-      <td class="<%= appointment.is_done ? "text-success" : "text-danger" %>">
-        <%= appointment.is_done ? "対応済" : "未対応" %>
+      <td>
+        <%= form_with model: [:admin, appointment], url: admin_appointment_path, method: :patch do |f| %>
+          <%= f.select :is_done, [["未対応", false],["対応済", true]]  %>
+          <%= f.submit "更新", class: "btn btn-info btn-sm" %>
+        <% end %>
       </td>
     </tr>
   </tbody>

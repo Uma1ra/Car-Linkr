@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :subgenres, only: [:create, :update]
     resources :cars, only: [:create, :index, :new, :show, :edit, :update, :destroy]
-    resources :appointments, only: [:index, :show, :edit, :update]
+    resources :appointments, only: [:index, :show, :update]
   end
 
 end

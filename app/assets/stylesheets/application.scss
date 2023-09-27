@@ -196,6 +196,10 @@ header {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  
+  .appointment-index {
+    display: block;
+  }
 }
 
 .guest-info {

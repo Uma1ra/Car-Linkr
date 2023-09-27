@@ -15,7 +15,6 @@
 
       <% if @guest_appointment.present? %>
         <div class="guest-info">
-
           <%= render "appointments", appointments: @guest_appointment.page(1) %>
         </div>
       <% end %>
@@ -54,9 +53,7 @@
     <div class="page-info text-center my-5">
       <h3>予約一覧</h3>
     </div>
-    <div class="appointment-index">
-      <%= render "appointments", appointments: @appointments %>
-    </div>
+    <%= render "appointments", appointments: @appointments %>
 
     <div class="page-info text-center my-5">
       <h3>お問い合せ一覧</h3>
