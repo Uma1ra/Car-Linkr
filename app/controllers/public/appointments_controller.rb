@@ -7,13 +7,13 @@ class Public::AppointmentsController < ApplicationController
     @buy_request = BuyRequest.new(buy_request_params)
     @sell_request = SellRequest.new(sell_request_params)
     @sell_detail = SellDetail.new(sell_detail_params)
-    
+
     begin
       ActiveRecord::Base.transaction do
         save_all_requests
       end
       redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
-      
+
     rescue => e
       Rails.logger.error "Failed to create buy_request: #{e.message}"
       flash[:alert] = "予約の申し込みに失敗しました"
@@ -32,8 +32,11 @@ class Public::AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     @buy_request = @appointment.buy_request
-    @sell_request = @appointment.sell_request
-    @sell_detail = @appointment.sell_request.sell_detail
+
+    unless @appointment.category == "buy"
+      @sell_request = @appointment.sell_request
+      @sell_detail = @sell_request.sell_detail
+    end
   end
 
   private
@@ -53,7 +56,7 @@ class Public::AppointmentsController < ApplicationController
   def sell_detail_params
     params.require(:sell_detail).permit(:sell_request_id, :car_name, :chassis_no, :year, :chassis_code, :mileage,:is_km, :shaken_period, :shaken_finish, sell_images: [])
   end
-  
+
   def save_all_requests
     @appointment.save!
     @buy_request.appointment_id = @appointment.id

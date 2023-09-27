@@ -16,7 +16,7 @@
   <div class="index-items">
     <% cars.each do |car| %>
       <div class="item">
-        <%= link_to car_path(car.id) do %>
+        <%= link_to car_path(car.id), data:{"turbolinks" => false} do %>
           <div class="item-image">
             <%= image_tag car.first_image, class: "image" %>
           </div>
