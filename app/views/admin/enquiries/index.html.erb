@@ -2,7 +2,7 @@
   <div class="page-info mb-4">
     <h3>問い合せ一覧</h3>
   </div>
-  <% if @enquiries %>
+  <% if @enquiries.present? %>
     <table class="table table-bordered table-sm">
       <thead>
         <tr>
@@ -33,6 +33,6 @@
       <%= paginate @enquiries %>
     </div>
   <% else %>
-    <h5>まだ問い合せはありません</h5>
+    <h5 class="text-center">まだ問い合せはありません</h5>
   <% end %>
 </div>

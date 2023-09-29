@@ -29,9 +29,9 @@ class Admin::CarsController < ApplicationController
         CarGenre.create(subgenre_id: params[:car][subgenre_id], car_id: @car.id)
       end
     end
-      redirect_to admin_car_path(@car.id), notice: "出品ID#{@car.id}が登録されました"
+      redirect_to admin_car_path(@car.id), notice: "出品ID#{@car.id}を登録しました"
     else
-      flash[:alert] = "出品ID#{@car.id}の登録に失敗しました"
+      flash[:alert] = "登録に失敗しました"
       render :new
     end
   end
@@ -53,14 +53,14 @@ class Admin::CarsController < ApplicationController
           update_car_genres
         end
 
-        redirect_to admin_car_path(@car), notice: "更新しました"
+        redirect_to admin_car_path(@car), notice: "出品ID#{@car.id}を更新しました"
       rescue => e
         Rails.logger.error "Failed to update car genres: #{e.message}"
-        flash[:alert] = "更新に失敗しました"
+        flash[:alert] = "出品ID#{@car.id}の更新に失敗しました"
         render :edit
       end
     else
-      flash[:alert] = "更新に失敗しました"
+      flash[:alert] = "出品ID#{@car.id}の更新に失敗しました"
       render :edit
     end
   end
@@ -69,7 +69,7 @@ class Admin::CarsController < ApplicationController
     if @car.destroy
       redirect_to admin_cars_path, notice: "出品ID#{@car.id}を削除しました"
     else
-      flash[:alert] = "削除に失敗しました"
+      flash[:alert] = "出品ID#{@car.id}の削除に失敗しました"
       render :show
     end
   end

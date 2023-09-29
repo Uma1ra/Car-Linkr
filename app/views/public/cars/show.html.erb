@@ -56,18 +56,16 @@
       </table>
       <% if current_customer && !(current_customer.is_guest?) %>
         <%= link_to "在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info btn-block" %>
-        <%= link_to "購入・買取を同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-info btn-block mt-3" %>
+        <%= link_to "購入・買取を同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-primary btn-block mt-3" %>
 
       <% elsif current_customer && current_customer.is_guest? %>
         <%= link_to "ゲストとして在庫確認・購入見積りを申し込む", new_buy_request_path(car_id: @car.id), class: "btn btn-info btn-block" %>
-        <%= link_to "ゲストとして購入・買取同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-info btn-block mt-3" %>
+        <%= link_to "ゲストとして購入・買取同時に申し込む", new_buy_and_sell_path(car_id: @car.id), class: "btn btn-primary btn-block mt-3" %>
 
       <% else %>
-        <div class="d-flex justify-content-center">
-          <%= link_to "ゲストログインして購入見積りを申し込む", guest_login_path(car_id: @car.id, buy: Appointment.categories.key(0)), method: :post, class: "btn btn-info btn-block" %>
+        <%= link_to "ゲストログインして購入見積りを申し込む", guest_login_path(car_id: @car.id, buy: Appointment.categories.key(0)), method: :post, class: "btn btn-info btn-block" %>
 
-          <%= link_to "ゲストログインして買取と同時に申し込む", guest_login_path(car_id: @car.id, buy_and_sell: Appointment.categories.key(2)), method: :post, class: "btn btn-info btn-block mt-3" %>
-        </div>
+        <%= link_to "ゲストログインして買取と同時に申し込む", guest_login_path(car_id: @car.id, buy_and_sell: Appointment.categories.key(2)), method: :post, class: "btn btn-primary btn-block mt-3" %>
       <% end %>
       <table class="table table-bordered mt-3">
         <tbody>
