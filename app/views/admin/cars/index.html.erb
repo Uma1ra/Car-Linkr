@@ -26,7 +26,7 @@
           <tr>
             <td><%= car.id %></td>
             <td class="row">
-              <%= link_to admin_car_path(car.id) do %>
+              <%= link_to admin_car_path(car.id), data:{"turbolinks" => false} do %>
                  <%= image_tag car.first_image, size: "40x27", class: "mr-2" %>
                   <%= car.name %>
               <% end %>
