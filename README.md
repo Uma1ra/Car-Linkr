@@ -19,7 +19,14 @@
 * 両者共に中古車の売買を検討している時
 ​
 ## 設計書
-後程作成予定
+ER図
+![Car-Linkr_ER図 drawio](https://github.com/Uma1ra/Car-Linkr/assets/135537802/4a22c807-6d67-4268-9868-1d69d14802b5)
+
+ワイヤーフレーム
+[![Image from Gyazo](https://i.gyazo.com/01ae2a898510b6bf62a2a678afafdfd2.png)](https://gyazo.com/01ae2a898510b6bf62a2a678afafdfd2)
+
+アプリ詳細設計（一部）
+[![Image from Gyazo](https://i.gyazo.com/8657d3f2bd0333a6c5825bd5bdd780a7.png)](https://gyazo.com/8657d3f2bd0333a6c5825bd5bdd780a7)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -27,6 +34,3 @@
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - IDE：Cloud9
-​
-## 使用素材
-なし
