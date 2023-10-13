@@ -52,7 +52,19 @@ class Car < ApplicationRecord
                 "cars.name LIKE(?)
                 OR cars.detail LIKE(?)
                 OR cars.color LIKE(?)
+                OR cars.year LIKE(?)
+                OR cars.chassis_code LIKE(?)
+                OR cars.grade LIKE(?)
+                OR cars.engine_capacity LIKE(?)
+                OR cars.transmission LIKE(?)
+                OR cars.fuel LIKE(?)
                 OR subgenres.name LIKE (?)",
+                "%#{search}%",
+                "%#{search}%",
+                "%#{search}%",
+                "%#{search}%",
+                "%#{search}%",
+                "%#{search}%",
                 "%#{search}%",
                 "%#{search}%",
                 "%#{search}%",

@@ -1,12 +1,18 @@
 <div class="container mt-4">
-  <div class="row">
-    <% if current_customer %>
-      <div class="cars" style="width: 100%;">
-        <%= render "index", cars: @cars %>
+  <%= render "index_text" %>
+  <% if current_customer %>
+    <div class="login-genre-index">
+      <div class="login-index">
+        <%= render "genre_index", genres: @genres %>
       </div>
-    <% else %>
-      <div class="public-index cars">
-        <%= render "index", cars: @cars %>
+    </div>
+    <div class="cars" style="width: 100%;">
+      <%= render "index", cars: @cars %>
+    </div>
+  <% else %>
+    <div class="top-index">
+      <div class="public-genre-index">
+        <%= render "genre_index", genres: @genres %>
       </div>
       <div class="login ">
         <h2 class="text-center mt-3 mb-4">会員ログイン</h2>
@@ -34,6 +40,9 @@
           </p>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <div class="public-index cars">
+        <%= render "index", cars: @cars %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -40,9 +40,7 @@ class Admin::CarsController < ApplicationController
   end
 
   def edit
-    #genres_ids = @car.subgenres.map{ |x| x.genre.id }
     @genres = Genre.where(id: Subgenre.all.pluck(:genre_id))
-    #@subgenres = @car.subgenres
   end
 
   def update

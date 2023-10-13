@@ -1,0 +1,21 @@
+<% genres.each do |genre| %>
+  <div class="genre-box">
+    <div class="heading">
+      <h5><%= genre.name %></h5>
+    </div>
+    <div class="subgenre-index">
+      <% genre.subgenres.each do |subgenre| %>
+        <div class="subgenre">
+          <% if subgenre.cars.count > 0 %>
+            <%= link_to root_path(subgenre_id: subgenre.id) do %>
+              <%= subgenre.name %>
+              <span>(<%= subgenre.cars.where(is_available: true).count %>)</span>
+            <% end %>
+          <% else %>
+            <%= subgenre.name %> (0)
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
