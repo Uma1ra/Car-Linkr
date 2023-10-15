@@ -1,0 +1,17 @@
+お問い合わせがありました
+===============================================
+
+連絡先: <%= @enquiry.phone_number if present? %>
+      <% if @enquiry.phone_number.present? && @enquiry.email.present? %>
+        <span> / </span>
+      <% end %>
+      <%= @enquiry.email if present? %>
+
+------------
+お問い合わせ:
+<%= @enquiry.title %>
+
+内容:
+<%= @enquiry.message %>
+
+===============================================

@@ -26,7 +26,11 @@
             <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
               <%= app.is_done ? "対応済" : "未対応" %>
             </td>
-            <td><%= link_to "詳細", admin_appointment_path(app.id), class: "btn btn-info btn-sm btn-block" %></td>
+            <td>
+              <%= link_to admin_appointment_path(app.id), class: "btn btn-info btn-sm btn-block" do %>
+                <i class="fa-solid fa-file-lines"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

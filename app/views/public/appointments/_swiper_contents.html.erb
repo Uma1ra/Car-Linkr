@@ -1,7 +1,7 @@
 <% if car.sell_images.attached? %>
   <% if car.sell_images.count < 2 %>
     <% car.sell_images.each do |image| %>
-      <%= image_tag image.variant(resize_to_fit: [300, 225]).processed, class: "sell-image" %>
+      <%= image_tag image.variant(resize_to_fill: [300, 225]).processed, class: "sell-image" %>
     <% end %>
   <% else %>
     <div class="swiper-container">

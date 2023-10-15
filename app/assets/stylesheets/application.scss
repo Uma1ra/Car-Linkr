@@ -511,9 +511,7 @@ footer {
   .swiper-wrapper {
 
     .swiper-slide {
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+      object-fit: contain;
       height: 350px;
       width: 70%;
     }
@@ -720,6 +718,13 @@ footer {
     width: 60%;
   }
 
+  .sell-detail-info {
+    display: block;
+  }
+
+  .sell-images {
+    width: 70%;
+  }
 }
 
 // ===================== responsive-425 =======================
@@ -837,6 +842,14 @@ footer {
   }
 
   .genre-edit-form {
+    width: 100%;
+  }
+
+  .app-info {
+    width: 90%;
+  }
+
+  .sell-images {
     width: 100%;
   }
 

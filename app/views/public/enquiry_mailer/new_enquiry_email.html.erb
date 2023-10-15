@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>お問い合わせがありました</p>
+    <p>
+      ===============================================
+    </p>
+    <p>連絡先: <%= @enquiry.phone_number if present? %>
+              <% if @enquiry.phone_number.present? && @enquiry.email.present? %>
+                <span> / </span>
+              <% end %>
+              <%= @enquiry.email if present? %>
+    </p>
+
+    <p>お問い合わせ: <%= @enquiry.title %></p>
+    <p>内容: <%= @enquiry.detail %></p>
+    <p>
+      ===============================================
+    </p>
+  </body>
+</html>

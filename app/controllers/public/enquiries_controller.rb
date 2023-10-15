@@ -8,6 +8,8 @@ class Public::EnquiriesController < ApplicationController
   def create
     @enquiry = Enquiry.new(enquiry_params)
     if @enquiry.save
+      Public::EnquiryMailer.new_enquiry_email(@enquiry).deliver
+
       redirect_to enquiry_path(@enquiry), notice: "お問い合わせを送信しました"
     else
       flash[:alert] = "送信に失敗しました"

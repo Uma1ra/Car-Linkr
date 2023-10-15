@@ -26,7 +26,11 @@
           <td class="<%= customer.is_deleted ? "text-danger" : "text-success" %>">
           <%= customer.is_deleted ? "退会済" : "有効" %>
           </td>
-          <td><%= link_to "編集", edit_admin_customer_path(customer.id), class: "btn btn-info btn-sm btn-block" %></td>
+          <td>
+            <%= link_to edit_admin_customer_path(customer.id), class: "btn btn-info btn-sm btn-block" do %>
+              <i class="fa-solid fa-pen"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>
