@@ -1,16 +1,22 @@
 <div class="container my-5">
   <div class="page-info d-flex justify-content-center mb-4">
-    <h3>出品一覧</h3>
+    <h3><%= @cars.total_count%> 件出品</h3>
     <%= link_to new_admin_car_path do %>
       <%= button_tag type: "submit", class: "btn btn-outline-dark ml-3" do %>
         <i class="fa-solid fa-square-plus fa-xl" style="color: #FC741A;"></i>
       <% end %>
     <% end %>
   </div>
+  <p class="text-center">
+    <span class="text-success">出品中:</span>
+    <%= @cars.where(is_available: true).total_count %>
 
+    <span class="text-danger">未出品:</span>
+    <%= @cars.where(is_available: false).total_count %>
+  </p>
 
   <% if @cars.first %>
-    <table class="table table-hover table-sm">
+    <table class="table table-hover table-sm table-bordered">
       <thead>
         <tr>
           <th>車ID</th>
@@ -25,10 +31,10 @@
         <% @cars.each do |car| %>
           <tr>
             <td><%= car.id %></td>
-            <td class="row">
+            <td>
               <%= link_to admin_car_path(car.id), data:{"turbolinks" => false} do %>
-                 <%= image_tag car.first_image, size: "40x27", class: "mr-2" %>
-                  <%= car.name %>
+                <%= image_tag car.first_image, size: "40x27", class: "mr-2" %>
+                <%= car.name %>
               <% end %>
             </td>
             <td><%= number_to_currency(car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></td>

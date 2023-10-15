@@ -5,9 +5,11 @@ class Admin::CarsController < ApplicationController
   def index
     if params[:subgenre_id]
       subgenre = Subgenre.find(params[:subgenre_id])
-      @cars = subgenre.cars.page(params[:page]).per(10)
+      @cars = subgenre.cars.page(params[:page]).per(10).order(created_at: :desc)
+    elsif params[:word]
+      @cars = Car.search(params[:word]).page(params[:page]).per(8).order(created_at: :desc)
     else
-      @cars = Car.page(params[:page]).per(10)
+      @cars = Car.page(params[:page]).per(10).order(created_at: :desc)
     end
   end
 

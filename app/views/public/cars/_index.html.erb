@@ -1,6 +1,6 @@
 <% if cars.length > 0 %>
   <div class="page-info">
-    <h3><%= @cars.count %> 件の出品</h3>
+    <h3><%= @cars.total_count %> 件の出品</h3>
   </div>
   <div class="index-items">
     <% cars.each do |car| %>
