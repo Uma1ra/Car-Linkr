@@ -19,6 +19,16 @@
           </th>
         </tr>
         <tr>
+          <th>ご連絡先</th>
+          <td>
+            <%= @enquiry.phone_number if present? %>
+            <% if @enquiry.phone_number.present? && @enquiry.email.present? %>
+              <span> / </span>
+            <% end %>
+            <%= @enquiry.email if present? %>
+          </td>
+        </tr>
+        <tr>
           <th>タイトル</th>
           <td><%= @enquiry.title %></td>
         </tr>

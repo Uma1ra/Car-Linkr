@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2023_09_18_202239) do
 
   create_table "enquiries", force: :cascade do |t|
     t.integer "customer_id"
+    t.string "phone_number"
+    t.string "email"
     t.string "title", null: false
     t.text "detail", null: false
     t.datetime "created_at", precision: 6, null: false

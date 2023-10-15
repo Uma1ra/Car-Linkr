@@ -1,0 +1,11 @@
+<div class="form-group">
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title, autofocus: true, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :detail, "内容" %>
+  <%= f.text_area :detail , rows: "7", placeholder: "お問い合わせ内容をご記入ください", autofocus: true, class: "form-control" %>
+</div>
+<div class="d-flex justify-content-center">
+  <%= f.submit "送信", class: "btn btn-info btn-block" %>
+</div>

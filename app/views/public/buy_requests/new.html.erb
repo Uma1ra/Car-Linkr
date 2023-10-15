@@ -13,9 +13,9 @@
       <%= ap.hidden_field :category, value: Appointment.categories.key(0) %>
 
       <% if current_customer.is_guest? %>
-      <div class="request-form">
-        <%= render "public/appointments/app_form", f: ap %>
-      </div>
+        <div class="request-form">
+          <%= render "public/appointments/app_form", f: ap %>
+        </div>
 
       <% else %>
         <p class="text-center">

@@ -15,11 +15,6 @@
  */
 
 
-
-* {
-  color: #262626;
-}
-
 body {
   width: 100%;
   position: relative; /*フッターに対して*/
@@ -28,6 +23,7 @@ body {
   min-height: 100vh;
   font-family: "Noto Sans JP", sans-serif;
   // background-color: #FFFFF0;
+  color: #262626;
 }
 
 body a {
@@ -115,6 +111,23 @@ header {
   color: #000000;
 }
 
+.genre-edit-form {
+  width: 65%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-label {
+    width: 30%;
+  }
+}
+
 // ===================== public-index =======================
 
 .top-index {
@@ -129,9 +142,8 @@ header {
 
 .index-content {
   width: 100%;
-  background-color: #FC741A;
-  color: #FFFFFF;
-  border-radius: 3px;
+  background-color: #F3FFC8;
+  border-radius: 2px;
 
   .index-copy {
     border-radius: 6px;
@@ -142,7 +154,7 @@ header {
 
 .login {
   width: 25%;
-  height: 420px;
+  height: 400px;
   margin-left: 3%;
   padding: 2%;
   border: 2px solid #DEF4FF;
@@ -163,10 +175,13 @@ header {
 .login-index {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .public-genre-index {
   width: 72%;
+  display: flex;
+  align-self: flex-start;
 }
 
 .genre-box {
@@ -175,6 +190,8 @@ header {
   padding: 2% 4%;
   margin-bottom: 15px;
   margin-right: 10px;
+  width: 50%;
+  height: auto;
 
   .heading {
     border-bottom: solid 1px #91e4ff;
@@ -573,6 +590,10 @@ footer {
   border-color: #52D017;
 }
 
+.text-primary {
+  color: #0AB5F5;
+}
+
 // ===================== pagination =======================
 
 .pagination {
@@ -623,13 +644,32 @@ footer {
     }
   }
 
-  .public-genre-index {
-    width: 60%;
+  .genre-top {
+    margin: 0 auto;
+    text-align: center;
+
+    .row {
+      justify-content: center;
+    }
+  }
+
+  .genre-edit-form {
+    width: 70%;
   }
 
   .genre_index {
-    grid-template-columns: repeat(2, 48%);
-    gap: 1rem;
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .public-genre-index {
+    width: 60%;
+    display: block;
+  }
+
+  .genre-box {
+    width: 100%;
   }
 
   .public-index {
@@ -686,6 +726,10 @@ footer {
 
 @media screen and (max-width: 425.98px) {
 
+  table {
+    font-size: 0.6rem;
+  }
+
   .page-info {
     width: 100%;
   }
@@ -718,18 +762,15 @@ footer {
     display: block;
   }
 
-  .genre-box {
-    width: 100%;
-  }
-
   .public-index {
     width: 90%;
     margin: 0 auto 40px;
   }
 
   .login {
-    width: 80%;
+    width: 90%;
     margin: 15px auto 20px;
+    padding: 4%;
   }
 
   .index-items {
@@ -793,6 +834,10 @@ footer {
 
   .admin-login-form {
     width: 90%;
+  }
+
+  .genre-edit-form {
+    width: 100%;
   }
 
   .actions .btn {

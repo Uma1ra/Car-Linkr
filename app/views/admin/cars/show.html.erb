@@ -88,14 +88,18 @@
               <%= @car.is_available ? "出品中" : "未出品" %>
             </td>
           </tr>
-           <tr>
-             <td>
-               <%= link_to "削除", admin_car_path, method: :delete, class: "btn btn-danger btn-block mx-2", data: { confirm: "本当に削除しますか？" } %>
-             </td>
-             <td>
-               <%= link_to "編集" , edit_admin_car_path, class: "btn btn-primary btn-block mx-2" %>
-             </td>
-           </tr>
+          <tr>
+            <td>
+              <%= link_to admin_car_path(@car.id), method: :delete, class: "btn btn-danger btn-block mx-2", data: { confirm: "本当に削除しますか？" } do %>
+              <i class="fa-solid fa-trash-can"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to edit_admin_car_path(@car.id), class: "btn btn-primary btn-block mx-2" do %>
+                <i class="fa-solid fa-pen"></i>
+              <% end %>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

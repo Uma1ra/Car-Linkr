@@ -1,24 +1,28 @@
-<div class="container mt-5">
-  <div class="page-info mb-5">
+<div class="container my-5">
+  <div class="page-info mb-4">
     <h3>お問い合せフォーム</h3>
-    <p>ゲストユーザーの方は連絡先も含めてご記入ください</p>
   </div>
 
   <div class="enquiry">
     <%= form_with model: @enquiry do |f| %>
-      <%= render "layouts/errors", obj: @enquiry %>
+      <%= render "public/shared/error_messages", resource: @enquiry %>
       <%= f.hidden_field :customer_id, value: current_customer.id %>
-      <div class="form-group">
-        <%= f.label :title, "タイトル" %>
-        <%= f.text_field :title, autofocus: true, class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= f.label :detail, "内容" %>
-        <%= f.text_area :detail , rows: "7", placeholder: "お問い合わせ内容をご記入ください", autofocus: true, class: "form-control" %>
-      </div>
-      <div class="d-flex justify-content-center">
-        <%= f.submit "送信", class: "btn btn-info btn-block" %>
-      </div>
+      <% if current_customer.is_guest? %>
+        <p class="instructions text-center">ご連絡先はどちらか一方だけでも問い合わせ可能です</p>
+        <div class="form-group">
+          <%= f.label :phone_number, "電話番号" %>
+          <%= f.text_field :phone_number, autofocus: true, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <%= render "form", f: f %>
+      <% else %>
+        <%= f.hidden_field :phone_number, value: current_customer.phone_number %>
+        <%= f.hidden_field :email, value: current_customer.email %>
+        <%= render "form", f: f %>
+      <% end %>
     <% end %>
   </div>
 

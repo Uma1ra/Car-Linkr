@@ -30,7 +30,12 @@
       <tbody>
         <% @cars.each do |car| %>
           <tr>
-            <td><%= car.id %></td>
+            <td>
+              <%= link_to edit_admin_car_path(car.id) do %>
+                <i class="fa-solid fa-pen text-primary mr-2"></i>
+              <% end %>
+              <%= car.id %>
+            </td>
             <td>
               <%= link_to admin_car_path(car.id), data:{"turbolinks" => false} do %>
                 <%= image_tag car.first_image, size: "40x27", class: "mr-2" %>
@@ -43,13 +48,14 @@
               <% unless car.shaken_period_i18n == "無し" %>
                 <%= car.shaken_finish %>
               <% else%>
-                <p>N/A</p>
+                N/A
               <% end %>
             </td>
-            <td class="font-weight-bold">
-              <p class="<%= car.is_available ? "text-success" : "text-danger" %>">
+            <td class="font-weight-bold text-center <%= car.is_available ? "text-success" : "text-danger" %>">
               <%= car.is_available ? "出品中" : "未出品" %>
-              </p>
+              <%= link_to admin_car_path(car.id), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+                <i class="fa-solid fa-trash-can text-danger ml-3"></i>
+              <% end %>
             </td>
           </tr>
         <% end %>

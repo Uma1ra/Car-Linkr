@@ -16,12 +16,10 @@
       <tbody>
         <% @enquiries.each do |enquiry| %>
           <tr>
-            <td><%= enquiry.customer.id %></td>
-            <% if enquiry.customer.is_guest %>
-              <td>ゲストユーザー</td>
-            <% else %>
-              <td><%= enquiry.customer.fullname %></td>
-            <% end %>
+            <td><%= enquiry.customer_id %></td>
+            <td>
+              <% enquiry.customer.is_guest ? "ゲストユーザー" : enquiry.customer.fullname %>
+            </td>
             <td><%= l enquiry.created_at, format: :long %></td>
             <td><%= enquiry.title %></td>
             <td class="admin-word-break"><%= enquiry.detail %></td>

@@ -22,7 +22,7 @@ class Public::EnquiriesController < ApplicationController
   private
 
   def enquiry_params
-    params.require(:enquiry).permit(:customer_id, :title, :detail)
+    params.require(:enquiry).permit(:customer_id, :phone_number, :email, :title, :detail)
   end
 
 end
