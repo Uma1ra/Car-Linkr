@@ -1,0 +1,27 @@
+【予約希望時間】
+候補1: <%= l buy_request.option_a, format: :long %>
+候補2: <%= l buy_request.option_b, format: :long %>
+候補3: <%= l buy_request.option_c, format: :long %>
+備考: <%= buy_request.comment %>
+
+.................
+
+【車両情報】
+
+車ID: <%= buy_request.car.id %>
+車名: <%= buy_request.car.name %>
+車両本体価格（税込）: <%= number_to_currency(buy_request.car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
+年式: <%= buy_request.car.year %>
+走行距離: <%= number_with_delimiter(buy_request.car.mileage) %><%= buy_request.car.is_km ? "km" : "miles" %>
+
+車検期間: <%= buy_request.car.shaken_period_i18n %>
+<% unless buy_request.car.shaken_period_i18n == "無し" %>
+  車検終了日: <%= buy_request.car.shaken_finish %>
+<% end %>
+乗員定員: <%= buy_request.car.passenger_amount %>
+シフト: <%= buy_request.car.transmission %>
+型式: <%= buy_request.car.chassis_code %>
+グレード: <%= buy_request.car.grade %>
+排気量: <%= buy_request.car.engine_capacity %>
+使用燃料: <%= buy_request.car.fuel_i18n %>
+色: <%= buy_request.car.color %>

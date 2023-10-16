@@ -76,7 +76,7 @@ header {
     margin-left: 8px;
   }
 
-  .nav-item:hover {
+  .nav-item:hover, .nav-item:focus {
     background-color: #87e1ff;
     opacity: 0.6;
     border-radius: 7px;
@@ -248,6 +248,7 @@ header {
 }
 
 // ===================== show =======================
+
 .show-page {
   display: flex;
   justify-content: space-around;
@@ -460,6 +461,10 @@ th {
   margin: 0 auto;
 }
 
+.sell {
+  width: 60%;
+}
+
 // ===================== footer =======================
 
 footer {
@@ -489,7 +494,7 @@ footer {
 .swiper-pagination-fraction {
   background-color: rgba(0,0,0,.5);
   color: #FFFFFF;
-  width: 10%;
+  width: 15%;
   position: absolute;
   left: 45%;
 
@@ -577,7 +582,7 @@ footer {
 .btn-success {
   color: #FFFFFF;
   background-color: #5CDA21;
-  border-color: #5CDA21;
+  border-color: #52D017;
 }
 
 .btn-success:hover,
@@ -585,11 +590,47 @@ footer {
 .show > .btn-success.dropdown-toggle {
   color: #FFFFFF;
   background-color: #52D017;
-  border-color: #52D017;
+  border-color: #3EBC03;
+}
+
+.btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #52D017;
+  border-color: #3EBC03;
+}
+
+.btn-outline-primary {
+  color: #00ABEB;
+  background-color: #FFFFFF;
+  border-color: #0AB5F5;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #00ABEB;
+  border-color: #00ABEB;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #0AB5F5;
+  border-color: #00ABEB;
 }
 
 .text-primary {
   color: #0AB5F5;
+}
+
+.text-success {
+  color: #5CDA21
 }
 
 // ===================== pagination =======================
@@ -622,7 +663,12 @@ footer {
 
 @media screen and (max-width: 768.98px) {
 
-  .page-info {
+  .page-info,
+  .genre-edit-form,
+  .request-form,
+  .detail-form,
+  .sell-detail-table,
+  .sell {
     width: 70%;
   }
 
@@ -649,10 +695,6 @@ footer {
     .row {
       justify-content: center;
     }
-  }
-
-  .genre-edit-form {
-    width: 70%;
   }
 
   .genre_index {
@@ -706,13 +748,6 @@ footer {
     }
   }
 
-  .request-form {
-    width: 70%;
-  }
-
-  .detail-form {
-    width: 70%;
-  }
 
   .admin-login-form {
     width: 60%;
@@ -724,18 +759,39 @@ footer {
 
   .sell-images {
     width: 70%;
+    margin: 10px auto 20px;
   }
+
 }
 
 // ===================== responsive-425 =======================
 
 @media screen and (max-width: 425.98px) {
 
-  table {
-    font-size: 0.6rem;
+  .request-form,
+  .detail-form,
+  .guest-info,
+  .genre-edit-form,
+  .show-image,
+  .show-info,
+  .page-info, {
+    width: 100%;
   }
 
-  .page-info {
+  .admin-login-form,
+  .app-info,
+  .sell-images,
+  .sell-detail-table,
+  .enquiry {
+    width: 90%;
+  }
+
+  .appointment-tables {
+    display: block;
+  }
+
+  table {
+    font-size: 0.8rem;
     width: 100%;
   }
 
@@ -783,18 +839,14 @@ footer {
     grid-template-columns: repeat(1, 100%);
   }
 
-  .guest-mypage {
+  .show-page, .guest-mypage {
     display: block;
   }
 
-  .guest-info {
-    width: 100%;
-  }
-
   .guest-info-form {
+    width: 100%;
     margin-bottom: 35px;
   }
-
 
   .car-register-form {
     display: block;
@@ -825,41 +877,9 @@ footer {
     }
   }
 
-  .request-form {
-    width: 100%;
-  }
-
-  .detail-form {
-    width: 100%;
-  }
-
-  .guest-info-form {
-    width: 100%;
-  }
-
-  .admin-login-form {
-    width: 90%;
-  }
-
-  .genre-edit-form {
-    width: 100%;
-  }
-
-  .app-info {
-    width: 90%;
-  }
-
-  .sell-images {
-    width: 100%;
-  }
-
   .actions .btn {
     width: 100%;
     margin-top: 10px;
-  }
-
-  .table {
-    width: 100%;
   }
 
 }

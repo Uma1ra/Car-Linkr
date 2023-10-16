@@ -1,0 +1,31 @@
+<strong class="bg-info">【予約希望時間】</strong>
+
+<p>候補1: <%= l buy_request.option_a, format: :long %></p>
+<p>候補2: <%= l buy_request.option_b, format: :long %></p>
+<p>候補3: <%= l buy_request.option_c, format: :long %></p>
+<p>備考: <%= buy_request.comment %></p>
+
+<p>.................</p>
+
+<strong class="bg-info">【車両情報】</strong>
+
+<p>車ID: <%= buy_request.car.id %></p>
+<p>車名: <%= buy_request.car.name %></p>
+<p>車両本体価格（税込）: <%= number_to_currency(buy_request.car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %></p>
+<p>年式: <%= buy_request.car.year %></p>
+<p>走行距離: <%= number_with_delimiter(buy_request.car.mileage) %>
+  <span>
+    <%= buy_request.car.is_km ? "km" : "miles" %>
+  </span>
+</p>
+<p>車検期間: <%= buy_request.car.shaken_period_i18n %></p>
+<% unless buy_request.car.shaken_period_i18n == "無し" %>
+  <p>車検終了日: <%= buy_request.car.shaken_finish %></p>
+<% end %>
+<p>乗員定員: <%= buy_request.car.passenger_amount %></p>
+<p>シフト: <%= buy_request.car.transmission %></p>
+<p>型式: <%= buy_request.car.chassis_code %></p>
+<p>グレード: <%= buy_request.car.grade %></p>
+<p>排気量: <%= buy_request.car.engine_capacity %></p>
+<p>使用燃料: <%= buy_request.car.fuel_i18n %></p>
+<p>色: <%= buy_request.car.color %></p>

@@ -9,7 +9,7 @@
       <div class="page-info mt-5">
         <h5>セールスポイント</h5>
       </div>
-      <div class="car-detail mt-4">
+      <div class="car-detail my-4">
         <p><%= @car.detail %></p>
       </div>
     </div>
@@ -26,6 +26,10 @@
               車両本体価格（税込）</br>
               <%= number_to_currency(@car.with_tax_price, unit: "¥", format: "%u %n", precision: 0 ) %>
             </th>
+          </tr>
+          <tr>
+            <th>車ID</th>
+            <td><%= @car.id %></td>
           </tr>
           <tr>
             <th>年式</th>

@@ -1,0 +1,23 @@
+<strong>【予約希望時間】</strong>
+<p>候補1: <%= l sell_request.option_a, format: :long %></p>
+<p>候補2: <%= l sell_request.option_b, format: :long %></p>
+<p>候補3: <%= l sell_request.option_c, format: :long %></p>
+<p>備考: <%= sell_request.comment %></p>
+
+<p>.................</p>
+
+<strong>【買取車両情報】</strong>
+
+<p>車名: <%= sell_detail.car_name %></p>
+<p>車台番号: <%= sell_detail.chassis_no %></p>
+<p>年式: <%= sell_detail.year %></p>
+<p>型式: <%= sell_detail.chassis_code %></p>
+<p>走行距離: <%= number_with_delimiter(sell_detail.mileage) %>
+  <span>
+    <%= sell_detail.is_km ? "km" : "miles" %>
+  </span>
+</p>
+<p>車検期間: <%= sell_detail.shaken_period_i18n %></p>
+<% unless sell_detail.shaken_period_i18n == "無し" %>
+  <p>車検終了日: <%= sell_detail.shaken_finish %></p>
+<% end %>

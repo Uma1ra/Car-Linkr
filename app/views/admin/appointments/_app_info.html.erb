@@ -37,7 +37,11 @@
       <td>
         <%= form_with model: [:admin, appointment], url: admin_appointment_path, method: :patch do |f| %>
           <%= f.select :is_done, [["未対応", false],["対応済", true]]  %>
-          <%= f.submit "更新", class: "btn btn-info btn-sm" %>
+          <span>
+            <%= button_tag type: "submit", class: "btn btn-outline-primary btn-sm" do %>
+              <i class="fa-solid fa-rotate"></i>
+            <% end %>
+          </span>
         <% end %>
       </td>
     </tr>

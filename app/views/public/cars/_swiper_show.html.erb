@@ -1,18 +1,12 @@
 <% if car.images.attached? %>
-  <% if car.images.count < 2 %>
-    <% car.images.each do |image| %>
-      <%= image_tag image.variant(resize_to_fill: [300, 200]).processed, class: "post-img"%>
-    <% end %>
-  <% else %>
-    <div class="swiper-container">
-      <div class= "swiper-wrapper">
-        <% car.images.each do |image| %>
-          <%= image_tag image, class: "swiper-slide" %>
-        <% end %>
-      </div>
-      <div class="swiper-button-prev swiper-button-white"></div>
-      <div class="swiper-button-next swiper-button-white"></div>
-      <div class="swiper-pagination"></div>
+  <div class="swiper-container">
+    <div class= "swiper-wrapper">
+      <% car.images.each do |image| %>
+        <%= image_tag image, class: "swiper-slide" %>
+      <% end %>
     </div>
-  <% end %>
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-pagination"></div>
+  </div>
 <% end%>

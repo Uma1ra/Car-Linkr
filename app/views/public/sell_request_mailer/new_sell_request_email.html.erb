@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>【買取見積りの予約申し込みが完了しました】</p>
+    <p>==========================</p>
+
+    <%= render "public/buy_and_sell_mailer/app_email_html", appointment: @appointment %>
+
+    <p>.................</p>
+
+    <%= render "sr_email_html", sell_request: @sell_request, sell_detail: @sell_detail %>
+
+    <p>==========================</p>
+  </body>
+</html>

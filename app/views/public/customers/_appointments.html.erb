@@ -4,19 +4,19 @@
       <table class="table table-bordered">
         <tbody>
           <tr>
-            <th>予約ID</th>
+            <th>ID</th>
             <td><%= app.id %></td>
           </tr>
           <tr>
-            <th>予約申込日時</th>
+            <th>申込日時</th>
             <td><%= l app.created_at, format: :long %></td>
           </tr>
           <tr>
-            <th>予約内容</th>
+            <th>内容</th>
             <td><%= app.category_i18n %></td>
           </tr>
           <tr>
-            <th>予約状況</th>
+            <th>状況</th>
             <td class="<%= app.is_done ? "text-success" : "text-danger" %>">
               <%= app.is_done ? "対応済" : "未対応" %>
             </td>

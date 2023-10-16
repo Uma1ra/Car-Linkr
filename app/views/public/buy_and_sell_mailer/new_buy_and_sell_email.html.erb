@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>【購入・買取見積りの同時予約申し込みが完了しました】</p>
+    <p>==========================</p>
+
+    <%= render "app_email_html", appointment: @appointment %>
+
+    <strong>----【購入見積り情報】----</strong>
+
+    <%= render "public/buy_request_mailer/br_email_html", buy_request: @buy_request %>
+
+    <strong>----【買取見積り情報】----</strong>
+
+    <%= render "public/sell_request_mailer/sr_email_html", sell_request: @sell_request, sell_detail: @sell_detail %>
+
+    <p>==========================</p>
+  </body>
+</html>

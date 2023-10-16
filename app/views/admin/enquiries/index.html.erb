@@ -18,7 +18,7 @@
           <tr>
             <td><%= enquiry.customer_id %></td>
             <td>
-              <% enquiry.customer.is_guest ? "ゲストユーザー" : enquiry.customer.fullname %>
+              <%= enquiry.customer.is_guest ? "ゲスト" : enquiry.customer.fullname %>
             </td>
             <td><%= l enquiry.created_at, format: :long %></td>
             <td><%= enquiry.title %></td>

@@ -67,6 +67,8 @@ class Public::AppointmentsController < ApplicationController
 
     @sell_detail.sell_request_id = @sell_request.id
     @sell_detail.save!
+    
+    Public::BuyAndSellMailer.with(buy_and_sell: @appointment).new_buy_and_sell_email.deliver!
   end
 
 end

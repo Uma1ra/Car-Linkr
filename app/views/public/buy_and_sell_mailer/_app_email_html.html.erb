@@ -1,0 +1,17 @@
+<strong class="bg-info">【予約申し込み情報】</strong>
+
+<% if @appointment.customer.is_guest %>
+  <p>
+    ※マイページより詳細を検索できます。<br>
+    予約IDとメールアドレスが必要になります。
+  </p>
+<% end %>
+
+<p>予約ID: <%= appointment.id%></p>
+<p>氏名: <%= appointment.name %></p>
+<p>電話番号: <%= appointment.phone_number %></p>
+<p>メールアドレス: <%= appointment.email %></p>
+<p>郵便番号: <%= appointment.post_code %></p>
+<p>会員ステータス:
+  <%= appointment.customer.is_guest ? "ゲスト" : "会員ID: #{appointment.customer.id}" %>
+</p>

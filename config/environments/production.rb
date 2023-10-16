@@ -59,7 +59,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "car_linkr_production"
 
   config.action_mailer.perform_caching = false
@@ -117,4 +117,22 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+  host = 'gmail.com'
+  config.action_mailer.default_url_options = { host: host }
+
+  # SMTP settings for gmail
+  config.action_mailer.smtp_settings = {
+    address:               "smtp.gmail.com",
+    port:                  587,
+    domain:                "gmail.com",
+    user_name:             ENV["EMAIL"],
+    password:              ENV["GMAIL_PASSWORD"],
+    authentication:        "plain",
+    enable_starttls_auto:  true
+  }
+
 end

@@ -50,6 +50,7 @@ class Car < ApplicationRecord
     if search != ""
       self.joins(:car_genres).joins(:subgenres).where([
                 "cars.name LIKE(?)
+                OR cars.id LIKE(?)
                 OR cars.detail LIKE(?)
                 OR cars.color LIKE(?)
                 OR cars.year LIKE(?)
@@ -59,6 +60,7 @@ class Car < ApplicationRecord
                 OR cars.transmission LIKE(?)
                 OR cars.fuel LIKE(?)
                 OR subgenres.name LIKE (?)",
+                "%#{search}%",
                 "%#{search}%",
                 "%#{search}%",
                 "%#{search}%",

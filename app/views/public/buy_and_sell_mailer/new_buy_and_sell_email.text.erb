@@ -1,0 +1,14 @@
+【購入・買取見積りの同時予約申し込みが完了しました】
+==========================
+
+<%= render "app_email_txt", appointment: @appointment %>
+
+----【購入見積り情報】----
+
+<%= render "public/buy_request_mailer/br_email_txt", buy_request: @buy_request %>
+
+----【買取見積り情報】----
+
+<%= render "public/sell_request_mailer/sr_email_txt", sell_request: @sell_request, sell_detail: @sell_detail %>
+
+==========================
