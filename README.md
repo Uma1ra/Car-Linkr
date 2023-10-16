@@ -20,7 +20,7 @@
 ​
 ## 設計書
 ER図
-![Car-Linkr_ER図 drawio](https://github.com/Uma1ra/Car-Linkr/assets/135537802/4a22c807-6d67-4268-9868-1d69d14802b5)
+![Car-Linkr_ER図 (deployed)](https://github.com/Uma1ra/Car-Linkr/assets/135537802/c97066c6-7229-4595-b18b-77070f7c2719)
 
 ワイヤーフレーム
 [![Image from Gyazo](https://i.gyazo.com/01ae2a898510b6bf62a2a678afafdfd2.png)](https://gyazo.com/01ae2a898510b6bf62a2a678afafdfd2)
