@@ -27,7 +27,7 @@
               <%= app.is_done ? "対応済" : "未対応" %>
             </td>
             <td>
-              <%= link_to admin_appointment_path(app.id), class: "btn btn-info btn-sm btn-block", data:{"turbolinks" => false} do %>
+              <%= link_to admin_appointment_path(app.id), class: "btn btn-info btn-sm btn-block" do %>
                 <i class="fa-solid fa-file-lines"></i>
               <% end %>
             </td>
