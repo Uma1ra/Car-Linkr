@@ -389,13 +389,16 @@ th {
 }
 
 .word-break {
-  word-break: break-all;
+  word-break: break-word;
+}
+
+.comment-word-break {
+  width: 78%;
   word-break: break-word;
 }
 
 .admin-word-break {
   width: 40%;
-  word-break: break-all;
   word-break: break-word;
 }
 
@@ -455,7 +458,7 @@ th {
   margin: 0 auto;
 }
 
-.sell {
+.sell, .buy {
   width: 60%;
 }
 
@@ -662,7 +665,8 @@ footer {
   .request-form,
   .detail-form,
   .sell-detail-table,
-  .sell {
+  .sell,
+  .buy {
     width: 70%;
   }
 
