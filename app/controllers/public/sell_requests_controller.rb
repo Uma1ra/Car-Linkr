@@ -46,7 +46,7 @@ class Public::SellRequestsController < ApplicationController
     @sell_detail.sell_request_id = @sell_request.id
     @sell_detail.save!
 
-    Public::SellRequestMailer.with(sell_request: @sell_request).new_sell_request_email.deliver!
+    Public::SellRequestMailer.new_sell_request_email(@appointment, @sell_request, @sell_detail).deliver!
   end
 
 end

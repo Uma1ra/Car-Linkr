@@ -40,7 +40,7 @@ before_action :authenticate_customer!
     @buy_request.appointment_id = @appointment.id
     @buy_request.save!
 
-    Public::BuyRequestMailer.with(buy_request: @buy_request).new_buy_request_email.deliver!
+    Public::BuyRequestMailer.new_buy_request_email(@appointment, @buy_request).deliver!
   end
 
 end
