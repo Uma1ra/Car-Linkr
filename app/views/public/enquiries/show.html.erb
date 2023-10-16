@@ -1,10 +1,9 @@
 <div class="container mt-5">
   <div class="page-info mb-5">
     <h3>お問い合わせ詳細</h3>
-    <p>ゲストユーザーの方は連絡先も含めてご記入ください</p>
   </div>
   <div class="d-flex justify-content-center">
-    <table class="table table-bordered enquiry">
+    <table class="table table-bordered enquiry mt-5">
       <tbody>
         <tr>
           <th colspan="2">
@@ -13,7 +12,8 @@
             <% else %>
               <p>
                 ゲストユーザー様</br>
-                お問い合わせ内容のスクリーンショットなどをお控えください
+                お問い合わせ内容はマイページで検索できます。<br>
+                予約IDと入力したメールアドレスが必要になります。
               </p>
             <% end %>
           </th>
@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <th>内容</th>
-          <td><%= @enquiry.detail %></td>
+          <td class="word-break"><%= @enquiry.detail %></td>
         </tr>
       </tbody>
     </table>

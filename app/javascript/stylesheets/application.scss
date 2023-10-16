@@ -1,736 +1,877 @@
 @use '~bootstrap/scss/bootstrap';
 
-// * {
-//   color: #282828;
-// }
-
-// body {
-//   width: 100%;
-//   position: relative; /*フッターに対して*/
-//   padding-bottom: 60px; /* フッターの高さ指定 */
-//   box-sizing: border-box;
-//   min-height: 100vh;
-//   font-family: "Noto Sans JP", sans-serif;
-//   // background-color: #FFFFF0;
-// }
-
-// body a {
-//   color: #FF7722;
-//   text-decoration: none;
-// }
-
-// body a:hover {
-//   color: #E15904;
-//   text-decoration: none;
-// }
-
-// .page-info {
-//   width: 60%;
-//   margin: 0 auto;
-//   text-align: center;
-//   border-bottom: 2px solid #DCF5DC;
-// }
-
-// .instructions{
-//   padding: 3px;
-//   background-color: #DCF5DC;
-//   border-radius: 5px;
-//   font-size: 12px;
-//   list-style: none;
-// }
-
-// .kome {
-//   list-style-position: inside;
-//   list-style-type: "※";
-// }
-
-// // ===================== header =======================
-
-// header {
-//   width: 100%;
-//   background: rgb(224,245,255);
-//   background: linear-gradient(90deg, rgba(224,245,255,1) 30%, rgba(125,223,255,1) 100%);
-
-//   .search {
-//     width: 40%;
-//   }
-
-//   .search-form {
-//     display: flex;
-//     flex-wrap: nowrap;
-//   }
-
-//   .nav-link {
-//     margin-left: 8px;
-//   }
-
-//   .nav-item:hover {
-//     background-color: #87e1ff;
-//     opacity: 0.6;
-//     border-radius: 7px;
-//   }
-
-//   .customer-name {
-//     text-align: center;
-//   }
-// }
-
-// // ===================== genres =======================
-
-// .genre_index {
-//   display: grid;
-//   grid-template-columns: repeat(3, 30%);
-//   gap: 2rem;
-// }
-
-// .genre-table {
-//   border: 2px solid #F0F0F0;
-// }
-
-// .genre-edit-link {
-//   color: #000000;
-//   background-color: #DCF5DC;
-//   border-radius: 6px;
-//   font-size: 12px;
-//   padding: 3px;
-// }
-
-// .genre-edit-link:hover {
-//   color: #000000;
-// }
-
-// // ===================== public-index =======================
-
-// .public-index {
-//   width: 72%;
-// }
-
-// .index-content {
-//   width: 100%;
-//   background-color: #DCF5DC;
-//   border-radius: 8px;
-
-//   .index-copy {
-//     border-radius: 6px;
-//     margin: 0 3px;
-//     font-weight: bold;
-//   }
-// }
-
-// .login {
-//   width: 25%;
-//   margin-left: 3%;
-//   padding: 2%;
-//   border: 2px solid #DEF4FF;
-//   border-radius: 8px;
-//   background-color: #F8F8F8;
-// }
-
-// .index-items {
-//   width: 100%;
-//   margin-top: 20px;
-//   display: grid;
-//   grid-template-columns: repeat(4, 25%);
-//   gap: 0.3em;
-// }
-
-// // ===================== items =======================
-
-// .item:hover {
-//   transform: scale(1.05);
-// }
-
-// .item {
-//   border: 1px solid #EBF4FA;
-//   border-radius: 2%;
-//   transition: transform .3s;
-//   background-color: #F8F8F8;
-//   font-size: 13px;
-
-
-//   a {
-//     text-decoration: none;
-//     color: #000044;
-//   }
-
-//   a:hover {
-//     text-decoration: none;
-//     color: #000044;
-//     background-color: #EBF4FA;
-//     border-radius: 4px;
-//     font-weight: bold;
-//   }
-
-//   .image {
-//     width: 100%;
-//     height: 100%;
-//     border-bottom: 1px solid #EBF4FA;
-
-//     .info {
-//       width: 100%;
-//     }
-//   }
-// }
-
-// // ===================== show =======================
-// .show-page {
-//   display: flex;
-//   justify-content: space-around;
-//   margin: 0 auto;
-// }
-
-// .show-image {
-//   width: 48%;
-//   overflow: hidden;
-// }
-
-// .show-info {
-//   width: 48%;
-// }
-
-// .price {
-//   background-color: #FF8010;
-//   border: 2px solid #F37404;
-// }
-
-// .car-detail {
-//   background-color: #DCF5DC;
-//   border-radius: 7px;
-//   padding: 5%;
-//   word-break: break-all;
-// }
-
-// // ===================== mypage =======================
-// .guest-mypage {
-//   display: flex;
-//   flex-direction: row-reverse;
-//   justify-content: center;
-
-//   .guest-appointment-index {
-//     display: block;
-//   }
-// }
-
-// .guest-info {
-//   width: 50%;
-// }
-
-// .customer-app-info {
-//   display: grid;
-//   grid-template-columns: repeat(2, 50%);
-//   gap: 1rem;
-// }
-
-// // ===================== form =======================
-
-// .admin-login-form {
-//   width: 50%;
-//   margin: 0 auto;
-//   padding: 4%;
-//   background-color: #F0F0F0;
-//   border-radius: 8px;
-// }
-
-// .car-register-form {
-//   display: flex;
-//   justify-content: center;
-
-//   .car-form {
-//     width: 30%;
-//     padding: 1%;
-//     margin: 4px;
-//     background-color: #F6F9FF;
-//     border-radius: 6px;
-//   }
-
-//   .car-status {
-//     text-align: center;
-//     background-color: #DCF5DC;
-//     border-radius: 7px;
-//   }
-// }
-
-// .register-form {
-//   width: 90%;
-//   margin: 20px auto 50px;
-//   padding: 20px;
-//   background-color: #F0F0F0;
-//   border-radius: 8px;
-
-//   .name-group {
-//     width: 36%;
-//     padding: 0 1%;
-//   }
-
-//   .form-group {
-//     width: 100%;
-//     margin: 15px auto;
-//     display: flex;
-//     justify-content: center;
-//   }
-
-//   .form-label {
-//     width: 30%;
-//   }
-
-//   .head-label {
-//     width: 100%;
-//     margin-left: 15%;
-//   }
-
-//   .sub-label {
-//     width: 50%;
-//   }
-
-//   .input-field {
-//     width: 40%;
-//   }
-// }
-
-// .request-form {
-//   width: 50%;
-//   margin: 0 auto;
-//   background-color: #F6F9FF;
-//   border-radius: 7px;
-//   padding: 3%;
-
-//   .form-group {
-//     display: flex;
-//     justify-content: center;
-//   }
-
-//   .form-label {
-//     width: 25%;
-//   }
-
-//   .input-field {
-//     width: 65%;
-//   }
-// }
-
-// .detail-form {
-//   width: 50%;
-// }
-
-// .guest-info-form {
-//   width: 45%;
-//   margin: 0 auto;
-//   background-color: #F6F9FF;
-//   border-radius: 7px;
-//   padding: 3%;
-// }
-
-// // ===================== table =======================
-
-// th {
-//   background-color: #F6F9FF;
-// }
-
-// .word-break {
-//   word-break: break-all;
-// }
-
-// .admin-word-break {
-//   width: 40%;
-//   word-break: break-all;
-// }
-
-// .enquiry {
-//   width: 60%;
-//   margin: 0 auto;
-
-//   th {
-//     text-align: center;
-//   }
-
-//   td {
-//     width: 65%;
-//   }
-// }
-
-// .sell-request-table {
-//   width: 65%;
-//   margin: 0 auto;
-// }
-
-// .appointment-tables {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .buy-and-sell {
-//   display: flex;
-//   justify-content: center;
-// }
-
-// .app-info {
-//   width: 45%;
-//   margin: 0 auto;
-// }
-
-// .sell-detail-info {
-//   display: flex;
-//   justify-content: center;
-
-// }
-
-// .sell-images {
-//   width: 48%;
-//   margin: 0 auto;
-//   overflow: hidden;
-// }
-
-// .sell-detail-table {
-//   width: 48%;
-//   margin: 0 auto;
-// }
-
-// // ===================== footer =======================
-
-// footer {
-//   width: 100%;
-//   position: absolute;
-//   bottom: 0;
-//   background: rgb(224,245,255);
-//   background: linear-gradient(9deg, rgba(224,245,255,1) 19%, rgba(173,235,255,1) 100%);
-// }
-
-// .sns-links {
-//   margin: 0 auto;
-// }
-
-// // ===================== swiper =======================
-
-// .swiper {
-//   width: 600px;
-//   height: 300px;
-// }
-
-// :root {
-//   --swiper-navigation-color: #ffffff;
-//   --swiper-pagination-color: #ffffff;
-// }
-
-// .swiper-pagination-fraction {
-//   background-color: rgba(0,0,0,.5);
-//   color: #FFFFFF;
-//   width: 10%;
-//   position: absolute;
-//   left: 45%;
-
-//   .swiper-pagination-current {
-//     color: #FFFFFF;
-//   }
-
-//   .swiper-pagination-total {
-//     color: #FFFFFF;
-//   }
-// }
-
-// .swiper-container {
-//   width: 100%;
-//   height: 350px;
-//   background-color: rgba(0,0,0,0.8  );
-//   position: relative;
-
-//   .swiper-wrapper {
-
-//     .swiper-slide {
-//       background-repeat: no-repeat;
-//       background-position: center;
-//       background-size: cover;
-//       height: 350px;
-//       width: 70%;
-//     }
-//     .swiper-slide:not(.swiper-slide-active) {
-//       transform: scale(0.5);
-//       opacity: 0.3;
-//     }
-//   }
-// }
-
-// .alert-warning {
-//   background-color: #ffd9ac;
-// }
-
-// // ===================== buttons =======================
-
-// .btn-info {
-//   color: #FFFFFF;
-//   background-color: #FC741A;
-//   border-color: #FC741A;
-// }
-
-// .btn-info:hover,
-// .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
-// .show > .btn-info.dropdown-toggle {
-//   color: #FFFFFF;
-//   background-color: #E86006;
-//   border-color: #E86006;
-// }
-
-// .btn-info:focus, .btn-info.focus,
-// .btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus,
-// .show > .btn-info.dropdown-toggle:focus {
-//   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-//   color: #FFFFFF;
-//   background-color: #FC741A;
-//   border-color: #E86006;
-// }
-
-// .btn-primary {
-//   color: #FFFFFF;
-//   background-color: #0AB5F5;
-//   border-color: #0AB5F5;
-// }
-
-// .btn-primary:hover,
-// .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
-// .show > .btn-primary.dropdown-toggle {
-//   color: #FFFFFF;
-//   background-color: #00ABEB;
-//   border-color: #00ABEB;
-// }
-
-// .btn-primary:focus, .btn-primary.focus,
-// .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
-// .show > .btn-primary.dropdown-toggle:focus {
-//   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-//   color: #FFFFFF;
-//   background-color: #0AB5F5;
-//   border-color: #00ABEB;
-// }
-
-// .btn-success {
-//   color: #FFFFFF;
-//   background-color: #5CDA21;
-//   border-color: #5CDA21;
-// }
-
-// .btn-success:hover,
-// .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
-// .show > .btn-success.dropdown-toggle {
-//   color: #FFFFFF;
-//   background-color: #52D017;
-//   border-color: #52D017;
-// }
-
-// // ===================== pagination =======================
-
-// .pagination {
-//   margin-top: 30px;
-// }
-
-// .pagination>li>a {
-//   color: #000000;
-//   background-color: #F6F9FF;
-// }
-
-// .pagination>.active>a {
-//   background-color: #93c9ff;
-// }
-
-// .pagination>li>a:hover {
-//   color: #000000;
-//   background-color: #DCF5DC;
-// }
-
-// .page-item.active .page-link {
-//   color: #000000;
-//   background-color: #FC741A;
-//   border: 1px solid #FC741A;
-// }
-
-// // ===================== responsive-768 =======================
-
-// @media screen and (max-width: 768.98px) {
-
-//   .page-info {
-//     width: 70%;
-//   }
-
-//   header {
-//     .search {
-//       width: 45%;
-//       text-align: start;
-//     }
-
-//     .customer-name {
-//       width: 67%;
-//       text-align: end;
-//     }
-
-//     .nav-item {
-//       margin: 0 auto;
-//     }
-//   }
-
-//   .genre_index {
-//     grid-template-columns: repeat(2, 48%);
-//     gap: 1rem;
-//   }
-
-//   .public-index {
-//     width: 60%;
-//     margin-bottom: 40px;
-//   }
-
-//   .index-items {
-//     display: grid;
-//     grid-template-columns: repeat(2, 50%);
-//   }
-
-//   .login {
-//     width: 35%;
-//     margin-left: 5%;
-//   }
-
-//   .register-form {
-
-//     .name-group {
-//       width: 44%;
-//       padding: 0 1%;
-//     }
-
-//     .form-label {
-//       width: 35%;
-//     }
-
-//     .head-label {
-//       width: 85%;
-//       margin: 0 auto;
-//     }
-
-//     .input-field {
-//       width: 50%;
-//     }
-//   }
-
-//   .request-form {
-//     width: 70%;
-//   }
-
-//   .detail-form {
-//     width: 70%;
-//   }
-
-//   .admin-login-form {
-//     width: 60%;
-//   }
-
-// }
-
-// // ===================== responsive-425 =======================
-
-// @media screen and (max-width: 425.98px) {
-
-//   .page-info {
-//     width: 100%;
-//   }
-
-//   header {
-//     .container {
-//       display: flex;
-//       justify-content: center;
-//     }
-
-//     .search {
-//       width: 70%;
-//       padding: 5px 0;
-//       display: flex;
-//       justify-content: center;
-//       margin: 0 auto;
-//     }
-
-//     .customer-name {
-//       width: 76%;
-//     }
-//   }
-
-//   .logo {
-//     margin: 0 auto;
-//   }
-
-//   .public-index {
-//     width: 90%;
-//     margin: 0 auto 40px;
-//   }
-
-//   .login {
-//     width: 80%;
-//     margin: 0 auto;
-//   }
-
-//   .index-items {
-//     display: grid;
-//     grid-template-columns: repeat(1, 100%);
-//   }
-
-//   .guest-mypage {
-//     display: block;
-//   }
-
-//   .guest-info {
-//     width: 100%;
-//   }
-
-//   .guest-info-form {
-//     margin-bottom: 35px;
-//   }
-
-
-//   .car-register-form {
-//     display: block;
-
-//     .car-form {
-//       width: 100%;
-//       padding: 4%;
-//     }
-//   }
-
-//   .register-form {
-
-//     .name-group {
-//       width: 50%;
-//       padding: 0 1%;
-//     }
-
-//     .form-label {
-//       width: 40%;
-//     }
-
-//     .head-label {
-//       width: 100%;
-//     }
-
-//     .input-field {
-//       width: 60%;
-//     }
-//   }
-
-//   .request-form {
-//     width: 100%;
-//   }
-
-//   .detail-form {
-//     width: 100%;
-//   }
-
-//   .guest-info-form {
-//     width: 100%;
-//   }
-
-//   .admin-login-form {
-//     width: 90%;
-//   }
-
-//   .actions .btn {
-//     width: 100%;
-//     margin-top: 10px;
-//   }
-
-//   .table {
-//     width: 100%;
-//   }
-
-// }
+body {
+  width: 100%;
+  position: relative; /*フッターに対して*/
+  padding-bottom: 60px; /* フッターの高さ指定 */
+  box-sizing: border-box;
+  min-height: 100vh;
+  font-family: "Noto Sans JP", sans-serif;
+  // background-color: #FFFFF0;
+  color: #262626;
+}
+
+body a {
+  color: #FF7722;
+  text-decoration: none;
+}
+
+body a:hover {
+  color: #E15904;
+  text-decoration: none;
+}
+
+.page-info {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 2px solid #DCF5DC;
+}
+
+.instructions{
+  padding: 3px;
+  background-color: #DCF5DC;
+  border-radius: 5px;
+  font-size: 12px;
+  list-style: none;
+}
+
+.kome {
+  list-style-position: inside;
+  list-style-type: "※";
+}
+
+// ===================== header =======================
+
+header {
+  width: 100%;
+  background: rgb(224,245,255);
+  background: linear-gradient(90deg, rgba(224,245,255,1) 30%, rgba(125,223,255,1) 100%);
+
+  .search {
+    width: 40%;
+  }
+
+  .search-form {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .nav-link {
+    margin-left: 8px;
+  }
+
+  .nav-item:hover, .nav-item:focus {
+    background-color: #87e1ff;
+    opacity: 0.6;
+    border-radius: 7px;
+  }
+
+  .customer-name {
+    text-align: center;
+  }
+}
+
+// ===================== genres =======================
+
+.genre_index {
+  display: grid;
+  grid-template-columns: repeat(3, 30%);
+  gap: 2rem;
+}
+
+.genre-table {
+  border: 2px solid #F0F0F0;
+}
+
+.genre-edit-link {
+  color: #000000;
+  background-color: #DCF5DC;
+  border-radius: 6px;
+  font-size: 12px;
+  padding: 3px;
+}
+
+.genre-edit-link:hover {
+  color: #000000;
+}
+
+.genre-edit-form {
+  width: 65%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-label {
+    width: 30%;
+  }
+}
+
+// ===================== public-index =======================
+
+.top-index {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.public-index {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.index-content {
+  width: 100%;
+  background-color: #F3FFC8;
+  border-radius: 2px;
+
+  .index-copy {
+    border-radius: 6px;
+    margin: 0 3px;
+    font-weight: bold;
+  }
+}
+
+.login {
+  width: 25%;
+  height: 400px;
+  margin-left: 3%;
+  padding: 2%;
+  border: 2px solid #DEF4FF;
+  border-radius: 8px;
+  background-color: #F8F8F8;
+}
+
+.index-items {
+  width: 100%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  gap: 0.3em;
+}
+
+// ===================== genre-index =======================
+
+.login-index {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.public-genre-index {
+  width: 72%;
+  display: flex;
+  align-self: flex-start;
+  flex-wrap: wrap;
+}
+
+.genre-box {
+  border-radius: 6px;
+  border: solid 2px #DEF4FF;
+  padding: 2% 4%;
+  margin-bottom: 15px;
+  margin-right: 10px;
+  width: 48%;
+  height: auto;
+
+  .heading {
+    border-bottom: solid 1px #91e4ff;
+    margin-bottom: 15px;
+  }
+
+  .subgenre-index {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    gap: 0.5rem;
+  }
+
+  .subgenre {
+    padding: 3%;
+  }
+}
+
+// ===================== items =======================
+
+.item:hover {
+  transform: scale(1.05);
+}
+
+.item {
+  border: 1px solid #EBF4FA;
+  border-radius: 2%;
+  transition: transform .3s;
+  background-color: #F8F8F8;
+  font-size: 13px;
+
+
+  a {
+    text-decoration: none;
+    color: #000044;
+  }
+
+  a:hover {
+    text-decoration: none;
+    color: #000044;
+    background-color: #EBF4FA;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #EBF4FA;
+
+    .info {
+      width: 100%;
+    }
+  }
+}
+
+// ===================== show =======================
+
+.show-page {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+.show-image {
+  width: 48%;
+  overflow: hidden;
+}
+
+.show-info {
+  width: 48%;
+}
+
+.price {
+  background-color: #FF8010;
+  border: 2px solid #F37404;
+}
+
+.car-detail {
+  background-color: #DCF5DC;
+  border-radius: 7px;
+  padding: 5%;
+  word-break: break-all;
+}
+
+// ===================== mypage =======================
+.guest-mypage {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+
+  .guest-appointment-index {
+    display: block;
+  }
+}
+
+.guest-info {
+  width: 50%;
+}
+
+.customer-app-info {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  gap: 1rem;
+}
+
+// ===================== form =======================
+
+.admin-login-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 4%;
+  background-color: #F0F0F0;
+  border-radius: 8px;
+}
+
+.car-register-form {
+  display: flex;
+  justify-content: center;
+
+  .car-form {
+    width: 30%;
+    padding: 1%;
+    margin: 4px;
+    background-color: #F6F9FF;
+    border-radius: 6px;
+  }
+
+  .car-status {
+    text-align: center;
+    background-color: #DCF5DC;
+    border-radius: 7px;
+  }
+}
+
+.register-form {
+  width: 90%;
+  margin: 20px auto 50px;
+  padding: 20px;
+  background-color: #F0F0F0;
+  border-radius: 8px;
+
+  .name-group {
+    width: 36%;
+    padding: 0 1%;
+  }
+
+  .form-group {
+    width: 100%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-label {
+    width: 30%;
+  }
+
+  .head-label {
+    width: 100%;
+    margin-left: 15%;
+  }
+
+  .sub-label {
+    width: 50%;
+  }
+
+  .input-field {
+    width: 40%;
+  }
+}
+
+.request-form {
+  width: 50%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
+
+  .form-group {
+    display: flex;
+    justify-content: center;
+  }
+
+  .form-label {
+    width: 25%;
+  }
+
+  .input-field {
+    width: 65%;
+  }
+}
+
+.detail-form {
+  width: 50%;
+}
+
+.guest-info-form {
+  width: 45%;
+  margin: 0 auto;
+  background-color: #F6F9FF;
+  border-radius: 7px;
+  padding: 3%;
+}
+
+// ===================== table =======================
+
+th {
+  background-color: #F6F9FF;
+}
+
+.word-break {
+  word-break: break-all;
+}
+
+.admin-word-break {
+  width: 40%;
+  word-break: break-all;
+}
+
+.overflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.enquiry {
+  width: 60%;
+  margin: 0 auto;
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    width: 65%;
+  }
+}
+
+.sell-request-table {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.appointment-tables {
+  display: flex;
+  justify-content: center;
+}
+
+.buy-and-sell {
+  display: flex;
+  justify-content: center;
+}
+
+.app-info {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.sell-detail-info {
+  display: flex;
+  justify-content: center;
+
+}
+
+.sell-images {
+  width: 48%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.sell-detail-table {
+  width: 48%;
+  margin: 0 auto;
+}
+
+.sell {
+  width: 60%;
+}
+
+// ===================== footer =======================
+
+footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: rgb(224,245,255);
+  background: linear-gradient(9deg, rgba(224,245,255,1) 19%, rgba(173,235,255,1) 100%);
+}
+
+.sns-links {
+  margin: 0 auto;
+}
+
+// ===================== swiper =======================
+
+.swiper {
+  width: 600px;
+  height: 300px;
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
+
+.swiper-pagination-fraction {
+  background-color: rgba(0,0,0,.5);
+  color: #FFFFFF;
+  width: 15%;
+  position: absolute;
+  left: 45%;
+
+  .swiper-pagination-current {
+    color: #FFFFFF;
+  }
+
+  .swiper-pagination-total {
+    color: #FFFFFF;
+  }
+}
+
+.swiper-container {
+  width: 100%;
+  height: 350px;
+  background-color: rgba(0,0,0,0.8  );
+  position: relative;
+
+  .swiper-wrapper {
+
+    .swiper-slide {
+      object-fit: contain;
+      height: 350px;
+      width: 70%;
+    }
+    .swiper-slide:not(.swiper-slide-active) {
+      transform: scale(0.5);
+      opacity: 0.3;
+    }
+  }
+}
+
+.alert-warning {
+  background-color: #ffd9ac;
+}
+
+// ===================== buttons =======================
+
+.btn-info {
+  color: #FFFFFF;
+  background-color: #FC741A;
+  border-color: #FC741A;
+}
+
+.btn-info:hover,
+.btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
+.show > .btn-info.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #E86006;
+  border-color: #E86006;
+}
+
+.btn-info:focus, .btn-info.focus,
+.btn-info:not(:disabled):not(.disabled):active:focus, .btn-info:not(:disabled):not(.disabled).active:focus,
+.show > .btn-info.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #FC741A;
+  border-color: #E86006;
+}
+
+.btn-primary {
+  color: #FFFFFF;
+  background-color: #0AB5F5;
+  border-color: #0AB5F5;
+}
+
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #00ABEB;
+  border-color: #00ABEB;
+}
+
+.btn-primary:focus, .btn-primary.focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #0AB5F5;
+  border-color: #00ABEB;
+}
+
+.btn-success {
+  color: #FFFFFF;
+  background-color: #5CDA21;
+  border-color: #52D017;
+}
+
+.btn-success:hover,
+.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+.show > .btn-success.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #52D017;
+  border-color: #3EBC03;
+}
+
+.btn-success:focus, .btn-success.focus,
+.btn-success:not(:disabled):not(.disabled):active:focus, .btn-success:not(:disabled):not(.disabled).active:focus,
+.show > .btn-success.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #52D017;
+  border-color: #3EBC03;
+}
+
+.btn-outline-primary {
+  color: #00ABEB;
+  background-color: #FFFFFF;
+  border-color: #0AB5F5;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active,
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #FFFFFF;
+  background-color: #00ABEB;
+  border-color: #00ABEB;
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus,
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  color: #FFFFFF;
+  background-color: #0AB5F5;
+  border-color: #00ABEB;
+}
+
+.text-primary {
+  color: #0AB5F5;
+}
+
+.text-success {
+  color: #5CDA21
+}
+
+// ===================== pagination =======================
+
+.pagination {
+  margin-top: 30px;
+}
+
+.pagination>li>a {
+  color: #000000;
+  background-color: #F6F9FF;
+}
+
+.pagination>.active>a {
+  background-color: #93c9ff;
+}
+
+.pagination>li>a:hover {
+  color: #000000;
+  background-color: #DCF5DC;
+}
+
+.page-item.active .page-link {
+  color: #000000;
+  background-color: #FC741A;
+  border: 1px solid #FC741A;
+}
+
+// ===================== responsive-768 =======================
+
+@media screen and (max-width: 768.98px) {
+
+  .page-info,
+  .genre-edit-form,
+  .request-form,
+  .detail-form,
+  .sell-detail-table,
+  .sell {
+    width: 70%;
+  }
+
+  header {
+    .search {
+      width: 45%;
+      text-align: start;
+    }
+
+    .customer-name {
+      width: 67%;
+      text-align: end;
+    }
+
+    .nav-item {
+      margin: 0 auto;
+    }
+  }
+
+  .genre-top {
+    margin: 0 auto;
+    text-align: center;
+
+    .row {
+      justify-content: center;
+    }
+  }
+
+  .genre_index {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+  }
+
+  .public-genre-index {
+    width: 60%;
+    display: block;
+  }
+
+  .genre-box {
+    width: 100%;
+  }
+
+  .public-index {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  .index-items {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+  }
+
+  .login {
+    width: 35%;
+    margin-left: 5%;
+  }
+
+  .register-form {
+
+    .name-group {
+      width: 44%;
+      padding: 0 1%;
+    }
+
+    .form-label {
+      width: 35%;
+    }
+
+    .head-label {
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    .input-field {
+      width: 50%;
+    }
+  }
+
+
+  .admin-login-form {
+    width: 60%;
+  }
+
+  .sell-detail-info {
+    display: block;
+  }
+
+  .sell-images {
+    width: 70%;
+    margin: 10px auto 20px;
+  }
+
+}
+
+// ===================== responsive-425 =======================
+
+@media screen and (max-width: 425.98px) {
+
+  .request-form,
+  .detail-form,
+  .guest-info,
+  .genre-edit-form,
+  .show-image,
+  .show-info,
+  .page-info, {
+    width: 100%;
+  }
+
+  .admin-login-form,
+  .app-info,
+  .sell-images,
+  .sell-detail-table,
+  .enquiry {
+    width: 90%;
+  }
+
+  .appointment-tables {
+    display: block;
+  }
+
+  table {
+    font-size: 0.67rem;
+    width: 100%;
+  }
+
+  header {
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .search {
+      width: 70%;
+      padding: 5px 0;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .customer-name {
+      width: 76%;
+    }
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .login-index, .public-genre-index {
+    width: 100%;
+    display: block;
+  }
+
+  .public-index {
+    width: 90%;
+    margin: 0 auto 40px;
+  }
+
+  .login {
+    width: 90%;
+    margin: 15px auto 20px;
+    padding: 4%;
+  }
+
+  .index-items {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+  }
+
+  .show-page, .guest-mypage {
+    display: block;
+  }
+
+  .guest-info-form {
+    width: 100%;
+    margin-bottom: 35px;
+  }
+
+  .car-register-form {
+    display: block;
+
+    .car-form {
+      width: 100%;
+      padding: 4%;
+    }
+  }
+
+  .register-form {
+
+    .name-group {
+      width: 50%;
+      padding: 0 1%;
+    }
+
+    .form-label {
+      width: 40%;
+    }
+
+    .head-label {
+      width: 100%;
+    }
+
+    .input-field {
+      width: 60%;
+    }
+  }
+
+  .actions .btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+}

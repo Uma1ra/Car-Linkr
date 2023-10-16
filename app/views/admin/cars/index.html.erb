@@ -2,8 +2,8 @@
   <div class="page-info d-flex justify-content-center mb-4">
     <h3><%= @cars.total_count%> 件出品</h3>
     <%= link_to new_admin_car_path do %>
-      <%= button_tag type: "submit", class: "btn btn-outline-secondary rounded-circle ml-3" do %>
-        <i class="fa-solid fa-circle-plus" style="color: #FC741A;"></i>
+      <%= button_tag type: "submit", class: "btn btn-light ml-2" do %>
+        <i class="fa-regular fa-square-plus fa-2xl" style="color: #FC741A;"></i>
       <% end %>
     <% end %>
   </div>
@@ -36,7 +36,7 @@
               <% end %>
               <%= car.id %>
             </td>
-            <td>
+            <td class="overflow">
               <%= link_to admin_car_path(car.id), data:{"turbolinks" => false} do %>
                 <%= image_tag car.first_image, size: "40x27", class: "mr-2" %>
                 <%= car.name %>
