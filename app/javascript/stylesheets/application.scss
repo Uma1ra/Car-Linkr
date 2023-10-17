@@ -59,6 +59,7 @@ header {
 
   .nav-link {
     margin-left: 8px;
+    width: 100%;
   }
 
   .nav-item:hover, .nav-item:focus {
@@ -791,6 +792,18 @@ footer {
   table {
     font-size: 0.67rem;
     width: 100%;
+  }
+
+  .index-table {
+
+    th {
+      font-size: 0.4rem;
+    }
+
+    td {
+      font-size: 0.6rem;
+    }
+
   }
 
   header {
