@@ -16,7 +16,7 @@ class Public::SellRequestsController < ApplicationController
         save_sell_request
       end
 
-      redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
+      redirect_to app_information_path(appointment_id: @appointment.id), notice: "予約の申し込みが完了しました"
     rescue => e
       Rails.logger.error "Failed to create buy_request: #{e.message}"
       flash[:alert] = "予約の申し込みに失敗しました"

@@ -22,13 +22,9 @@
         </tr>
         <tr>
           <th>詳細へのリンク</th>
-          <td><%= link_to "詳細", appointment_path(app.id), class: "btn btn-primary btn-sm btn-block" %></td>
+          <td><%= link_to "詳細", app_information_path(appointment_id: app.id), class: "btn btn-primary btn-sm btn-block" %></td>
         </tr>
       </tbody>
     </table>
   </div>
 <% end %>
-
-<div class="d-flex justify-content-center">
-  <%= paginate appointments %>
-</div>

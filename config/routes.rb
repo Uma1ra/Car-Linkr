@@ -23,13 +23,13 @@ Rails.application.routes.draw do
     patch "customers/withdraw", to: "customers#withdraw", as:"withdraw"
 
     get "appointments/buy_and_sell", to: "appointments#buy_and_sell", as: "new_buy_and_sell"
-    post "appointments/buy_and_sell", to: "appointments#create", as: "buy_and_sell"
+
+    get "appointments/app_information", to: "appointments#show", as:"app_information"
 
     resources :enquiries, only: [:new, :create, :show]
     resources :buy_requests, only: [:new, :create]
-
     resources :sell_requests, only: [:new, :create]
-    resources :appointments, only: [:index, :create, :show]
+    resources :appointments, only: [:create]
 
     resources :cars, only: [:show]
 
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :subgenres, only: [:create, :update]
     resources :cars, only: [:create, :index, :new, :show, :edit, :update, :destroy]
-    resources :appointments, only: [:index, :show, :update]
+    resources :appointments, only: [:index, :update]
     resources :enquiries, only: [:index]
   end
 

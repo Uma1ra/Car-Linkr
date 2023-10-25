@@ -12,7 +12,7 @@ class Public::AppointmentsController < ApplicationController
       ActiveRecord::Base.transaction do
         save_all_requests
       end
-      redirect_to appointment_path(@appointment), notice: "予約の申し込みが完了しました"
+      redirect_to app_information_path(appointment_id: @appointment.id), notice: "予約の申し込みが完了しました"
 
     rescue => e
       Rails.logger.error "Failed to create buy_request: #{e.message}"
@@ -30,7 +30,7 @@ class Public::AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
+    @appointment = Appointment.find(params[:appointment_id])
     @buy_request = @appointment.buy_request
 
     unless @appointment.category == "buy"

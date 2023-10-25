@@ -15,7 +15,7 @@
 
       <% if @guest_appointment.present? %>
         <div class="guest-info">
-          <%= render "appointments", appointments: @guest_appointment.page(1) %>
+          <%= render "appointments", appointments: @guest_appointment %>
         </div>
       <% end %>
     </div>
@@ -56,6 +56,9 @@
     <% if current_customer.appointments.present? %>
       <div class="customer-app-info">
         <%= render "appointments", appointments: @appointments %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <%= paginate @appointments %>
       </div>
     <% else %>
       <h6 class="text-center font-weight-bold">まだ予約情報はございません</h6>
