@@ -10,7 +10,7 @@ class Public::EnquiriesController < ApplicationController
     if @enquiry.save
       Public::EnquiryMailer.new_enquiry_email(@enquiry).deliver
 
-      redirect_to enquiry_path(@enquiry), notice: "お問い合わせを送信しました"
+      redirect_to enquiry_path(enquiry_id: @enquiry.id), notice: "お問い合わせを送信しました"
     else
       flash[:alert] = "送信に失敗しました"
       render :new
@@ -18,7 +18,7 @@ class Public::EnquiriesController < ApplicationController
   end
 
   def show
-    @enquiry = Enquiry.find(params[:id])
+    @enquiry = Enquiry.find(params[:enquiry_id])
   end
 
   private
