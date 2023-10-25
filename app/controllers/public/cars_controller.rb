@@ -17,8 +17,6 @@ class Public::CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
-    buy_request = BuyRequest.new
-    buy_request.car_id = @car.id
   end
 
   def search
